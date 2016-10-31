@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+<!-- SE DEFINE LAS PLANTILLAS -->
+	<definition name="t_plantillaBaseConMenu" template="/templates/plantillaBaseConMenu.jsp">
+		<put-attribute name="cabecera" value="/templates/cabecera.jsp" />
+		<put-attribute name="menu" value="/templates/menu.jsp" />
+	</definition>
+	<definition name="t_plantillaBaseSimple" template="/templates/plantillaBaseSimple.jsp">
+		<put-attribute name="cabecera" value="/templates/cabecera.jsp" />
+	</definition>
+	<definition name="t_plantillaSimple" template="/templates/plantillaSimple.jsp">
+	</definition>
+	<definition name="t_plantillaSimpleGRID" template="/templates/plantillaSimpleGRID.jsp">
+	</definition>
+	
+<!-- SE HACE USO DE LAS PLANTILLAS EN LAS PAGINAS DE NUESTRO PROYECTO -->
+	<definition name="t_login" extends="t_plantillaSimple">
+		<put-attribute name="central" value="/pages/login.jsp" />
+	</definition>
+	<definition name="t_intranet" extends="t_plantillaBaseConMenu">
+		<put-attribute name="central" value="/pages/intranet.jsp" />
+	</definition>
+
+</tiles-definitions>
+

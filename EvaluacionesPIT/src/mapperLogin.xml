@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pit">
+
+	<select id="SQL_EnlacesDeUsuario" parameterType="int" resultType="EnlaceDTOIbatis">
+		SELECT 	idenlace,idperfil,enlace,descripcion
+		FROM 	enlaces 
+		WHERE 	idperfil = #{codigo}			
+	</select>
+	
+	<select id="SQL_Login" parameterType="UsuarioDTOIbatis" resultType="UsuarioDTOIbatis">
+		SELECT 
+				u.idusuario as codigo,
+				u.email as email,
+				u.pass as clave,
+				u.estado as estado,
+				p.perfil as perfil		
+		FROM
+				usuario u inner join perfil p on u.idperfil = p.idperfil
+		WHERE
+				email = #{email} AND pass = #{clave}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
