@@ -6,7 +6,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ss</title>	
+<meta charset="utf-8">
+<title>Sistema de Control de Evaluaciones | CIBERTEC</title>	
 <sj:head locale="es" jqueryui="true" jquerytheme="south-street"/>
 <script type="text/javascript">
 var x=window.history.length; 
@@ -18,7 +19,7 @@ if (window.history[x]!=window.location)
 	    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" type="text/css" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css" />
 		
-        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon_1.ico"/>
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/ico-educacion.ico"/>
 
         <!-- Base Css Files -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" />
@@ -61,6 +62,10 @@ header{
 	height:100%;
 }
 
+body{
+	background-image: url("${pageContext.request.contextPath}/images/big/Salon.png");	
+}
+
 #centro{
 	background:white;
 	float:left;
@@ -77,11 +82,14 @@ footer{
 	background:#000;
 	text-align:center;
 	height:45px;
+	padding-top: 10px;
+	color: white;
 }
 #idCentralConMenu1{
 background-color:aqua;
 	height: 450px;
 }
+
 
 
 </STYLE>
@@ -103,7 +111,8 @@ background-color:aqua;
     		 </div>
         </section>
         <footer>
-        		Derechos Reservados
+        		Derechos Reservados - 
+        		Cibertec 2016
         </footer>
         
     </section>	

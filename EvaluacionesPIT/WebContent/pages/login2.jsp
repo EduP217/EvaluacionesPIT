@@ -6,40 +6,36 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>Bootstrap Login Template</title>
+<title>Evaluaciones Cibertec 2016</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<!-- INVOCADOS DESDE INTERNET -->	
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	
-
-        <!-- animate css -->
-        <link href="${pageContext.request.contextPath}/css/animate.css" rel="stylesheet" />
-
-        <!-- Waves-effect -->
-        <link href="${pageContext.request.contextPath}/css/waves-effect.css" rel="stylesheet"/>
-
-        <!-- Custom Files -->
-        <link href="${pageContext.request.contextPath}/css/helper.css" rel="stylesheet" type="text/css" />
-        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css" />
-        
-        <script src="${pageContext.request.contextPath}/js/waves.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+	<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" />	
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/ico-educacion.ico"/>
+	<!-- animate css -->
+	<link href="${pageContext.request.contextPath}/css/animate.css" rel="stylesheet" />
+	<!-- Waves-effect -->
+	<link href="${pageContext.request.contextPath}/css/waves-effect.css" rel="stylesheet"/>
+	<!-- Custom Files -->
+	<link href="${pageContext.request.contextPath}/css/helper.css" rel="stylesheet" type="text/css" />
+	<!-- ESTE STYLE ES UNA COPIA DEL STYLE.CSS PERO SIN LOS ASPECTOS PARA EL MODAL -->
+	<link href="${pageContext.request.contextPath}/css/style3.css" rel="stylesheet" type="text/css" />
+    
 <style type="text/css">
 .modal-footer {
 	border-top: 0px;
 }
 .modal-header {
-	background-image: url("../images/small/bg.jpg");
+	background-image: url("${pageContext.request.contextPath}/images/small/bg.jpg");
 	color: white;
-	height: 150px;
+	height: 160px;
+	padding: 5%;
 }
 #idmodal{
 	width: 30% !important;
 }
 body{
-	background-image: url("../images/big/img1.jpg");
+	background-image: url("${pageContext.request.contextPath}/images/big/Salon.png");
 }
 </style>
 	
@@ -47,26 +43,21 @@ body{
 function loadModal(){
 	$("#myModal").modal("show");   
 }
-var x=window.history.length; 
-if (window.history[x]!=window.location) 
-{ 
-    window.history.forward(); 
-} 
 </script>
 
 </head>
 
 <body onload="loadModal()">
 	<!--login modal-->
-	<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog" id="idmodal">
 			<div class="modal-content">
 
 				<!-- Header Section -->
 				<div class="modal-header">					
-					<h3 class="text-center m-t-10 text-white" style="padding-top: 12%;">
+					<h2 class="text-center m-t-10 text-white">
 						<strong>SISTEMA DE CONTROL DE EVALUACIONES | CIBERTEC</strong>
-					</h3>
+					</h2>
 				</div>
 
 				<!-- Body Section -->
@@ -75,15 +66,13 @@ if (window.history[x]!=window.location)
 						action="IniciarSesion" method="POST">
 						<div class="form-group ">
 							<div class="col-xs-12">
-								<s:textfield name="usuario" cssClass="form-control input-lg"
-									placeholder="Usuario"></s:textfield>
+								<s:textfield name="usuario" cssClass="form-control input-lg" placeholder="Usuario"></s:textfield>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<div class="col-xs-12">
-								<s:password name="clave" cssClass="form-control input-lg"
-									placeholder="Password"></s:password>
+								<s:password name="clave" cssClass="form-control input-lg" placeholder="Password"></s:password>
 							</div>
 						</div>
 
@@ -95,9 +84,7 @@ if (window.history[x]!=window.location)
 
 						<div class="form-group text-center m-t-40">
 							<div class="col-xs-12">
-								<button
-									class="btn btn-primary btn-lg w-lg waves-effect waves-light"
-									type="submit">INGRESAR</button>
+								<button class="btn btn-primary btn-lg w-lg waves-effect waves-light" type="submit">INGRESAR</button>
 							</div>
 						</div>
 						<div class="form-group m-t-30"></div>

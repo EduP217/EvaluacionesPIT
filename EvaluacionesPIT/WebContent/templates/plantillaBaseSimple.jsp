@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ss</title>	
+<title>Sistema de Control de Evaluaciones | CIBERTEC</title>	
 <sj:head locale="es" jqueryui="true" jquerytheme="south-street"/>
 <script type="text/javascript">
 var x=window.history.length; 
@@ -16,7 +16,7 @@ if (window.history[x]!=window.location)
 } 
 </script>	
 
-        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon_1.ico"/>
+        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/ico-educacion.ico"/>
 
         <!-- Base Css Files -->
         <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" />
