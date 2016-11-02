@@ -3,7 +3,7 @@
 <%@ taglib prefix="sjg" uri="/struts-jquery-grid-tags"%>
 <style>
 	#ver{
-		background-image: url("images/big/cabecera1.png");
+		background-image: url("../images/big/cabecera1.png");
 		width:100%;
 		max-width:100%;
 		max-height: 100%;
@@ -16,7 +16,7 @@
 
 </style>
 <div id="ver">
- <img src="images/big/sesion.png"/>
+ <img src="../images/big/sesion.png"/>
  Código:<s:property value="#session.keyUsuario.email"/>
- <a href="${pageContext.request.contextPath}/CerrarSesion"><img src="images/big/cerrar2.png"/>Salir</a>
+ <a href="${pageContext.request.contextPath}/CerrarSesion"><img src="../images/big/cerrar2.png"/>Salir</a>
 </div>

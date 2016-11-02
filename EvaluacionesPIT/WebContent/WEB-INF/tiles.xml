@@ -16,7 +16,7 @@
 	<definition name="t_plantillaSimple" template="/templates/plantillaSimple.jsp">
 	</definition>
 	<definition name="t_plantillaSimpleGRID" template="/templates/plantillaSimpleGRID.jsp">
-	</definition>
+	</definition>	
 	
 <!-- SE HACE USO DE LAS PLANTILLAS EN LAS PAGINAS DE NUESTRO PROYECTO -->
 	<definition name="t_login" extends="t_plantillaSimple">

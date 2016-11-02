@@ -888,7 +888,7 @@ a:focus {
 
 
 /* 2.12 Modals */
-.modal .modal-dialog .modal-content {
+modal .modal-dialog .modal-content {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;

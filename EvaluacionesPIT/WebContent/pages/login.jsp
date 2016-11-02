@@ -19,7 +19,7 @@
 					<strong>CIBERTEC | SISTEMA DE CONTROL DE EVALUACIONES</strong>
 				</h2>
 			</div>
-			<div class="panel-body">
+			<div class="panel-body">			
 				<s:form id="idLogin" cssClass="form-horizontal m-t-20" action="IniciarSesion" method="POST">
 					<div class="form-group ">
 						<div class="col-xs-12">
@@ -45,7 +45,7 @@
 						</div>
 					</div>
 					<div class="form-group m-t-30"></div>
-				</s:form>
+				</s:form>				
 			</div>
 		</div>
 	</div>
