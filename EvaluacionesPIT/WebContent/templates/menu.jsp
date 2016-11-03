@@ -1,50 +1,60 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
-<style>		
-	li.dropdown {
-	    display: inline-block;
-	}
-	.dropdown-content {
-	    display: none;
-	    position: absolute;
-	    min-width: 160px;
-	    background-color: #f9f9f9;
-	    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	}	
-	.dropdown-content a {
-	    color: black;
-	    text-decoration: none;
-	    padding: 15px;
-	    display: block;
-	    text-align: left;
-	}	
-	.dropdown-content a:hover {
-		background-color: #f1f1f1;
-	    min-width: 160px;
-	}	
-	.dropdown:hover .dropdown-content {
-	    display: block;
-	}	
+<style>
+#access{
+	text-transform: uppercase;
+	margin: 0 auto;
+	z-index: 1000;
+}
 </style>
 
 <div class="seventeen columns">
-	<nav id="access" class="access" role="navigation">
+	<!-- nav id="access" class="access" role="navigation">
 		<div id="menu" class="menu">
-			<ul id="tiny">
+			<ul>
 				<li><a class="selected">
-					<img src="${pageContext.request.contextPath}/images/mainmenu-home-icon.png" width="20" height="20" /></a>
+					<img src="${pageContext.request.contextPath}/images/cibertec/menu_icon.png" width="10" height="10" /></a>
 				</li>
-				<li class="dropdown">
-					<a>Page 1<span class="caret"></span></a>
-       			<div class="dropdown-content">
 				<s:iterator value="#session.keyPermisos">
-					<a href="${pageContext.request.contextPath}/<s:property value="enlace"/>">
-					<s:property value="descripcion"/></a>
+					<li><a href="${pageContext.request.contextPath}/<s:property value="enlace"/>">
+					<s:property value="descripcion"/></a></li>
 				</s:iterator>
-				</div>
-       			</li>
 			</ul>
 		</div>
+	</nav-->
+	<nav class="navbar navbar-inverse" id="access" role="navigation">
+	    <ul class="nav navbar-nav">
+	      	<li class="active">
+	      		<a href="#"><img src="${pageContext.request.contextPath}/images/cibertec/menu_icon.png" width="20" height="20" /></a>
+	      	</li>
+	      	<li class="dropdown">
+		    	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Evaluaciones <span class="caret"></span></a>
+		        <div class="dropdown-content">	
+			      	<s:iterator value="#session.keyPermisosT">			      					      				      	
+						<a href="${pageContext.request.contextPath}/<s:property value="enlace"/>">
+						<s:property value="descripcion"/></a>
+					</s:iterator>
+		    	</div>
+		   	</li>
+	      	<li class="dropdown">
+		    	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Consultas <span class="caret"></span></a>
+		        <div class="dropdown-content">	
+			      	<s:iterator value="#session.keyPermisosC">			      					      				      	
+						<a href="${pageContext.request.contextPath}/<s:property value="enlace"/>">
+						<s:property value="descripcion"/></a>
+					</s:iterator>
+		    	</div>
+		   	</li>
+	      	<li class="dropdown">
+		    	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Mantenimiento <span class="caret"></span></a>
+		        <div class="dropdown-content">	
+			      	<s:iterator value="#session.keyPermisosM">			      					      				      	
+						<a href="${pageContext.request.contextPath}/<s:property value="enlace"/>">
+						<s:property value="descripcion"/></a>
+					</s:iterator>
+		    	</div>
+		   	</li>
+	    </ul>
 	</nav>
 </div>

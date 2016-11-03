@@ -17,27 +17,19 @@
 		margin: 0 auto;
 		padding-top: 14px;
 	}
-	div.userAvatar{		
+	#tableAvatar{
+		float: right;
+		margin-right: 2%;
+	}
+	.userAvatar{		
 		/* cambia estos dos valores para definir el tamaño de tu círculo */
 	    height: 50px;
 	    width: 50px;
-	    /*margin-left:80%;*/
 	    /* los siguientes valores son independientes del tamaño del círculo */
 	    background-repeat: no-repeat;
 	    background-position: 50%;
 	    border-radius: 50%;
 	    background-size: 100% auto;
-	}
-	ul {
-	    list-style-type: none;
-	    margin: 0;
-	    padding: 0;
-	    overflow: hidden;
-	    background-color: #333;
-	}
-	
-	li {
-	    float: left;
 	}
 	
 	.dropbtn {
@@ -45,6 +37,7 @@
 	    text-decoration: none;
 	    height: 50px;
 	}
+	
 	.dropdown-content {
 	    display: none;
 	    position: absolute;
@@ -70,33 +63,25 @@
 	}	
 </style>
 <div id="ver">
-	<table style="float: right;margin-right: 3%;">
+	<div style="position: absolute;margin:-8px 0 0 15px;">
+		<img src="${pageContext.request.contextPath}/images/cibertec/logo_Cibertec_02.png" width="250" />
+	</div>
+	<table id="tableAvatar">
 		<tr>
 			<td>
-				
-			</td>
-			<td>
-				<div class="userAvatar"
-					style="background-image: url('${pageContext.request.contextPath}/images/users/avatar-6.jpg');"></div>
+				<div class="userAvatar" style="background-image: url('${pageContext.request.contextPath}/images/users/avatar-6.jpg');"></div>
 			</td>
 			<td>
 				<div class="dropdown">					
-					<button class="btn dropdown-toggle dropbtn" type="button" id="menu1" data-toggle="dropdown">					    
+					<button class="btn dropbtn" type="button" id="menu1" data-toggle="dropdown">					    
 						<s:property value="#session.keyUsuario.email" />
 				    	<span class="caret"></span>
 				    </button>
-				    <ul class="dropdown-content">
-				    	<li>
-				    		<a>
-				    		<img src="${pageContext.request.contextPath}/images/cibertec/tuerca-icon.png" width="20" height="20" />
-				    		Configuración</a>
-				    	</li>				    
-				    	<li>
-					    	<a href="${pageContext.request.contextPath}/CerrarSesion">
-							<img src="${pageContext.request.contextPath}/images/cibertec/exit.png" width="20" height="20" />
-							Salir</a>
-					  	</li>
-				    </ul>
+				    <div class="dropdown-content">				    	
+				    	<a href=""><img src="${pageContext.request.contextPath}/images/cibertec/tuerca-icon.png" width="20" height="20" />Configuración</a>
+				    	<a href="${pageContext.request.contextPath}/CerrarSesion">
+							<img src="${pageContext.request.contextPath}/images/cibertec/exit.png" width="20" height="20" />Salir</a>
+					</div>
 				</div>				
 			</td>
 		</tr>

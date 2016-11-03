@@ -86,11 +86,9 @@ footer{
 	color: white;
 }
 #idCentralConMenu1{
-background-color:aqua;
-	height: 450px;
+	background-color:hsla(360, 100%, 100%, 0.11);
+	height: 700px;
 }
-
-
 
 </STYLE>
 </head>
@@ -116,13 +114,7 @@ background-color:aqua;
         </footer>
         
     </section>	
-	
-	
-	
-	
-	
-	
-	
+		
 <script>
             var resizefunc = [];
         </script>
@@ -136,7 +128,6 @@ background-color:aqua;
         <script src="${pageContext.request.contextPath}/assets/fastclick/fastclick.js"></script>
         <script src="${pageContext.request.contextPath}/assets/jquery-slimscroll/jquery.slimscroll.js"></script>
         <script src="${pageContext.request.contextPath}/assets/jquery-blockui/jquery.blockUI.js"></script>
-
 
         <!-- CUSTOM JS -->
         <script src="${pageContext.request.contextPath}/js/jquery.app.js"></script>

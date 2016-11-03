@@ -1,5 +1,6 @@
 package action;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -37,8 +38,26 @@ public class SesionAction extends ActionSupport{
 			return "error";
 		} else {
 			List<EnlaceDTO> enlaces = new LoginService().MostrarEnlacesUsuario(usuario.getCodigo());
+			List<EnlaceDTO> mantenimiento = new ArrayList<EnlaceDTO>();
+			List<EnlaceDTO> consultas = new ArrayList<EnlaceDTO>();
+			List<EnlaceDTO> transferencias = new ArrayList<EnlaceDTO>();
+			
+			for(EnlaceDTO bean:enlaces){
+				if(bean.getEnlace().startsWith("m")){
+					mantenimiento.add(bean);
+				} else if(bean.getEnlace().startsWith("c")){
+					consultas.add(bean);
+				} else if(bean.getEnlace().startsWith("t")){
+					transferencias.add(bean);
+				} else {
+					
+				}
+			}
+			
 			sesion.put("keyUsuario", usuario);
-			sesion.put("keyPermisos", enlaces);
+			sesion.put("keyPermisosM", mantenimiento);
+			sesion.put("keyPermisosC", consultas);
+			sesion.put("keyPermisosT", transferencias);
 			return "ok";
 		}
 	}

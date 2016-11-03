@@ -7,7 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="SQL_EnlacesDeUsuario" parameterType="int" resultType="EnlaceDTOIbatis">
 		SELECT 	idenlace,idperfil,enlace,descripcion
 		FROM 	enlaces 
-		WHERE 	idperfil = #{codigo}			
+		WHERE 	idperfil = #{codigo} 
+		ORDER BY enlace ASC	
 	</select>
 	
 	<select id="SQL_Login" parameterType="UsuarioDTOIbatis" resultType="UsuarioDTOIbatis">
