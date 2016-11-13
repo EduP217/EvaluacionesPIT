@@ -5,6 +5,7 @@ public class UsuarioDTO {
 	private int codigo;
 	private String email;
 	private String clave;
+	private String urlFoto;
 	private String estado;
 	private String perfil;
 	
@@ -37,6 +38,12 @@ public class UsuarioDTO {
 	}
 	public void setPerfil(String perfil) {
 		this.perfil = perfil;
+	}
+	public String getUrlFoto() {
+		return urlFoto;
+	}
+	public void setUrlFoto(String urlFoto) {
+		this.urlFoto = urlFoto;
 	}
 		
 }

@@ -14,14 +14,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="SQL_Login" parameterType="UsuarioDTOIbatis" resultType="UsuarioDTOIbatis">
 		SELECT 
 				u.idusuario as codigo,
-				u.email as email,
-				u.pass as clave,
+				u.correo as email,
+				u.clave as clave,
+				u.urlImagen as urlFoto,
 				u.estado as estado,
 				p.perfil as perfil		
 		FROM
 				usuario u inner join perfil p on u.idperfil = p.idperfil
 		WHERE
-				email = #{email} AND pass = #{clave}
+				u.correo = #{email} AND u.clave = #{clave}
 	</select>
 	
 </mapper>
