@@ -12,7 +12,10 @@ import org.apache.struts2.dispatcher.SessionMap;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+import beans.AdministradorDTO;
+import beans.DocenteDTO;
 import beans.EnlaceDTO;
+import beans.EstudianteDTO;
 import beans.UsuarioDTO;
 import services.LoginService;
 
@@ -30,7 +33,7 @@ public class SesionAction extends ActionSupport{
 	
 	public String IniciarSesion(){
 		obj = new UsuarioDTO();
-		obj.setEmail(usuario);
+		obj.setUsuario(usuario);
 		obj.setClave(clave);
 		UsuarioDTO usuario = new LoginService().IniciarSesion(obj);
 		
@@ -40,7 +43,7 @@ public class SesionAction extends ActionSupport{
 			List<EnlaceDTO> enlaces = new LoginService().MostrarEnlacesUsuario(usuario.getCodigo());
 			List<EnlaceDTO> mantenimiento = new ArrayList<EnlaceDTO>();
 			List<EnlaceDTO> consultas = new ArrayList<EnlaceDTO>();
-			List<EnlaceDTO> transferencias = new ArrayList<EnlaceDTO>();
+			List<EnlaceDTO> registros = new ArrayList<EnlaceDTO>();
 			
 			for(EnlaceDTO bean:enlaces){
 				if(bean.getEnlace().startsWith("m")){
@@ -48,7 +51,7 @@ public class SesionAction extends ActionSupport{
 				} else if(bean.getEnlace().startsWith("c")){
 					consultas.add(bean);
 				} else if(bean.getEnlace().startsWith("t")){
-					transferencias.add(bean);
+					registros.add(bean);
 				} else {
 					
 				}
@@ -57,7 +60,27 @@ public class SesionAction extends ActionSupport{
 			sesion.put("keyUsuario", usuario);
 			sesion.put("keyPermisosM", mantenimiento);
 			sesion.put("keyPermisosC", consultas);
-			sesion.put("keyPermisosT", transferencias);
+			sesion.put("keyPermisosT", registros);
+			
+			switch(usuario.getIdperfil()){
+			case 1:
+				AdministradorDTO admin = new LoginService().datosUsuario(usuario.getCodigo());
+				sesion.put("keyDatosUsuario", admin);
+				break;
+			case 2:
+				EstudianteDTO alumno = new LoginService().datosUsuario3(usuario.getCodigo());
+				sesion.put("keyDatosUsuario", alumno);
+				break;
+			case 3:
+				DocenteDTO docente = new LoginService().datosUsuario2(usuario.getCodigo());
+				sesion.put("keyDatosUsuario", docente);
+				break;
+			case 4:
+				DocenteDTO docenteCoordinador = new LoginService().datosUsuario2(usuario.getCodigo());
+				sesion.put("keyDatosUsuario", docenteCoordinador);
+				break;
+			}
+			
 			return "ok";
 		}
 	}

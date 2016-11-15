@@ -2,7 +2,10 @@ package services;
 
 import java.util.List;
 
+import beans.AdministradorDTO;
+import beans.DocenteDTO;
 import beans.EnlaceDTO;
+import beans.EstudianteDTO;
 import beans.UsuarioDTO;
 import dao.DAOFactory;
 import interfaces.UsuarioDAO;
@@ -20,5 +23,13 @@ public class LoginService {
 	public List<EnlaceDTO> MostrarEnlacesUsuario(int codigo) {
 		return dao.MostrarEnlacesUsuario(codigo);
 	}
-	
+	public AdministradorDTO datosUsuario(int codigo) {
+		return dao.datosUsuario(codigo);
+	}
+	public DocenteDTO datosUsuario2(int codigo) {
+		return dao.datosUsuario2(codigo);
+	}
+	public EstudianteDTO datosUsuario3(int codigo) {
+		return dao.datosUsuario3(codigo);
+	}
 }

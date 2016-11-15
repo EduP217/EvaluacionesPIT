@@ -9,6 +9,7 @@
 	<definition name="t_plantillaBaseConMenu" template="/templates/plantillaBaseConMenu.jsp">
 		<put-attribute name="cabecera" value="/templates/cabecera.jsp" />
 		<put-attribute name="menu" value="/templates/menu.jsp" />
+		<put-attribute name="datospersonales" value="/templates/datosPersonales.jsp" />
 	</definition>
 	<definition name="t_plantillaBaseSimple" template="/templates/plantillaBaseSimple.jsp">
 		<put-attribute name="cabecera" value="/templates/cabecera.jsp" />
@@ -16,11 +17,14 @@
 	<definition name="t_plantillaSimple" template="/templates/plantillaSimple.jsp">
 	</definition>
 	<definition name="t_plantillaSimpleGRID" template="/templates/plantillaSimpleGRID.jsp">
-	</definition>	
-	
+	</definition>
+	<definition name="t_plantillaModal" template="/templates/plantillaModal.jsp">
+	</definition>
 <!-- SE HACE USO DE LAS PLANTILLAS EN LAS PAGINAS DE NUESTRO PROYECTO -->
-	<definition name="t_login" extends="t_plantillaSimple">
-		<put-attribute name="central" value="/pages/login.jsp" />
+	<definition name="t_login" extends="t_plantillaModal">
+		<put-attribute name="central" value="/pages/login3.jsp" />
+		<put-attribute name="modal-header" value="/pages/login-header.jsp" />
+		<put-attribute name="modal-footer" value="/pages/login-footer.jsp" />
 	</definition>
 	<definition name="t_intranet" extends="t_plantillaBaseConMenu">
 		<put-attribute name="central" value="/pages/intranet.jsp" />

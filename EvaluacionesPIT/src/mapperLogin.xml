@@ -3,28 +3,41 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pit">
-
+	<select id="SQL_DatosDeUsuario" parameterType="int" resultType="AdministradorDTOIbatis">
+		SELECT 	idadministrador,dni,nombre,apellido,fechanac,telefono,celular,idusuario
+		FROM 	administrador
+		WHERE 	idusuario = #{codigo}
+	</select>
+	<select id="SQL_DatosDeUsuario2" parameterType="int" resultType="DocenteDTOIbatis">
+		SELECT 	iddocente,dni,nombre,apellido,fechanac,telefono,celular,idusuario
+		FROM 	docente
+		WHERE 	idusuario = #{codigo}
+	</select>
+	<select id="SQL_DatosDeUsuario3" parameterType="int" resultType="EstudianteDTOIbatis">
+		SELECT 	idestudiante,dni,nombre,apellido,fechanac,telefono,celular,idusuario
+		FROM 	administrador
+		WHERE 	idusuario = #{codigo}
+	</select>
 	<select id="SQL_EnlacesDeUsuario" parameterType="int" resultType="EnlaceDTOIbatis">
 		SELECT 	idenlace,idperfil,enlace,descripcion
 		FROM 	enlaces 
-		WHERE 	idperfil = #{codigo} 
+		WHERE 	idperfil = #{codigo}
 		ORDER BY enlace ASC	
-	</select>
-	
+	</select>	
 	<select id="SQL_Login" parameterType="UsuarioDTOIbatis" resultType="UsuarioDTOIbatis">
 		SELECT 
 				u.idusuario as codigo,
-				u.correo as email,
+				u.usuario as usuario,
 				u.clave as clave,
 				u.urlImagen as urlFoto,
 				u.estado as estado,
-				p.perfil as perfil		
+				p.perfil as perfil,
+				u.idperfil as idperfil	
 		FROM
 				usuario u inner join perfil p on u.idperfil = p.idperfil
 		WHERE
-				u.correo = #{email} AND u.clave = #{clave}
+				u.usuario = #{usuario} AND u.clave = #{clave}
 	</select>
-	
 </mapper>
 
 

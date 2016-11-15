@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <%@ taglib prefix="sjg" uri="/struts-jquery-grid-tags"%>
@@ -6,7 +8,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<title>Evaluaciones Cibertec 2016</title>
+<title>Sistema de Control de Evaluaciones | CIBERTEC</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
@@ -44,63 +46,31 @@ function loadModal(){
 	$("#myModal").modal("show");
 }
 </script>
-
 </head>
-
 <body onload="loadModal()">
 	<!--login modal-->
-	<div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+	<div class="modal fade" id="myModal" role="dialog"
+		data-backdrop="static" data-keyboard="false">
 		<div class="modal-dialog" id="idmodal">
 			<div class="modal-content">
 
 				<!-- Header Section -->
-				<div class="modal-header">					
-					<h2 class="text-center m-t-10 text-white">
-						<strong>SISTEMA DE CONTROL DE EVALUACIONES | CIBERTEC</strong>
-					</h2>
+				<div class="modal-header">
+					<tiles:insertAttribute name="modal-header" />
 				</div>
 
 				<!-- Body Section -->
 				<div class="modal-body">
-					<s:form id="idLogin" cssClass="form-horizontal m-t-20"
-						action="IniciarSesion" method="POST">
-						<div class="form-group ">
-							<div class="col-xs-12">
-								<s:textfield name="usuario" cssClass="form-control input-lg" placeholder="Usuario"></s:textfield>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-xs-12">
-								<s:password name="clave" cssClass="form-control input-lg" placeholder="Password"></s:password>
-							</div>
-						</div>
-
-						<div class="form-group ">
-							<div class="col-xs-12">
-								<div class="checkbox checkbox-primary"></div>
-							</div>
-						</div>
-
-						<div class="form-group text-center m-t-40">
-							<div class="col-xs-12">
-								<button class="btn btn-primary btn-lg w-lg waves-effect waves-light" type="submit">INGRESAR</button>
-							</div>
-						</div>
-						<div class="form-group m-t-30"></div>
-					</s:form>
+					<tiles:insertAttribute name="central" />
 				</div>
-				
+
 				<!-- Footer Section -->
 				<div class="modal-footer">
-					<div class="col-md-12">
-						<span class="pull-left"><a href="#">¿Olvidé mi contraseña?</a></span> 
-						<span><a href="#">Registrar</a></span>
-					</div>
+					<tiles:insertAttribute name="modal-footer" />
 				</div>
-				
+
 			</div>
 		</div>
-	</div>
+	</div>	
 </body>
 </html>

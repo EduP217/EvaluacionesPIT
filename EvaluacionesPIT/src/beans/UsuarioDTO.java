@@ -3,10 +3,11 @@ package beans;
 public class UsuarioDTO {
 	
 	private int codigo;
-	private String email;
+	private String usuario;
 	private String clave;
 	private String urlFoto;
-	private String estado;
+	private String estado;	
+	private int idperfil;
 	private String perfil;
 	
 	public int getCodigo() {
@@ -14,12 +15,12 @@ public class UsuarioDTO {
 	}
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
+	}	
+	public String getUsuario() {
+		return usuario;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 	public String getClave() {
 		return clave;
@@ -45,5 +46,10 @@ public class UsuarioDTO {
 	public void setUrlFoto(String urlFoto) {
 		this.urlFoto = urlFoto;
 	}
-		
+	public int getIdperfil() {
+		return idperfil;
+	}
+	public void setIdperfil(int idperfil) {
+		this.idperfil = idperfil;
+	}	
 }

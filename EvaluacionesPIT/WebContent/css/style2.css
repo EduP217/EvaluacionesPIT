@@ -89,7 +89,7 @@ ul {
 	list-style: none;
 }
 ul li {
-	background: transparent url(style/images/dark-bullet.png) no-repeat left 13px;
+	background: left 13px;
 	padding-left: 15px;
 }
 ol {

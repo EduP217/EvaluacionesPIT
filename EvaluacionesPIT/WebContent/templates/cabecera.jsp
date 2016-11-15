@@ -20,11 +20,12 @@
 	#tableAvatar{
 		float: right;
 		margin-right: 2%;
+		font-family: 'Gloria Hallelujah', cursive;
 	}
 	.userAvatar{		
 		/* cambia estos dos valores para definir el tamaño de tu círculo */
-	    height: 50px;
-	    width: 50px;
+	    height: 60px;
+	    width: 60px;
 	    /* los siguientes valores son independientes del tamaño del círculo */
 	    background-repeat: no-repeat;
 	    background-position: 50%;
@@ -53,6 +54,7 @@
 	    padding: 15px;
 	    display: block;
 	    text-align: left;
+	    width: 220px;
 	}	
 	.dropdown-content a:hover {
 		background-color: #f1f1f1;
@@ -69,12 +71,12 @@
 	<table id="tableAvatar">
 		<tr>
 			<td>
-				<div class="userAvatar" style="background-image: url('${pageContext.request.contextPath}/images/users/avatar-6.jpg');"></div>
+				<div class="userAvatar" style="background-image: url('${pageContext.request.contextPath}/images/${sessionScope.keyUsuario.urlFoto}');"></div>
 			</td>
 			<td>
 				<div class="dropdown">					
 					<button class="btn dropbtn" type="button" id="menu1" data-toggle="dropdown">					    
-						<s:property value="#session.keyUsuario.email" />
+						<s:property value="#session.keyDatosUsuario.apellido+' '+#session.keyDatosUsuario.nombre" />
 				    	<span class="caret"></span>
 				    </button>
 				    <div class="dropdown-content">				    	

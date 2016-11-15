@@ -5,7 +5,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<typeAliases>
 		<typeAlias alias="UsuarioDTOIbatis" type="beans.UsuarioDTO"/>
-		<typeAlias alias="EnlaceDTOIbatis" type="beans.EnlaceDTO"/>		
+		<typeAlias alias="EnlaceDTOIbatis" type="beans.EnlaceDTO"/>
+		<typeAlias alias="AdministradorDTOIbatis" type="beans.AdministradorDTO"/>
+		<typeAlias alias="DocenteDTOIbatis" type="beans.DocenteDTO"/>
+		<typeAlias alias="EstudianteDTOIbatis" type="beans.EstudianteDTO"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">

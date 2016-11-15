@@ -7,54 +7,28 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Sistema de Control de Evaluaciones | CIBERTEC</title>	
-<sj:head locale="es" jqueryui="true" jquerytheme="south-street"/>
+<title>Sistema de Control de Evaluaciones | CIBERTEC</title>
 <script type="text/javascript">
-var x=window.history.length; 
-if (window.history[x]!=window.location) 
-{ 
-    window.history.forward(); 
-} 
-</script>	
-	    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css" type="text/css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css" />
-		
-        <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/ico-educacion.ico"/>
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/ico-educacion.ico" />
+<!-- Base Css Files -->
+<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Font Icons -->
+<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah"	rel="stylesheet">
+<!-- animate css -->
+<link href="${pageContext.request.contextPath}/css/animate.css"	rel="stylesheet" />
+<!-- Waves-effect -->
+<link href="${pageContext.request.contextPath}/css/waves-effect.css"	rel="stylesheet" />
+<!-- Custom Files -->
 
-        <!-- Base Css Files -->
-        <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" />
-
-        <!-- Font Icons -->
-        <link href="${pageContext.request.contextPath}/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-        <link href="${pageContext.request.contextPath}/assets/ionicon/css/ionicons.min.css" rel="stylesheet" />
-        <link href="${pageContext.request.contextPath}/css/material-design-iconic-font.min.css" rel="stylesheet"/>
-
-        <!-- animate css -->
-        <link href="${pageContext.request.contextPath}/css/animate.css" rel="stylesheet" />
-
-        <!-- Waves-effect -->
-        <link href="${pageContext.request.contextPath}/css/waves-effect.css" rel="stylesheet"/>
-
-        <!-- Custom Files -->
-        <link href="${pageContext.request.contextPath}/css/helper.css" rel="stylesheet" type="text/css" />
-        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css" />
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-
-        <script src="${pageContext.request.contextPath}/js/modernizr.min.js"></script>
 <STYLE type="text/css">
 #contenedor{
-	width:90%;
-	height:100%;
+	width:95%;
+	height:auto;
 	margin:0 auto;
-	margin-top:15px;
-	/*margin-left:15%;
-	margin-right:15%;*/
+	margin-top:10px;
+	background-color:hsla(360, 100%, 100%, 0.31);
 }
 header{
 	background:white;
@@ -66,17 +40,6 @@ body{
 	background-image: url("${pageContext.request.contextPath}/images/big/Salon.png");	
 }
 
-#centro{
-	background:white;
-	float:left;
-	/*max-width:100%;*/
-	padding:10px;
-	width:33%;
-	height:450px;
-	text-align:center;
-	box-sizing:border-box
-}
-
 footer{
 	clear:both;
 	background:#000;
@@ -85,52 +48,57 @@ footer{
 	padding-top: 10px;
 	color: white;
 }
-#idCentralConMenu1{
-	background-color:hsla(360, 100%, 100%, 0.11);
+#idMenu{
+	width: 400px;
+	margin-right: 50px;
+}
+#idDatosUsuario{
+	width: 375px;
+	margin-top:-50px;
+}
+#idCentralConMenu{
+	width: 950px;
 	height: 700px;
+	margin-left: -50px;
 }
 
 </STYLE>
 </head>
 <body>
-
 	<section id="contenedor">
     	<header>
         	<tiles:insertAttribute name="cabecera"/>
-        </header>
-        <nav>
-        	<div>
-        		<tiles:insertAttribute name="menu"/>
-        	</div>
-        </nav>
-    	<section id="info">
-    		 <div id="idCentralConMenu1">
-    		 	<tiles:insertAttribute name="central"/>
-    		 </div>
+        </header>        
+        <section>
+        	<table>
+        	<tr>
+        		<td>
+			        <div id="idMenu">
+			        	<tiles:insertAttribute name="menu"/>
+			        </div>
+	        	</td>
+	        	<td rowspan="2">
+			    	<div id="idCentralConMenu">
+			    		<tiles:insertAttribute name="central"/>
+			    	</div>
+			    </td>
+	        </tr>
+	        <tr>
+	        	<td>
+			        <div id="idDatosUsuario">
+			        	<tiles:insertAttribute name="datospersonales"/>
+			        </div>
+			   	</td>
+	    	</tr>
+	    	</table>
         </section>
         <footer>
         		Derechos Reservados - 
         		Cibertec 2016
-        </footer>
-        
-    </section>	
-		
-<script>
-            var resizefunc = [];
-        </script>
-    	<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/waves.js"></script>
-        <script src="${pageContext.request.contextPath}/js/wow.min.js"></script>
-        <script src="${pageContext.request.contextPath}/js/jquery.nicescroll.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/js/jquery.scrollTo.min.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/jquery-detectmobile/detect.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/fastclick/fastclick.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/jquery-slimscroll/jquery.slimscroll.js"></script>
-        <script src="${pageContext.request.contextPath}/assets/jquery-blockui/jquery.blockUI.js"></script>
-
-        <!-- CUSTOM JS -->
-        <script src="${pageContext.request.contextPath}/js/jquery.app.js"></script>
+        </footer>        
+    </section>
+	<script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js"></script>	
+	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 </body>
 </html>
 
