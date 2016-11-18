@@ -40,6 +40,15 @@ public class SesionAction extends ActionSupport{
 		if(usuario==null){
 			return "error";
 		} else {
+			switch (usuario.getEstado()){
+			case "0":
+				usuario.setEstado("No Matriculado");
+				break;
+			case "1":
+				usuario.setEstado("Matriculado");
+				break;
+			}
+			
 			List<EnlaceDTO> enlaces = new LoginService().MostrarEnlacesUsuario(usuario.getCodigo());
 			List<EnlaceDTO> mantenimiento = new ArrayList<EnlaceDTO>();
 			List<EnlaceDTO> consultas = new ArrayList<EnlaceDTO>();

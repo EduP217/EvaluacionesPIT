@@ -28,9 +28,11 @@
 	    width: 60px;
 	    /* los siguientes valores son independientes del tamaño del círculo */
 	    background-repeat: no-repeat;
-	    background-position: 50%;
-	    border-radius: 50%;
-	    background-size: 100% auto;
+		background-position: 50%;
+		border: 2px solid;
+		border-radius: 50%;
+		border-color: white;
+		background-size: 100% auto;
 	}
 	
 	.dropbtn {
