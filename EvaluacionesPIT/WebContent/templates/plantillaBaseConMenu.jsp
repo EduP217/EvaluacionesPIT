@@ -57,7 +57,7 @@ footer{
 	margin-top:-50px;
 }
 #idCentralConMenu{
-	width: 200%;
+	width: 150%;
 	height: 700px;
 	margin-left: -50px;
 }
