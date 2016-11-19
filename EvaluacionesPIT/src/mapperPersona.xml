@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pit">
+	<select id="SQL_Admin" parameterType="int" resultType="PersonaDTOIbatis">
+		SELECT 	a.idadministrador as codigo,
+				a.dni as dni,
+				a.nombre as nombre,
+				a.apellido as apellido,
+				a.fechanac as fechanac,
+				a.telefono as telefono,
+				a.celular as celular,
+				a.idusuario as idusuario,
+        		us.estado as estado
+		FROM 	administrador a
+		INNER JOIN usuario us on a.idusuario = us.idusuario
+		WHERE us.idperfil = #{perfil};
+	</select>
+	<select id="SQL_Docente" parameterType="int" resultType="PersonaDTOIbatis">
+		SELECT 	d.iddocente as codigo,
+				d.dni as dni,
+				d.nombre as nombre,
+				d.apellido as apellido,
+				d.fechanac as fechanac,
+				d.telefono as telefono,
+				d.celular as celular,
+				d.idusuario as idusuario,
+        		us.estado as estado
+		FROM 	docente d
+		INNER JOIN usuario us on d.idusuario = us.idusuario
+		WHERE us.idperfil = #{perfil};
+	</select>
+	<select id="SQL_Alumnos" parameterType="int" resultType="PersonaDTOIbatis">
+		SELECT 	es.idestudiante as codigo,
+				es.dni as dni,
+				es.nombre as nombre,
+				es.apellido as apellido,
+				es.fechanac as fechanac,
+				es.telefono as telefono,
+				es.celular as celular,
+				es.idusuario as idusuario,
+        		us.estado as estado
+		FROM 	estudiante es
+		INNER JOIN usuario us on es.idusuario = us.idusuario
+		WHERE us.idperfil = #{perfil};
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+

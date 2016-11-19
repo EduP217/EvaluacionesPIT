@@ -38,7 +38,8 @@
 	.dropbtn {
 	    text-align: center;
 	    text-decoration: none;
-	    height: 50px;
+	    height: 50px;	    
+		text-transform: capitalize;
 	}
 	
 	.dropdown-content {

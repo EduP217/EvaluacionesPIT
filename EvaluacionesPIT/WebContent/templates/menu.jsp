@@ -38,6 +38,7 @@ a:link  {
 	display: block;
 	padding: 15px 20px;
 	background: #e9e9e9;
+	font-size: 18px;
 }
 .contenedor-menu .menu li a:hover{
 	background: #1a95d5;
@@ -123,7 +124,7 @@ a:link  {
 	<a href="#" class="btn-menu">Menu<i class="icono fa fa-bars" aria-hidden="true"></i></a>
 	<ul class="menu">
 		<li>
-			<a href="#"><i class="icono izquierda fa fa-home" aria-hidden="true"></i>Inicio</a>
+			<a href="main"><i class="icono izquierda fa fa-home" aria-hidden="true"></i>Inicio</a>
 		</li>
 		<li>
 			<a href="#"><i class="icono izquierda fa fa-pencil" aria-hidden="true"></i>Evaluaciones<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>

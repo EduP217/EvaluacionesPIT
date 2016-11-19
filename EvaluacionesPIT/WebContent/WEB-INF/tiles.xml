@@ -29,6 +29,9 @@
 	<definition name="t_intranet" extends="t_plantillaBaseConMenu">
 		<put-attribute name="central" value="/pages/intranet.jsp" />
 	</definition>
+	<definition name="m_profesor" extends="t_plantillaBaseConMenu">
+		<put-attribute name="central" value="/pages/m_profesor.jsp" />
+	</definition>
 
 </tiles-definitions>
 

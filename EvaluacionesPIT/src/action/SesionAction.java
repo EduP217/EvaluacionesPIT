@@ -12,11 +12,11 @@ import org.apache.struts2.dispatcher.SessionMap;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-import beans.AdministradorDTO;
-import beans.DocenteDTO;
+import beans.PersonaDTO;
+import beans.CursoDTO;
 import beans.EnlaceDTO;
-import beans.EstudianteDTO;
 import beans.UsuarioDTO;
+import services.CursoService;
 import services.LoginService;
 
 @ParentPackage("pit")
@@ -40,15 +40,8 @@ public class SesionAction extends ActionSupport{
 		if(usuario==null){
 			return "error";
 		} else {
-			switch (usuario.getEstado()){
-			case "0":
-				usuario.setEstado("No Matriculado");
-				break;
-			case "1":
-				usuario.setEstado("Matriculado");
-				break;
-			}
-			
+			PersonaDTO persona = new LoginService().datosUsuario(usuario.getCodigo(),usuario.getIdperfil());
+			List<CursoDTO> cursos = new CursoService().listarCursos(usuario.getCodigo());
 			List<EnlaceDTO> enlaces = new LoginService().MostrarEnlacesUsuario(usuario.getCodigo());
 			List<EnlaceDTO> mantenimiento = new ArrayList<EnlaceDTO>();
 			List<EnlaceDTO> consultas = new ArrayList<EnlaceDTO>();
@@ -64,31 +57,19 @@ public class SesionAction extends ActionSupport{
 				} else {
 					
 				}
+			}			
+			if(usuario.getEstado().equals("1")){
+				usuario.setEstado("Matriculado");
+			} else {
+				usuario.setEstado("No está matriculado");
 			}
-			
 			sesion.put("keyUsuario", usuario);
+			sesion.put("keyDatosUsuario", persona);
+			sesion.put("keyCursos", cursos);
 			sesion.put("keyPermisosM", mantenimiento);
 			sesion.put("keyPermisosC", consultas);
 			sesion.put("keyPermisosT", registros);
-			
-			switch(usuario.getIdperfil()){
-			case 1:
-				AdministradorDTO admin = new LoginService().datosUsuario(usuario.getCodigo());
-				sesion.put("keyDatosUsuario", admin);
-				break;
-			case 2:
-				EstudianteDTO alumno = new LoginService().datosUsuario3(usuario.getCodigo());
-				sesion.put("keyDatosUsuario", alumno);
-				break;
-			case 3:
-				DocenteDTO docente = new LoginService().datosUsuario2(usuario.getCodigo());
-				sesion.put("keyDatosUsuario", docente);
-				break;
-			case 4:
-				DocenteDTO docenteCoordinador = new LoginService().datosUsuario2(usuario.getCodigo());
-				sesion.put("keyDatosUsuario", docenteCoordinador);
-				break;
-			}
+
 			
 			return "ok";
 		}
@@ -97,10 +78,16 @@ public class SesionAction extends ActionSupport{
 	@Action(value="/CerrarSesion",results={
 			@Result(name="ok",type="tiles",location="t_login")
 	})
-	
 	public String CerrarSesion(){
 		SessionMap sesionActual = (SessionMap) ActionContext.getContext().getSession();
 		sesionActual.invalidate();
+		return "ok";
+	}
+
+	@Action(value="/main",results={
+			@Result(name="ok",type="tiles",location="t_intranet")
+	})
+	public String main(){
 		return "ok";
 	}
 	

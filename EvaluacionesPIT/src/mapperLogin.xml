@@ -3,19 +3,40 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="pit">
-	<select id="SQL_DatosDeUsuario" parameterType="int" resultType="AdministradorDTOIbatis">
-		SELECT 	idadministrador,dni,nombre,apellido,fechanac,telefono,celular,idusuario
+	<select id="SQL_DatosDeUsuario" parameterType="int" resultType="PersonaDTOIbatis">
+		SELECT 	idadministrador as codigo,
+				dni as dni,
+				nombre as nombre,
+				apellido as apellido,
+				fechanac as fechanac,
+				telefono as telefono,
+				celular as celular,
+				idusuario as idusuario
 		FROM 	administrador
 		WHERE 	idusuario = #{codigo}
 	</select>
-	<select id="SQL_DatosDeUsuario2" parameterType="int" resultType="DocenteDTOIbatis">
-		SELECT 	iddocente,dni,nombre,apellido,fechanac,telefono,celular,idusuario
+	<select id="SQL_DatosDeUsuario2" parameterType="int" resultType="PersonaDTOIbatis">
+		SELECT 	iddocente as codigo,
+				dni as dni,
+				nombre as nombre,
+				apellido as apellido,
+				fechanac as fechanac,
+				telefono as telefono,
+				celular as celular,
+				idusuario as idusuario
 		FROM 	docente
 		WHERE 	idusuario = #{codigo}
 	</select>
-	<select id="SQL_DatosDeUsuario3" parameterType="int" resultType="EstudianteDTOIbatis">
-		SELECT 	idestudiante,dni,nombre,apellido,fechanac,telefono,celular,idusuario
-		FROM 	administrador
+	<select id="SQL_DatosDeUsuario3" parameterType="int" resultType="PersonaDTOIbatis">
+		SELECT 	idestudiante as codigo,
+				dni as dni,
+				nombre as nombre,
+				apellido as apellido,
+				fechanac as fechanac,
+				telefono as telefono,
+				celular as celular,
+				idusuario as idusuario
+		FROM 	estudiante
 		WHERE 	idusuario = #{codigo}
 	</select>
 	<select id="SQL_EnlacesDeUsuario" parameterType="int" resultType="EnlaceDTOIbatis">

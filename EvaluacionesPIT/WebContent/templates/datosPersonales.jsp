@@ -6,7 +6,9 @@
 	width : 100%;
 	height: auto;
 	font-family: 'Gloria Hallelujah', cursive;
+	font-size: 20px;
 	text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;
+	text-transform: capitalize;
 }
 .userAvatarMain {
 	/* cambia estos dos valores para definir el tamaño de tu círculo */
@@ -22,12 +24,11 @@
 }
 </style>
 <div class="datosPersonales">
-	<table class="table table-hover">
+	<table class="table table-bordered">
 		<tr>
 			<td colspan="2" align="center">
 				<div class="userAvatarMain" 
-						style="background-image: url('${pageContext.request.contextPath}/images/<s:property value="#session.keyUsuario.urlFoto"/>');"></div>
-				
+						style="background-image: url('${pageContext.request.contextPath}/images/<s:property value="#session.keyUsuario.urlFoto"/>');"></div>				
 			</td>
 		</tr>
 		<tr>

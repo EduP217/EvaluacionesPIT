@@ -6,9 +6,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 		<typeAlias alias="UsuarioDTOIbatis" type="beans.UsuarioDTO"/>
 		<typeAlias alias="EnlaceDTOIbatis" type="beans.EnlaceDTO"/>
-		<typeAlias alias="AdministradorDTOIbatis" type="beans.AdministradorDTO"/>
-		<typeAlias alias="DocenteDTOIbatis" type="beans.DocenteDTO"/>
-		<typeAlias alias="EstudianteDTOIbatis" type="beans.EstudianteDTO"/>
+		<typeAlias alias="PersonaDTOIbatis" type="beans.PersonaDTO"/>
+		<typeAlias alias="CursoDTOIbatis" type="beans.CursoDTO"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -23,6 +22,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</environments>
 	<mappers>
 		<mapper resource="mapperLogin.xml"/>
+		<mapper resource="mapperCurso.xml"/>
+		<mapper resource="mapperPersona.xml"/>
 	</mappers>
 </configuration>
 

@@ -1,5 +1,7 @@
 package dao;
 
+import interfaces.CursoDAO;
+import interfaces.PersonaDAO;
 import interfaces.UsuarioDAO;
 
 public abstract class DAOFactory {
@@ -11,6 +13,8 @@ public abstract class DAOFactory {
     public static final int XML = 5;
     
     public abstract UsuarioDAO getUsuarioDAO();
+    public abstract CursoDAO getCursoDAO();
+    public abstract PersonaDAO getPersonaDAO();
     
     public static DAOFactory getDAOFactory(int whichFactory){
         switch(whichFactory){

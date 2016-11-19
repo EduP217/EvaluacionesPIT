@@ -9,10 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import beans.AdministradorDTO;
-import beans.DocenteDTO;
+import beans.PersonaDTO;
 import beans.EnlaceDTO;
-import beans.EstudianteDTO;
 import beans.UsuarioDTO;
 import interfaces.UsuarioDAO;
 
@@ -54,35 +52,24 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 	}
 
 	@Override
-	public AdministradorDTO datosUsuario(int codigo) {
-		AdministradorDTO bean = null;
+	public PersonaDTO datosUsuario(int codigo,int perfil) {
+		PersonaDTO bean = null;
 		SqlSession sesion=sqlMapper.openSession();
 		try {
-			bean=(AdministradorDTO) sesion.selectOne("SQL_DatosDeUsuario",codigo);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return bean;
-	}
-
-	@Override
-	public DocenteDTO datosUsuario2(int codigo) {
-		DocenteDTO bean = null;
-		SqlSession sesion=sqlMapper.openSession();
-		try {
-			bean=(DocenteDTO) sesion.selectOne("SQL_DatosDeUsuario2",codigo);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return bean;
-	}
-
-	@Override
-	public EstudianteDTO datosUsuario3(int codigo) {
-		EstudianteDTO bean = null;
-		SqlSession sesion=sqlMapper.openSession();
-		try {
-			bean=(EstudianteDTO) sesion.selectOne("SQL_DatosDeUsuario3",codigo);
+			switch (perfil) {
+			case 1:
+				bean=(PersonaDTO) sesion.selectOne("SQL_DatosDeUsuario",codigo);
+				break;
+			case 2:
+				bean=(PersonaDTO) sesion.selectOne("SQL_DatosDeUsuario2",codigo);
+				break;
+			case 3:
+				bean=(PersonaDTO) sesion.selectOne("SQL_DatosDeUsuario3",codigo);
+				break;
+			case 4:
+				bean=(PersonaDTO) sesion.selectOne("SQL_DatosDeUsuario3",codigo);
+				break;				
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

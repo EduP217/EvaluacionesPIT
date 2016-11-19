@@ -1,7 +1,7 @@
 package beans;
 
-public class EstudianteDTO {
-	private int idestudiante;
+public class PersonaDTO {
+	private int codigo;
 	private String dni;
 	private String nombre;
 	private String apellido;
@@ -9,12 +9,13 @@ public class EstudianteDTO {
 	private String telefono;
 	private String celular;
 	private int idusuario;
+	private String estado;
 	
-	public int getIdestudiante() {
-		return idestudiante;
+	public int getCodigo() {
+		return codigo;
 	}
-	public void setIdestudiante(int idestudiante) {
-		this.idestudiante = idestudiante;
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
 	public String getDni() {
 		return dni;
@@ -58,5 +59,10 @@ public class EstudianteDTO {
 	public void setIdusuario(int idusuario) {
 		this.idusuario = idusuario;
 	}
-	
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 }
