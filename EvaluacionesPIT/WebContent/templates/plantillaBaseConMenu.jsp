@@ -57,10 +57,10 @@ footer{
 }
 #idDatosUsuario{
 	width: 375px;
-	margin-top:-50px;
+	margin-top:-25px;
 }
 #idCentralConMenu{
-	width: 115%;
+	width: 110%;
 	height: 700px;
 	margin-left: -50px;
 }

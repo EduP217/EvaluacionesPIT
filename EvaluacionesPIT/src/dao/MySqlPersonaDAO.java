@@ -55,7 +55,23 @@ public class MySqlPersonaDAO implements PersonaDAO {
 		int result = -1;
 		SqlSession session =  sqlMapper.openSession();
 		try {
-			result = session.insert("SQL_REG_Persona", obj);
+			result = session.insert("SQL_REG_Prof", obj);
+			session.commit();
+		} catch (Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		} finally{
+			session.close();
+		}
+		return result;
+	}
+
+	@Override
+	public int modificarPersona(PersonaDTO obj) {
+		int result = -1;
+		SqlSession session =  sqlMapper.openSession();
+		try {
+			result = session.insert("SQL_UPD_Prof", obj);
 			session.commit();
 		} catch (Exception e) {
 			session.rollback();

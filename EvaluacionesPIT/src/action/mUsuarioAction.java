@@ -62,6 +62,32 @@ public class mUsuarioAction extends ActionSupport{
 		return "grabo";
 	}
 	
+	@Action(value="/updProf",results={
+			@Result(name="grabo",type="tiles",location="m_profesor"),
+			@Result(name="error",type="tiles",location="m_profesor")
+	})
+	public String updateProfesor(){
+		/*if(persona.getDni().length()!=7){
+			mensajeError = "El DNI debe tener 7 caracteres";
+			listarProfesores();
+			return "error";
+		}
+		UsuarioDTO objUsu = new LoginService().buscarUsuario(dni);
+		if(objUsu==null){
+			mensajeError = "Error al encontrar usuario";
+			listarProfesores();
+			return "error";
+		}
+		objUsu.setEstado(estado);		
+		new LoginService().modificarUsuario(objUsu);
+		new PersonaService().modificarPersona(persona);*/
+		mensaje = "Se actualizaron los datos correctamente"+
+				  persona.getCodigo()+"-"+persona.getApellido()+"-"+persona.getNombre()+"-"+
+				  persona.getDni()+"-"+persona.getFechanac()+"-"+persona.getTelefono()+"-"+persona.getCelular()+"-"+persona.getEstado();
+		listarProfesores();
+		return "grabo";
+	}
+	
 	public List<PersonaDTO> getLstPersona() {
 		return lstPersona;
 	}
@@ -156,5 +182,6 @@ public class mUsuarioAction extends ActionSupport{
 	public void setMensajeError(String mensajeError) {
 		this.mensajeError = mensajeError;
 	}
+
 	
 }

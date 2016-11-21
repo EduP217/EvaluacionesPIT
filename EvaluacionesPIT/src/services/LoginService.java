@@ -26,4 +26,10 @@ public class LoginService {
 	public int registrarUsuario(UsuarioDTO obj) {
 		return dao.registrarUsuario(obj);
 	}
+	public UsuarioDTO buscarUsuario(String usuario) {
+		return dao.buscarUsuario(usuario);
+	}
+	public int modificarUsuario(UsuarioDTO obj) {
+		return dao.modificarUsuario(obj);
+	}
 }

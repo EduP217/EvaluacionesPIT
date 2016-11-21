@@ -59,8 +59,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE
 				u.usuario = #{usuario} AND u.clave = #{clave}
 	</select>
+	<select id="SQL_Found_Usuario" parameterType="String" resultType="UsuarioDTOIbatis">
+		SELECT 
+				u.idusuario as codigo,
+				u.usuario as usuario,
+				u.clave as clave,
+				u.urlImagen as urlFoto,
+				u.estado as estado,
+				p.perfil as perfil,
+				u.idperfil as idperfil	
+		FROM
+				usuario u inner join perfil p on u.idperfil = p.idperfil
+		WHERE
+				u.usuario = #{usuario}
+	</select>
 	<insert id="SQL_REG_Usuario" parameterType="UsuarioDTOIbatis">
 		insert into usuario values(0,#{usuario},#{clave},#{urlFoto},1,#{idperfil})
+	</insert>
+	<insert id="SQL_UPD_Usuario" parameterType="UsuarioDTOIbatis">
+		update usuario set clave = #{clave}, urlImagen = #{urlFoto}, estado = #{estado}
+		where idusuario = #{codigo}
 	</insert>
 </mapper>
 

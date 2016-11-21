@@ -12,18 +12,18 @@
 .texto{	
 	text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;
 }
-.userAvatarMain {
-	/* cambia estos dos valores para definir el tamaño de tu círculo */
+/*.userAvatarMain {
+	/* cambia estos dos valores para definir el tamaño de tu círculo 
 	height: 300px;
 	width: 300px;
-	/* los siguientes valores son independientes del tamaño del círculo */
+	/* los siguientes valores son independientes del tamaño del círculo 
 	background-repeat: no-repeat;
 	background-position: 50%;
 	border: 3px solid;
 	border-radius: 50%;
 	border-color: white;
 	background-size: 100% auto;
-}
+}*/
 </style>
 <script type="text/javascript">
 $(document).ready( function() {
@@ -48,22 +48,24 @@ $(document).ready( function() {
 	<table class="table table-bordered">
 		<tr>
 			<td colspan="2" align="center">
+			<s:form method="post" enctype="multipart/form-data" action="modAvatar">
 				<div>
 					<input type="file" name="avatar" id="avatar">
 				</div>
 				<!--div class="userAvatarMain" 
 					 style="background-image: url('${pageContext.request.contextPath}/images/<s:property value="#session.keyUsuario.urlFoto"/>');"></div-->				
+			</s:form>
 			</td>
 		</tr>
 		<tr class="texto">
 			<td align="center"><s:property value="#session.keyDatosUsuario.apellido" /></td>
 			<td align="center"><s:property value="#session.keyDatosUsuario.nombre" /></td>			
-		</tr class="texto">
-		<tr>
+		</tr>
+		<tr class="texto">
 			<td align="center"><s:property value="#session.keyDatosUsuario.fechanac" /></td>
 			<td align="center"><s:property value="#session.keyUsuario.perfil" /></td>
 		</tr>
-		<tr>
+		<tr class="texto">
 			<td colspan="2" align="center">Estado : <s:property value="#session.keyUsuario.estado" /></td>
 		</tr>
 	</table>

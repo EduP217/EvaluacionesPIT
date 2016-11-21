@@ -14,6 +14,7 @@
 }
 h2{
 	font-family: 'Gloria Hallelujah', cursive;
+	text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;
 }
 .table.nonborder th,.table.nonborder td{
 	border: 0px !important;
@@ -44,6 +45,7 @@ function llenarEliminar(cod,ape,nom,dni,fec,tlf,cel,est){
 		est = 'Activo';
 	}
 	$('#estProf2').text(est);
+	$('#codDrop').val(cod);
 }
 $(document).ready( function() {
 	$('.fecha').datepicker({
@@ -191,8 +193,8 @@ $(document).ready( function() {
 				<h4 class="modal-title">DATOS DE DOCENTE</h4>
 			</div>
 			<div class="modal-body">
-				<s:form method="post" action="">
-					<input name="codigo" id="codProf" hidden="true"/>
+				<s:form method="post" action="updProf">
+					<input name="persona.codigo" id="codProf" hidden="true"/>
 					<table class="table nonborder mod-tableta">
 						<tr>
 							<td>Apellido</td>
@@ -208,7 +210,7 @@ $(document).ready( function() {
 						</tr>
 						<tr>
 							<td>Fecha de Nacimiento</td>
-							<td><input type="text" name="fechanac" id="fecProf" Class="form-control fecha" readonly="readonly" /></td>
+							<td><input type="text" name="persona.fechanac" id="fecProf" Class="form-control fecha" readonly="readonly" /></td>
 						</tr>
 						<tr>
 							<td>Telefono fijo</td>
@@ -221,7 +223,7 @@ $(document).ready( function() {
 						<tr>
 							<td>Estado</td>
 							<td>
-								<select name="estado" id="estProf" Class="form-control">
+								<select name="persona.estado" id="estProf" Class="form-control">
 									<option value="1">Activo</option>
 									<option value="0">Inactivo</option>
 								</select>
@@ -252,31 +254,31 @@ $(document).ready( function() {
 					<table class="table nonborder mod-tableta">
 						<tr>
 							<td>Apellido:</td>
-							<td><label id="apeProf2"></label></td>
+							<td><s:label id="apeProf2"/></td>
 						</tr>
 						<tr>
 							<td>Nombre:</td>
-							<td><label id="nomProf2"></label></td>
+							<td><s:label id="nomProf2"/></td>
 						</tr>
 						<tr>
 							<td>DNI:</td>
-							<td><label id="dniProf2"></label></td>
+							<td><s:label id="dniProf2"/></td>
 						</tr>
 						<tr>
 							<td>Fecha de Nacimiento:</td>
-							<td><label id="fecProf2"></label></td>
+							<td><s:label id="fecProf2"/></td>
 						</tr>
 						<tr>
 							<td>Telefono fijo:</td>
-							<td><label id="tlfProf2"></label></td>
+							<td><s:label id="tlfProf2"/></td>
 						</tr>
 						<tr>
 							<td>Celular:</td>
-							<td><label id="celProf2"></label></td>
+							<td><s:label id="celProf2"/></td>
 						</tr>
 						<tr>
 							<td>Estado:</td>
-							<td><label id="estProf2"></label></td>
+							<td><s:label id="estProf2"/></td>
 						</tr>
 					</table>
 					<button type="submit" class="btn btn-primary btn-block">Eliminar</button>

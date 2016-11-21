@@ -92,4 +92,32 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		return result;
 	}
 
+	@Override
+	public UsuarioDTO buscarUsuario(String usuario) {
+		UsuarioDTO data=null;
+		SqlSession sesion=sqlMapper.openSession();
+		try {
+			data=(UsuarioDTO) sesion.selectOne("SQL_Found_Usuario",usuario);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return data;
+	}
+
+	@Override
+	public int modificarUsuario(UsuarioDTO obj) {
+		int result = -1;
+		SqlSession session =  sqlMapper.openSession();
+		try {
+			result = session.insert("SQL_UPD_Usuario", obj);
+			session.commit();
+		} catch (Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		} finally{
+			session.close();
+		}
+		return result;
+	}
+
 }
