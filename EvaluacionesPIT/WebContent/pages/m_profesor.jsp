@@ -46,20 +46,6 @@ function llenarEliminar(cod,ape,nom,dni,fec,tlf,cel,est){
 	$('#estProf2').text(est);
 }
 $(document).ready( function() {
-	$("#avatar").fileinput({
-	    browseClass: "btn btn-primary",
-	    showCaption: false,
-	    showUpload: false,
-	    showClose: false,
-	    showDelete: false,
-	    showZoom: false,
-	    browseLabel: '',
-	    removeLabel: '',
-	    browseIcon: '<i><img src="${pageContext.request.contextPath}/img/folder-open-solid.png" width="18px"/></i>',
-	    removeIcon: '<i><img src="${pageContext.request.contextPath}/img/trash_icon.png" width="20px"/></i>',
-	    defaultPreviewContent: '<img src="${pageContext.request.contextPath}/images/<s:property value="#session.keyUsuario.urlFoto"/>" style="width:100%"/>',
-	    allowedFileExtensions: ["jpg", "png", "gif"]
-	});
 	$('.fecha').datepicker({
 		format: "dd-mm-yyyy",
 	    maxViewMode: 3,
@@ -205,25 +191,20 @@ $(document).ready( function() {
 				<h4 class="modal-title">DATOS DE DOCENTE</h4>
 			</div>
 			<div class="modal-body">
-				<s:form method="post" enctype="multipart/form-data">
+				<s:form method="post" action="">
 					<input name="codigo" id="codProf" hidden="true"/>
 					<table class="table nonborder mod-tableta">
 						<tr>
 							<td>Apellido</td>
-							<td colspan="2"><s:textfield name="persona.apellido" cssClass="form-control" id="apeProf" /></td>
+							<td><s:textfield name="persona.apellido" cssClass="form-control" id="apeProf" /></td>
 						</tr>
 						<tr>
 							<td>Nombre</td>
-							<td colspan="2"><s:textfield name="persona.nombre" cssClass="form-control" id="nomProf" /></td>
+							<td><s:textfield name="persona.nombre" cssClass="form-control" id="nomProf" /></td>
 						</tr>
 						<tr>
 							<td>DNI</td>
 							<td><s:textfield name="persona.dni" cssClass="form-control" id="dniProf" /></td>
-							<td rowspan="3">
-								<div style="width: 150px">
-									<input type="file" name="avatar" id="avatar">
-								</div>
-							</td>
 						</tr>
 						<tr>
 							<td>Fecha de Nacimiento</td>
@@ -235,11 +216,11 @@ $(document).ready( function() {
 						</tr>
 						<tr>
 							<td>Celular</td>
-							<td colspan="2"><s:textfield name="persona.celular" cssClass="form-control" id="celProf" /></td>
+							<td><s:textfield name="persona.celular" cssClass="form-control" id="celProf" /></td>
 						</tr>
 						<tr>
 							<td>Estado</td>
-							<td colspan="2">
+							<td>
 								<select name="estado" id="estProf" Class="form-control">
 									<option value="1">Activo</option>
 									<option value="0">Inactivo</option>
@@ -266,7 +247,7 @@ $(document).ready( function() {
 				<h4 class="modal-title">¿ESTA SEGURO DE ELIMINAR EL REGISTRO?</h4>
 			</div>
 			<div class="modal-body">
-				<s:form>
+				<s:form action="">
 					<input name="codigo" id="codProf2" hidden="true"/>
 					<table class="table nonborder mod-tableta">
 						<tr>
