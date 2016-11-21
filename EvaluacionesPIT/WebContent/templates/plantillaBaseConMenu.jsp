@@ -14,6 +14,8 @@
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/ico-educacion.ico" />
 <!-- Base Css Files -->
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/fileinput.min.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/bootstrap-datepicker.min.css" rel="stylesheet" />
 <!-- Font Icons -->
 <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah"	rel="stylesheet">
 <!-- animate css -->
@@ -21,6 +23,7 @@
 <!-- Waves-effect -->
 <link href="${pageContext.request.contextPath}/css/waves-effect.css"	rel="stylesheet" />
 <!-- Custom Files -->
+
 
 <STYLE type="text/css">
 #contenedor{
@@ -57,7 +60,7 @@ footer{
 	margin-top:-50px;
 }
 #idCentralConMenu{
-	width: 150%;
+	width: 115%;
 	height: 700px;
 	margin-left: -50px;
 }
@@ -99,6 +102,9 @@ footer{
     </section>
 	<script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js"></script>	
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/fileinput.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/locales/bootstrap-datepicker.es.min.js"></script>
 </body>
 </html>
 

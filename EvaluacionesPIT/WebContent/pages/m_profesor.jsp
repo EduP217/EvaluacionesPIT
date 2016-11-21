@@ -3,13 +3,20 @@
 <%@ taglib prefix="sjg" uri="/struts-jquery-grid-tags"%>
 
 <style>
-.table{	
+.tableta{	
 	font-family: 'Gloria Hallelujah', cursive;	
 	font-size:18px;
 	text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;
 }
+.mod-tableta{
+	font-family: 'Gloria Hallelujah', cursive;	
+	font-size:18px;
+}
 h2{
 	font-family: 'Gloria Hallelujah', cursive;
+}
+.table.nonborder th,.table.nonborder td{
+	border: 0px !important;
 }
 </style>
 <script type="text/javascript">
@@ -38,13 +45,50 @@ function llenarEliminar(cod,ape,nom,dni,fec,tlf,cel,est){
 	}
 	$('#estProf2').text(est);
 }
+$(document).ready( function() {
+	$("#avatar").fileinput({
+	    browseClass: "btn btn-primary",
+	    showCaption: false,
+	    showUpload: false,
+	    showClose: false,
+	    showDelete: false,
+	    showZoom: false,
+	    browseLabel: '',
+	    removeLabel: '',
+	    browseIcon: '<i><img src="${pageContext.request.contextPath}/img/folder-open-solid.png" width="18px"/></i>',
+	    removeIcon: '<i><img src="${pageContext.request.contextPath}/img/trash_icon.png" width="20px"/></i>',
+	    defaultPreviewContent: '<img src="${pageContext.request.contextPath}/images/<s:property value="#session.keyUsuario.urlFoto"/>" style="width:100%"/>',
+	    allowedFileExtensions: ["jpg", "png", "gif"]
+	});
+	$('.fecha').datepicker({
+		format: "dd-mm-yyyy",
+	    maxViewMode: 3,
+	    language: "es",
+	    autoclose:true,
+	    orientation: "bottom auto"
+	});
+});
 </script>
 <h2><center>MANTENIMIENTO DE PROFESORES</center></h2>
+<div id="divMensaje" style="text-align:center;">
+<s:set var="msj_val"><s:property value="mensaje"/></s:set>
+<s:set var="msje_val"><s:property value="mensajeError"/></s:set>
+<s:if test="#msj_val != ''">
+	<div class="alert alert-success">
+	  <strong>¡Éxito!</strong> <s:property value="mensaje"/>.
+	</div>	
+</s:if>
+<s:if test="#msje_val != ''">
+	<div class="alert alert-danger">
+	  <strong>¡Error!</strong> <s:property value="mensajeError"/>.
+	</div>
+</s:if>	
+</div>
 <br/>
 <a data-toggle="modal" href="#modal_crear">
 	<span><img alt="" src="${pageContext.request.contextPath}/img/iconos/create2.png" width="35px"/></span>
 </a>
-<table class="table table-bordered">
+<table class="table table-bordered tableta">
 	<thead>
 		<tr>
 			<th>Apellido</th>
@@ -66,7 +110,12 @@ function llenarEliminar(cod,ape,nom,dni,fec,tlf,cel,est){
 			<td><s:property value="fechanac" /></td>
 			<td><s:property value="telefono" /></td>
 			<td><s:property value="celular" /></td>
-			<td><s:property value="estado" /></td>
+		<s:set var="est_val"><s:property value="estado" /></s:set>
+		<s:if test="#est_val == 0">
+			<td>Inactivo</td>
+		</s:if><s:else>
+			<td>Activo</td>
+		</s:else>
 			<td>
 				<a 	data-toggle="modal" href="#modal_modificar" 
 					onclick="llenarUpdate(
@@ -110,34 +159,34 @@ function llenarEliminar(cod,ape,nom,dni,fec,tlf,cel,est){
 				<h4 class="modal-title">DATOS DE DOCENTE</h4>
 			</div>
 			<div class="modal-body">
-				<s:form>
-					<table class="table">
+				<s:form id="idRegistrarDocente" method="post" action="regProf">
+					<table class="table nonborder mod-tableta">
 						<tr>
 							<td>Apellido</td>
-							<td><input type="text" name="apellido"></td>
+							<td><s:textfield name="persona.apellido" cssClass="form-control"/></td>
 						</tr>
 						<tr>
 							<td>Nombre</td>
-							<td><input type="text" name="nombre"></td>
+							<td><s:textfield name="persona.nombre" cssClass="form-control"/></td>
 						</tr>
 						<tr>
 							<td>DNI</td>
-							<td><input type="text" name="dni"></td>
+							<td><s:textfield name="persona.dni" cssClass="form-control"/></td>
 						</tr>
 						<tr>
 							<td>Fecha de Nacimiento</td>
-							<td><input type="text" name="fechanac"></td>
+							<td><input type="text" name="persona.fechanac" Class="form-control fecha" readonly="readonly"/></td>
 						</tr>
 						<tr>
 							<td>Telefono fijo</td>
-							<td><input type="text" name="telefono"></td>
+							<td><s:textfield name="persona.telefono" cssClass="form-control"/></td>
 						</tr>
 						<tr>
 							<td>Celular</td>
-							<td><input type="text" name="celular"></td>
+							<td><s:textfield name="persona.celular" cssClass="form-control"/></td>
 						</tr>
 					</table>
-					<button type="submit" class="btn btn-primary" data-dismiss="modal">Registrar</button>
+					<button type="submit" class="btn btn-primary btn-block">Registrar</button>
 				</s:form>
 			</div>
 			<div class="modal-footer">
@@ -156,39 +205,46 @@ function llenarEliminar(cod,ape,nom,dni,fec,tlf,cel,est){
 				<h4 class="modal-title">DATOS DE DOCENTE</h4>
 			</div>
 			<div class="modal-body">
-				<s:form>
+				<s:form method="post" enctype="multipart/form-data">
 					<input name="codigo" id="codProf" hidden="true"/>
-					<table class="table">
+					<table class="table nonborder mod-tableta">
 						<tr>
 							<td>Apellido</td>
-							<td><input type="text" name="apellido" id="apeProf" /></td>
+							<td colspan="2"><s:textfield name="persona.apellido" cssClass="form-control" id="apeProf" /></td>
 						</tr>
 						<tr>
 							<td>Nombre</td>
-							<td><input type="text" name="nombre" id="nomProf" /></td>
+							<td colspan="2"><s:textfield name="persona.nombre" cssClass="form-control" id="nomProf" /></td>
 						</tr>
 						<tr>
 							<td>DNI</td>
-							<td><input type="text" name="dni" id="dniProf" /></td>
+							<td><s:textfield name="persona.dni" cssClass="form-control" id="dniProf" /></td>
+							<td rowspan="3">
+								<div style="width: 150px">
+									<input type="file" name="avatar" id="avatar">
+								</div>
+							</td>
 						</tr>
 						<tr>
 							<td>Fecha de Nacimiento</td>
-							<td><input type="text" name="fechanac" id="fecProf" /></td>
+							<td><input type="text" name="fechanac" id="fecProf" Class="form-control fecha" readonly="readonly" /></td>
 						</tr>
 						<tr>
 							<td>Telefono fijo</td>
-							<td><input type="text" name="telefono" id="tlfProf" /></td>
+							<td><s:textfield name="persona.telefono" cssClass="form-control" id="tlfProf" /></td>
 						</tr>
 						<tr>
 							<td>Celular</td>
-							<td><input type="text" name="celular" id="celProf" /></td>
+							<td colspan="2"><s:textfield name="persona.celular" cssClass="form-control" id="celProf" /></td>
 						</tr>
 						<tr>
 							<td>Estado</td>
-							<td><select name="estado" id="estProf">
+							<td colspan="2">
+								<select name="estado" id="estProf" Class="form-control">
 									<option value="1">Activo</option>
 									<option value="0">Inactivo</option>
-							</select></td>
+								</select>
+							</td>
 						</tr>
 					</table>
 					<button type="submit" class="btn btn-primary btn-block">Modificar</button>
@@ -212,7 +268,7 @@ function llenarEliminar(cod,ape,nom,dni,fec,tlf,cel,est){
 			<div class="modal-body">
 				<s:form>
 					<input name="codigo" id="codProf2" hidden="true"/>
-					<table class="table">
+					<table class="table nonborder mod-tableta">
 						<tr>
 							<td>Apellido:</td>
 							<td><label id="apeProf2"></label></td>

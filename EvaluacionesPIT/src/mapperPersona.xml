@@ -45,6 +45,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INNER JOIN usuario us on es.idusuario = us.idusuario
 		WHERE us.idperfil = #{perfil};
 	</select>
+	<insert id="SQL_REG_Persona" parameterType="PersonaDTOIbatis">
+		insert into docente values(0,#{dni},#{nombre},#{apellido},#{fechanac},#{telefono},#{celular},#{idusuario})
+	</insert>	  
 </mapper>
 
 

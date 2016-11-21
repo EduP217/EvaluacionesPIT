@@ -11,4 +11,6 @@ public interface UsuarioDAO {
 	public UsuarioDTO IniciarSesion(UsuarioDTO obj);
 	public List<EnlaceDTO> MostrarEnlacesUsuario(int codigo);
 	public PersonaDTO datosUsuario(int codigo, int perfil);
+	public int registrarUsuario(UsuarioDTO obj);
+	
 }

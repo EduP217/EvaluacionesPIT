@@ -76,4 +76,20 @@ public class MySqlUsuarioDAO implements UsuarioDAO {
 		return bean;
 	}
 
+	@Override
+	public int registrarUsuario(UsuarioDTO obj) {
+		int result = -1;
+		SqlSession session =  sqlMapper.openSession();
+		try {
+			result = session.insert("SQL_REG_Usuario", obj);
+			session.commit();
+		} catch (Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		} finally{
+			session.close();
+		}
+		return result;
+	}
+
 }

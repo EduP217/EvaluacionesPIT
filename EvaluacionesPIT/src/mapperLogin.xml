@@ -59,6 +59,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE
 				u.usuario = #{usuario} AND u.clave = #{clave}
 	</select>
+	<insert id="SQL_REG_Usuario" parameterType="UsuarioDTOIbatis">
+		insert into usuario values(0,#{usuario},#{clave},#{urlFoto},1,#{idperfil})
+	</insert>
 </mapper>
 
 

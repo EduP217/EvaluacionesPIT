@@ -15,4 +15,8 @@ public class PersonaService {
 	public List<PersonaDTO> listarPersonas(int perfil) {
 		return dao.listarPersonas(perfil);
 	}
+
+	public int registrarPersona(PersonaDTO obj) {
+		return dao.registrarPersona(obj);
+	}
 }

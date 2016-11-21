@@ -16,12 +16,14 @@ public class LoginService {
 	
 	public UsuarioDTO IniciarSesion(UsuarioDTO obj) {
 		return dao.IniciarSesion(obj);
-	}
-	
+	}	
 	public List<EnlaceDTO> MostrarEnlacesUsuario(int codigo) {
 		return dao.MostrarEnlacesUsuario(codigo);
 	}
 	public PersonaDTO datosUsuario(int codigo,int perfil) {
 		return dao.datosUsuario(codigo,perfil);
+	}
+	public int registrarUsuario(UsuarioDTO obj) {
+		return dao.registrarUsuario(obj);
 	}
 }
