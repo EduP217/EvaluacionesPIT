@@ -49,11 +49,13 @@ $(document).ready( function() {
 		<tr>
 			<td colspan="2" align="center">
 			<s:form method="post" enctype="multipart/form-data" action="modAvatar">
+				<input name="objUsuario.codigo" value="<s:property value="#session.keyUsuario.codigo" />" hidden="true" />
+				<input name="objUsuario.usuario" value="<s:property value="#session.keyUsuario.usuario" />" hidden="true" />
 				<div>
-					<input type="file" name="avatar" id="avatar">
+					<input type="file" name="objUsuario.Foto" id="avatar">
 				</div>
 				<!--div class="userAvatarMain" 
-					 style="background-image: url('${pageContext.request.contextPath}/images/<s:property value="#session.keyUsuario.urlFoto"/>');"></div-->				
+					 style="background-image: url('${pageContext.request.contextPath}/images/<s:property value="#session.keyUsuario.urlFoto"/>');"></div-->		
 			</s:form>
 			</td>
 		</tr>

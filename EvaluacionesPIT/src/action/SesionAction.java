@@ -89,7 +89,7 @@ public class SesionAction extends ActionSupport{
 	})
 	public String main(){
 		return "ok";
-	}
+	}	
 	
 	public String getUsuario() {
 		return usuario;

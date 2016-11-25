@@ -1,11 +1,17 @@
 package beans;
 
+import java.io.File;
+
 public class UsuarioDTO {
 	
 	private int codigo;
 	private String usuario;
 	private String clave;
 	private String urlFoto;
+	private File Foto;
+	private byte[] FotoBytes;
+	private String FotoContentType;
+	private String FotoFileName;
 	private String estado;	
 	private int idperfil;
 	private String perfil;
@@ -51,5 +57,30 @@ public class UsuarioDTO {
 	}
 	public void setIdperfil(int idperfil) {
 		this.idperfil = idperfil;
+	}
+	public File getFoto() {
+		return Foto;
+	}
+	public void setFoto(File foto) {
+		Foto = foto;
+	}
+	public byte[] getFotoBytes() {
+		return FotoBytes;
+	}
+	public void setFotoBytes(byte[] fotoBytes) {
+		FotoBytes = fotoBytes;
+	}
+	public String getFotoContentType() {
+		return FotoContentType;
+	}
+	public void setFotoContentType(String fotoContentType) {
+		FotoContentType = fotoContentType;
+	}
+	public String getFotoFileName() {
+		return FotoFileName;
+	}
+	public void setFotoFileName(String fotoFileName) {
+		FotoFileName = fotoFileName;
 	}	
+	
 }

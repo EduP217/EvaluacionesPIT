@@ -32,7 +32,7 @@ function llenarUpdate(cod,ape,nom,dni,fec,tlf,cel,est){
 	$('#estProf').val(est);
 }
 function llenarEliminar(cod,ape,nom,dni,fec,tlf,cel,est){
-	$('#codProf2').val(cod);
+	$('#codProf2').val(dni);
 	$('#apeProf2').text(ape);
 	$('#nomProf2').text(nom);
 	$('#dniProf2').text(dni);
@@ -47,7 +47,15 @@ function llenarEliminar(cod,ape,nom,dni,fec,tlf,cel,est){
 	$('#estProf2').text(est);
 	$('#codDrop').val(cod);
 }
-$(document).ready( function() {
+$(document).ready( function() {	
+	$('#btnCrear').click(function(){
+		$('#a').val('');
+		$('#b').val('');
+		$('#c').val('');
+		$('#d').val('');
+		$('#e').val('');
+		$('#f').val('');
+	});
 	$('.fecha').datepicker({
 		format: "dd-mm-yyyy",
 	    maxViewMode: 3,
@@ -55,6 +63,104 @@ $(document).ready( function() {
 	    autoclose:true,
 	    orientation: "bottom auto"
 	});
+	$('#idRegistrarDocente').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+        	cadenas: {
+                selector: '.datos',
+                validators: {
+                    notEmpty: {
+                        message: 'Este campo es OBLIGATORIO'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z]+$/,
+                        message: 'Este campo solo puede contener letras'
+                    }
+                }
+            },
+            numeros: {
+            	selector: '.digit',
+            	validators: {
+                    notEmpty: {
+                        message: 'Este campo es OBLIGATORIO'
+                    },
+                    digits: {
+                        message: 'Este campo solo puede contener números'
+                    }
+                }
+            },
+            dni: {
+            	selector: '#c',
+            	validators: {
+                    notEmpty: {
+                        message: 'Este campo es OBLIGATORIO'
+                    },
+                    digits: {
+                        message: 'Este campo solo puede contener números'
+                    },
+                    stringLength: {
+                        min: 8,
+                        max: 8,
+                        message: 'El DNI no puede ser menor a 8 dígitos'
+                    }
+                }
+            }
+        }
+    });
+	$('#idModificarDocente').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+        	cadenas: {
+                selector: '.datos',
+                validators: {
+                    notEmpty: {
+                        message: 'Este campo es OBLIGATORIO'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z]+$/,
+                        message: 'Este campo solo puede contener letras'
+                    }
+                }
+            },
+            numeros: {
+            	selector: '.digit',
+            	validators: {
+                    notEmpty: {
+                        message: 'Este campo es OBLIGATORIO'
+                    },
+                    digits: {
+                        message: 'Este campo solo puede contener números'
+                    }
+                }
+            },
+            dni: {
+            	selector: '#dniProf',
+            	validators: {
+                    notEmpty: {
+                        message: 'Este campo es OBLIGATORIO'
+                    },
+                    digits: {
+                        message: 'Este campo solo puede contener números'
+                    },
+                    stringLength: {
+                        min: 8,
+                        max: 8,
+                        message: 'El DNI no puede ser menor a 8 dígitos'
+                    }
+                }
+            }
+        }
+    });
 });
 </script>
 <h2><center>MANTENIMIENTO DE PROFESORES</center></h2>
@@ -73,7 +179,7 @@ $(document).ready( function() {
 </s:if>	
 </div>
 <br/>
-<a data-toggle="modal" href="#modal_crear">
+<a data-toggle="modal" href="#modal_crear" id="btnCrear">
 	<span><img alt="" src="${pageContext.request.contextPath}/img/iconos/create2.png" width="35px"/></span>
 </a>
 <table class="table table-bordered tableta">
@@ -100,7 +206,7 @@ $(document).ready( function() {
 			<td><s:property value="celular" /></td>
 		<s:set var="est_val"><s:property value="estado" /></s:set>
 		<s:if test="#est_val == 0">
-			<td>Inactivo</td>
+			<td style="color: red;">Inactivo</td>
 		</s:if><s:else>
 			<td>Activo</td>
 		</s:else>
@@ -131,10 +237,12 @@ $(document).ready( function() {
 									)">
 					<span><img alt="" src="${pageContext.request.contextPath}/img/iconos/eliminar.png" width="30px" /></span>
 				</a>
-			</td>
-			
+			</td>			
 		</tr>
 	</s:iterator>
+		<tr>
+			<td colspan="8"></td>
+		</tr>
 	</tbody>
 </table>
 
@@ -151,27 +259,28 @@ $(document).ready( function() {
 					<table class="table nonborder mod-tableta">
 						<tr>
 							<td>Apellido</td>
-							<td><s:textfield name="persona.apellido" cssClass="form-control"/></td>
+							<td><div class="form-group"><s:textfield name="persona.apellido" cssClass="form-control datos" id="a"/></div></td>
 						</tr>
 						<tr>
 							<td>Nombre</td>
-							<td><s:textfield name="persona.nombre" cssClass="form-control"/></td>
+							<td><div class="form-group"><s:textfield name="persona.nombre" cssClass="form-control datos" id="b"/></div></td>
 						</tr>
 						<tr>
 							<td>DNI</td>
-							<td><s:textfield name="persona.dni" cssClass="form-control"/></td>
+							<td><div class="form-group"><s:textfield name="persona.dni" cssClass="form-control" id="c"/></div></td>
 						</tr>
 						<tr>
 							<td>Fecha de Nacimiento</td>
-							<td><input type="text" name="persona.fechanac" Class="form-control fecha" readonly="readonly"/></td>
+							<td><div class="form-group">
+								<input type="text" name="persona.fechanac" Class="form-control fecha" readonly="readonly" id="d"/></div></td>
 						</tr>
 						<tr>
 							<td>Telefono fijo</td>
-							<td><s:textfield name="persona.telefono" cssClass="form-control"/></td>
+							<td><div class="form-group"><s:textfield name="persona.telefono" cssClass="form-control digit" id="e"/></div></td>
 						</tr>
 						<tr>
 							<td>Celular</td>
-							<td><s:textfield name="persona.celular" cssClass="form-control"/></td>
+							<td><div class="form-group"><s:textfield name="persona.celular" cssClass="form-control digit" id="f"/></div></td>
 						</tr>
 					</table>
 					<button type="submit" class="btn btn-primary btn-block">Registrar</button>
@@ -193,32 +302,33 @@ $(document).ready( function() {
 				<h4 class="modal-title">DATOS DE DOCENTE</h4>
 			</div>
 			<div class="modal-body">
-				<s:form method="post" action="updProf">
+				<s:form id="idModificarDocente" method="post" action="updProf">
 					<input name="persona.codigo" id="codProf" hidden="true"/>
 					<table class="table nonborder mod-tableta">
 						<tr>
 							<td>Apellido</td>
-							<td><s:textfield name="persona.apellido" cssClass="form-control" id="apeProf" /></td>
+							<td><div class="form-group"><s:textfield name="persona.apellido" cssClass="form-control datos" id="apeProf" /></div></td>
 						</tr>
 						<tr>
 							<td>Nombre</td>
-							<td><s:textfield name="persona.nombre" cssClass="form-control" id="nomProf" /></td>
+							<td><div class="form-group"><s:textfield name="persona.nombre" cssClass="form-control datos" id="nomProf" /></div></td>
 						</tr>
 						<tr>
 							<td>DNI</td>
-							<td><s:textfield name="persona.dni" cssClass="form-control" id="dniProf" /></td>
+							<td><div class="form-group"><s:textfield name="persona.dni" cssClass="form-control" id="dniProf" readonly="true" /></div></td>
 						</tr>
 						<tr>
 							<td>Fecha de Nacimiento</td>
-							<td><input type="text" name="persona.fechanac" id="fecProf" Class="form-control fecha" readonly="readonly" /></td>
+							<td><div class="form-group">
+								<input type="text" name="persona.fechanac" id="fecProf" Class="form-control fecha" readonly="readonly" /></div></td>
 						</tr>
 						<tr>
 							<td>Telefono fijo</td>
-							<td><s:textfield name="persona.telefono" cssClass="form-control" id="tlfProf" /></td>
+							<td><div class="form-group"><s:textfield name="persona.telefono" cssClass="form-control digit" id="tlfProf" /></div></td>
 						</tr>
 						<tr>
 							<td>Celular</td>
-							<td><s:textfield name="persona.celular" cssClass="form-control" id="celProf" /></td>
+							<td><div class="form-group"><s:textfield name="persona.celular" cssClass="form-control digit" id="celProf" /></div></td>
 						</tr>
 						<tr>
 							<td>Estado</td>
@@ -249,8 +359,8 @@ $(document).ready( function() {
 				<h4 class="modal-title">¿ESTA SEGURO DE ELIMINAR EL REGISTRO?</h4>
 			</div>
 			<div class="modal-body">
-				<s:form action="">
-					<input name="codigo" id="codProf2" hidden="true"/>
+				<s:form action="dropProf">
+					<input name="dni" id="codProf2" hidden="true" />
 					<table class="table nonborder mod-tableta">
 						<tr>
 							<td>Apellido:</td>

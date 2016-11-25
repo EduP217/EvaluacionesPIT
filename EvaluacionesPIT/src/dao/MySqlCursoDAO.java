@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import beans.CarreraDTO;
+import beans.CicloDTO;
 import beans.CursoDTO;
 import beans.EnlaceDTO;
 import interfaces.CursoDAO;
@@ -27,8 +29,15 @@ public class MySqlCursoDAO implements CursoDAO {
 	}
 	
 	@Override
-	public List<CursoDTO> listarCursoXseccion(String seccion) {		
-		return null;
+	public List<CursoDTO> listarCursoxCiclo(int idciclo) {
+		List<CursoDTO> data=null;
+		SqlSession sesion=sqlMapper.openSession();
+		try {
+			data=sesion.selectList("SQL_CursosxCiclo",idciclo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return data;
 	}
 
 	@Override
@@ -37,6 +46,30 @@ public class MySqlCursoDAO implements CursoDAO {
 		SqlSession sesion=sqlMapper.openSession();
 		try {
 			data=sesion.selectList("SQL_CursosxUsuario",idusuario);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return data;
+	}
+
+	@Override
+	public List<CarreraDTO> listarCarrera() {
+		List<CarreraDTO> data=null;
+		SqlSession sesion=sqlMapper.openSession();
+		try {
+			data=sesion.selectList("SQL_Carrera");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return data;
+	}
+
+	@Override
+	public List<CicloDTO> listarCiclo() {
+		List<CicloDTO> data=null;
+		SqlSession sesion=sqlMapper.openSession();
+		try {
+			data=sesion.selectList("SQL_Ciclo");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

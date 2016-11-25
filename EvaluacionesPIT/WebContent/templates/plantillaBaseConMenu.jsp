@@ -8,9 +8,11 @@
 <head>
 <meta charset="utf-8">
 <title>Sistema de Control de Evaluaciones | CIBERTEC</title>
+<sj:head jqueryui="true"  jquerytheme="blitzer"/>
 <script type="text/javascript">
 </script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/ico-educacion.ico" />
 <!-- Base Css Files -->
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" />
@@ -102,6 +104,7 @@ footer{
     </section>
 	<script src="${pageContext.request.contextPath}/js/jquery-1.10.2.min.js"></script>	
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/bootstrapValidator.js"></script>
 	<script src="${pageContext.request.contextPath}/js/fileinput.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap-datepicker.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/locales/bootstrap-datepicker.es.min.js"></script>

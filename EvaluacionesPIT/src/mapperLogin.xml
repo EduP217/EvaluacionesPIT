@@ -16,18 +16,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE 	idusuario = #{codigo}
 	</select>
 	<select id="SQL_DatosDeUsuario2" parameterType="int" resultType="PersonaDTOIbatis">
-		SELECT 	iddocente as codigo,
-				dni as dni,
-				nombre as nombre,
-				apellido as apellido,
-				fechanac as fechanac,
-				telefono as telefono,
-				celular as celular,
-				idusuario as idusuario
-		FROM 	docente
-		WHERE 	idusuario = #{codigo}
-	</select>
-	<select id="SQL_DatosDeUsuario3" parameterType="int" resultType="PersonaDTOIbatis">
 		SELECT 	idestudiante as codigo,
 				dni as dni,
 				nombre as nombre,
@@ -37,6 +25,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				celular as celular,
 				idusuario as idusuario
 		FROM 	estudiante
+		WHERE 	idusuario = #{codigo}
+	</select>
+	<select id="SQL_DatosDeUsuario3" parameterType="int" resultType="PersonaDTOIbatis">		
+		SELECT 	iddocente as codigo,
+				dni as dni,
+				nombre as nombre,
+				apellido as apellido,
+				fechanac as fechanac,
+				telefono as telefono,
+				celular as celular,
+				idusuario as idusuario
+		FROM 	docente
 		WHERE 	idusuario = #{codigo}
 	</select>
 	<select id="SQL_EnlacesDeUsuario" parameterType="int" resultType="EnlaceDTOIbatis">

@@ -73,6 +73,9 @@ public class CursoDTO {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
+	
+	public String getDatos(){
+		return nombre;
+	}
 	
 }

@@ -38,16 +38,23 @@ public class mUsuarioAction extends ActionSupport{
 			@Result(name="error",type="tiles",location="m_profesor")
 	})
 	public String registrarProfesor(){
-		if(persona.getDni().length()!=7){
-			mensajeError = "El DNI debe tener 7 caracteres";
+		if(persona.getDni().length()!=8){
+			mensajeError = "El DNI debe tener 8 caracteres";
 			listarProfesores();
 			return "error";
 		}
-		UsuarioDTO objUsu = new UsuarioDTO();
-		objUsu.setUsuario(persona.getDni());
-		objUsu.setClave("123456");
-		objUsu.setUrlFoto("avatar-user.png");
-		objUsu.setIdperfil(3);
+		UsuarioDTO objUsu = new LoginService().buscarUsuario(persona.getDni());
+		if(objUsu!=null){
+			mensajeError = "Ya existe un usuario registrado con el DNI "+ persona.getDni();
+			listarProfesores();
+			return "error";
+		} else {
+			objUsu = new UsuarioDTO();	
+			objUsu.setUsuario(persona.getDni());
+			objUsu.setClave("123456");
+			objUsu.setUrlFoto("avatar-user.png");
+			objUsu.setIdperfil(3);			
+		}
 		new LoginService().registrarUsuario(objUsu);
 		UsuarioDTO idUsuario = new LoginService().IniciarSesion(objUsu);
 		if(idUsuario==null){
@@ -67,23 +74,36 @@ public class mUsuarioAction extends ActionSupport{
 			@Result(name="error",type="tiles",location="m_profesor")
 	})
 	public String updateProfesor(){
-		/*if(persona.getDni().length()!=7){
-			mensajeError = "El DNI debe tener 7 caracteres";
+		UsuarioDTO objUsu = new LoginService().buscarUsuario(persona.getDni());
+		if(objUsu==null){
+			mensajeError = "Error al encontrar usuario";
 			listarProfesores();
 			return "error";
 		}
+		objUsu.setEstado(persona.getEstado());
+		new LoginService().modificarUsuario(objUsu);
+		new PersonaService().modificarPersona(persona);
+		mensaje = "Se actualizaron los datos correctamente";/*+
+				  persona.getCodigo()+"-"+persona.getApellido()+"-"+persona.getNombre()+"-"+
+				  persona.getDni()+"-"+persona.getFechanac()+"-"+persona.getTelefono()+"-"+persona.getCelular()+"-"+persona.getEstado();*/
+		listarProfesores();
+		return "grabo";
+	}
+	
+	@Action(value="/dropProf",results={
+			@Result(name="grabo",type="tiles",location="m_profesor"),
+			@Result(name="error",type="tiles",location="m_profesor")
+	})
+	public String deleteProfesor(){
 		UsuarioDTO objUsu = new LoginService().buscarUsuario(dni);
 		if(objUsu==null){
 			mensajeError = "Error al encontrar usuario";
 			listarProfesores();
 			return "error";
 		}
-		objUsu.setEstado(estado);		
-		new LoginService().modificarUsuario(objUsu);
-		new PersonaService().modificarPersona(persona);*/
-		mensaje = "Se actualizaron los datos correctamente"+
-				  persona.getCodigo()+"-"+persona.getApellido()+"-"+persona.getNombre()+"-"+
-				  persona.getDni()+"-"+persona.getFechanac()+"-"+persona.getTelefono()+"-"+persona.getCelular()+"-"+persona.getEstado();
+		objUsu.setEstado("0");
+		new LoginService().modificarUsuario(objUsu);	
+		mensaje = "Se dió de baja correctamente";	
 		listarProfesores();
 		return "grabo";
 	}

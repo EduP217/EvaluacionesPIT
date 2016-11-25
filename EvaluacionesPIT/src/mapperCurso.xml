@@ -13,15 +13,41 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	        s.idseccion as codseccion,
 			s.nomseccion as nomseccion,
 			c.nombre as nombre      
-		from detallecursoseccion ds 
-		inner join seccion s on ds.idseccion = s.idseccion
-	    inner join curso c on ds.idcurso = c.idcurso
+		from curso c
 	    inner join carrera ca on c.idcarrera = ca.idcarrera
 	    inner join ciclo ci on c.idciclo = ci.idciclo
-	    inner join usuario u on ds.idusuario = u.idusuario
-	    where u.idusuario = #{idusuario}	    
-    	order by c.idciclo ASC;
+        inner join detallecursoseccion ds on c.idcurso = ds.idcurso
+		inner join seccion s on ds.idseccion = s.idseccion
+        inner join detalleseccionalumno dsa on ds.idseccion = dsa.idseccion
+        inner join usuario u on dsa.idusuario = u.idusuario        
+        where u.idusuario = #{idusuario}
+        order by c.idciclo ASC;
+	</select>
+	<select id="SQL_Carrera" resultType="CarreraDTOIbatis">
+		select
+			idcarrera as codigo,
+			nombre as nombre
+		from carrera;
 	</select>	
+	<select id="SQL_Ciclo" resultType="CicloDTOIbatis">
+		select
+			idciclo as codigo,
+			nomciclo as nombre
+		from ciclo;
+	</select>	
+	<select id="SQL_CursosxCiclo" parameterType="int" resultType="CursoDTOIbatis">
+		select 	
+			c.idcurso as codigo,
+	        c.idcarrera as codcarrera,
+	        ca.nombre as carrera,
+	        c.idciclo as codciclo,
+	        ci.nomciclo as ciclo,
+			c.nombre as nombre      
+		from curso c
+	    inner join carrera ca on c.idcarrera = ca.idcarrera
+	    inner join ciclo ci on c.idciclo = ci.idciclo  
+        where c.idciclo = #{idciclo};
+	</select>
 </mapper>
 
 

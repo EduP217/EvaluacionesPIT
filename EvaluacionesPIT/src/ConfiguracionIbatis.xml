@@ -8,6 +8,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="EnlaceDTOIbatis" type="beans.EnlaceDTO"/>
 		<typeAlias alias="PersonaDTOIbatis" type="beans.PersonaDTO"/>
 		<typeAlias alias="CursoDTOIbatis" type="beans.CursoDTO"/>
+		<typeAlias alias="CarreraDTOIbatis" type="beans.CarreraDTO"/>
+		<typeAlias alias="CicloDTOIbatis" type="beans.CicloDTO"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
