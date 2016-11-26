@@ -5,6 +5,7 @@ import java.util.List;
 import beans.CarreraDTO;
 import beans.CicloDTO;
 import beans.CursoDTO;
+import beans.PersonaDTO;
 
 public interface CursoDAO {
 	
@@ -13,5 +14,8 @@ public interface CursoDAO {
 	public List<CursoDTO> listarCurso();
 	public List<CursoDTO> listarCursos(int idusuario);	
 	public List<CursoDTO> listarCursoxCiclo(int ciclo);
-
+	public CursoDTO buscarCurso(CursoDTO beanCurso);
+	public int registrarCurso(CursoDTO obj);
+	public int modificarCurso(CursoDTO obj);
+	public int eliminarCurso(CursoDTO obj);
 }

@@ -88,4 +88,64 @@ public class MySqlCursoDAO implements CursoDAO {
 		return data;
 	}
 
+	@Override
+	public CursoDTO buscarCurso(CursoDTO beanCurso) {
+		CursoDTO bean=null;
+		SqlSession sesion=sqlMapper.openSession();
+		try {
+			bean=(CursoDTO) sesion.selectOne("SQL_FOUND_Cursos",beanCurso);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bean;
+	}
+
+	@Override
+	public int registrarCurso(CursoDTO obj) {
+		int result = -1;
+		SqlSession session =  sqlMapper.openSession();
+		try {
+			result = session.insert("SQL_REG_Curso", obj);
+			session.commit();
+		} catch (Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		} finally{
+			session.close();
+		}
+		return result;
+	}
+
+	@Override
+	public int modificarCurso(CursoDTO obj) {
+		int result = -1;
+		SqlSession session =  sqlMapper.openSession();
+		try {
+			result = session.insert("SQL_UPD_Curso", obj);
+			session.commit();
+		} catch (Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		} finally{
+			session.close();
+		}
+		return result;
+	}
+
+	@Override
+	public int eliminarCurso(CursoDTO obj) {
+		int result = -1;
+		SqlSession session =  sqlMapper.openSession();
+		try {
+			result = session.insert("SQL_DROP_Curso", obj);
+			session.commit();
+		} catch (Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		} finally{
+			session.close();
+		}
+		return result;
+	}
+
 }

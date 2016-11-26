@@ -41,7 +41,6 @@
 			CICLO
 		</td>
 		<td width="150px">
-			<s:form action="listarCursos">
 			<s:select 
 				name="curso.codciclo"
 				id="idciclo"
@@ -51,7 +50,6 @@
 				headerKey="-1"
 				headerValue="[ Seleccionar ]"
 				onchange="listarCursos(this.value)" cssClass="form-control"/>
-			</s:form>
 		</td>
 	</tr>
 	<tr>

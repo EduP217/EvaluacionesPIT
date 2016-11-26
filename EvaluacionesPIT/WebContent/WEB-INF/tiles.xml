@@ -41,6 +41,11 @@
 	<definition name="m_alumno" extends="t_plantillaBaseConMenu">
 		<put-attribute name="central" value="/pages/m_alumno.jsp" />
 	</definition>
-
+	<definition name="m_curso" extends="t_plantillaBaseConMenu">
+		<put-attribute name="central" value="/pages/m_cursos.jsp" />
+	</definition>
+	<definition name="t_examen" extends="t_plantillaBaseConMenu">
+		<put-attribute name="central" value="/pages/t_examen.jsp" />
+	</definition>
 </tiles-definitions>
 

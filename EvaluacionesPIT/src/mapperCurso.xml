@@ -60,6 +60,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    inner join carrera ca on c.idcarrera = ca.idcarrera
 	    inner join ciclo ci on c.idciclo = ci.idciclo;
 	</select>
+	<select id="SQL_FOUND_Cursos" parameterType="CursoDTOIbatis" resultType="CursoDTOIbatis">
+		select 	
+			c.idcurso as codigo,
+	        c.idcarrera as codcarrera,
+	        ca.nombre as carrera,
+	        c.idciclo as codciclo,
+	        ci.nomciclo as ciclo,
+			c.nombre as nombre      
+		from curso c
+	    inner join carrera ca on c.idcarrera = ca.idcarrera
+	    inner join ciclo ci on c.idciclo = ci.idciclo
+	    where c.idcarrera = #{codcarrera} and c.idciclo = #{codciclo} and c.nombre = #{nombre};
+	</select>
+	<insert id="SQL_REG_Curso" parameterType="CursoDTOIbatis">
+		insert into curso values(0,#{codcarrera},#{codciclo},#{nombre})
+	</insert>  
+	<insert id="SQL_UPD_Curso" parameterType="CursoDTOIbatis">
+		update curso set idcarrera = #{codcarrera}, idciclo = #{codciclo}, nombre = #{nombre}
+		where idcurso = #{codigo}
+	</insert>
+	<insert id="SQL_DROP_Curso" parameterType="CursoDTOIbatis">
+		delete from curso where idcurso = #{codigo}
+	</insert>
 </mapper>
 
 
