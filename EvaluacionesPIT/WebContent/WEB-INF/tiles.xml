@@ -32,8 +32,14 @@
 	<definition name="m_profesor" extends="t_plantillaBaseConMenu">
 		<put-attribute name="central" value="/pages/m_profesor.jsp" />
 	</definition>
-	<definition name="t_examen" extends="t_plantillaBaseConMenu">
-		<put-attribute name="central" value="/pages/t_examen.jsp" />
+	<definition name="m_profesor" extends="t_plantillaBaseConMenu">
+		<put-attribute name="central" value="/pages/m_profesor.jsp" />
+	</definition>
+	<definition name="m_coordi" extends="t_plantillaBaseConMenu">
+		<put-attribute name="central" value="/pages/m_coordi.jsp" />
+	</definition>
+	<definition name="m_alumno" extends="t_plantillaBaseConMenu">
+		<put-attribute name="central" value="/pages/m_alumno.jsp" />
 	</definition>
 
 </tiles-definitions>

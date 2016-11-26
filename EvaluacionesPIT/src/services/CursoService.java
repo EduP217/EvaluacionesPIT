@@ -26,4 +26,7 @@ public class CursoService {
 	public List<CicloDTO> listarCiclo() {
 		return dao.listarCiclo();
 	}
+	public List<CursoDTO> listarCurso() {
+		return dao.listarCurso();
+	}
 }

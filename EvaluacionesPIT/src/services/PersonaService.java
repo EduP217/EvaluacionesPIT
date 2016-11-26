@@ -15,10 +15,10 @@ public class PersonaService {
 	public List<PersonaDTO> listarPersonas(int perfil) {
 		return dao.listarPersonas(perfil);
 	}
-	public int registrarPersona(PersonaDTO obj) {
-		return dao.registrarPersona(obj);
+	public int registrarPersona(PersonaDTO obj,int perfil) {
+		return dao.registrarPersona(obj,perfil);
 	}
-	public int modificarPersona(PersonaDTO obj) {
-		return dao.modificarPersona(obj);
+	public int modificarPersona(PersonaDTO obj,int perfil) {
+		return dao.modificarPersona(obj,perfil);
 	}
 }

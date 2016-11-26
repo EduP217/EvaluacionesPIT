@@ -163,7 +163,7 @@ $(document).ready( function() {
     });
 });
 </script>
-<h2><center>MANTENIMIENTO DE PROFESORES</center></h2>
+<h2><center>MANTENIMIENTO DE ALUMNOS</center></h2>
 <div id="divMensaje" style="text-align:center;">
 <s:set var="msj_val"><s:property value="mensaje"/></s:set>
 <s:set var="msje_val"><s:property value="mensajeError"/></s:set>
@@ -252,10 +252,10 @@ $(document).ready( function() {
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">DATOS DE DOCENTE</h4>
+				<h4 class="modal-title">DATOS DEL ALUMNO</h4>
 			</div>
 			<div class="modal-body">
-				<s:form id="idRegistrarDocente" method="post" action="regProf">
+				<s:form id="idRegistrarDocente" method="post" action="regAlum">
 					<table class="table nonborder mod-tableta">
 						<tr>
 							<td>Apellido</td>
@@ -299,10 +299,10 @@ $(document).ready( function() {
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">DATOS DE DOCENTE</h4>
+				<h4 class="modal-title">DATOS DEL ALUMNO</h4>
 			</div>
 			<div class="modal-body">
-				<s:form id="idModificarDocente" method="post" action="updProf">
+				<s:form id="idModificarDocente" method="post" action="updAlum">
 					<input name="persona.codigo" id="codProf" hidden="true"/>
 					<table class="table nonborder mod-tableta">
 						<tr>
@@ -359,7 +359,7 @@ $(document).ready( function() {
 				<h4 class="modal-title">¿ESTA SEGURO DE ELIMINAR EL REGISTRO?</h4>
 			</div>
 			<div class="modal-body">
-				<s:form action="dropProf">
+				<s:form action="dropAlum">
 					<input name="dni" id="codProf2" hidden="true" />
 					<table class="table nonborder mod-tableta">
 						<tr>

@@ -45,12 +45,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INNER JOIN usuario us on es.idusuario = us.idusuario
 		WHERE us.idperfil = #{perfil};
 	</select>
+	<insert id="SQL_REG_Admin" parameterType="PersonaDTOIbatis">
+		insert into administrador values(0,#{dni},#{nombre},#{apellido},#{fechanac},#{telefono},#{celular},#{idusuario})
+	</insert>	  
+	<insert id="SQL_UPD_Admin" parameterType="PersonaDTOIbatis">
+		update administrador set nombre = #{nombre}, apellido = #{apellido}, fechanac = #{fechanac}, telefono = #{telefono}, celular = #{celular}
+		where idadministrador = #{codigo}
+	</insert>
 	<insert id="SQL_REG_Prof" parameterType="PersonaDTOIbatis">
 		insert into docente values(0,#{dni},#{nombre},#{apellido},#{fechanac},#{telefono},#{celular},#{idusuario})
 	</insert>	  
 	<insert id="SQL_UPD_Prof" parameterType="PersonaDTOIbatis">
 		update docente set nombre = #{nombre}, apellido = #{apellido}, fechanac = #{fechanac}, telefono = #{telefono}, celular = #{celular}
 		where iddocente = #{codigo}
+	</insert>
+	<insert id="SQL_REG_Alumn" parameterType="PersonaDTOIbatis">
+		insert into estudiante values(0,#{dni},#{nombre},#{apellido},#{fechanac},#{telefono},#{celular},#{idusuario})
+	</insert>	  
+	<insert id="SQL_UPD_Alumn" parameterType="PersonaDTOIbatis">
+		update estudiante set nombre = #{nombre}, apellido = #{apellido}, fechanac = #{fechanac}, telefono = #{telefono}, celular = #{celular}
+		where idestudiante = #{codigo}
 	</insert>
 </mapper>
 

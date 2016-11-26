@@ -48,6 +48,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    inner join ciclo ci on c.idciclo = ci.idciclo  
         where c.idciclo = #{idciclo};
 	</select>
+	<select id="SQL_Cursos" resultType="CursoDTOIbatis">
+		select 	
+			c.idcurso as codigo,
+	        c.idcarrera as codcarrera,
+	        ca.nombre as carrera,
+	        c.idciclo as codciclo,
+	        ci.nomciclo as ciclo,
+			c.nombre as nombre      
+		from curso c
+	    inner join carrera ca on c.idcarrera = ca.idcarrera
+	    inner join ciclo ci on c.idciclo = ci.idciclo;
+	</select>
 </mapper>
 
 

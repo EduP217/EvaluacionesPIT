@@ -2,12 +2,30 @@
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <%@ taglib prefix="sjg" uri="/struts-jquery-grid-tags"%>
 <script type="text/javascript">
-$(document).ready( function() {
-	
-});
+
+	function listarCursos(codciclo) {
+		$.ajax({
+            url: "<s:url action='listarCursos?codciclo="+codciclo+"'/>",          
+        }).done(function(result) {
+            $("#listaCurso").html(result);
+        });
+		/*$.ajax({
+			type : 'POST',
+			url : 'listarCursos?codciclo=' + $("#idciclo").val(),
+			dataType : 'json',
+			success : function(data) {
+				$('#listaCurso').append(data);
+			}
+		});*/
+		//window.location="listarCursos?codciclo="+$("#idciclo").val();
+	}
+	$(document).ready(function() {
+
+	});
 </script>
+
 <s:form>
-<table style="text-align: center;">
+<table class="table" style="text-align: center;">
 	<tr>
 		<td width="100px">
 			CARRERA			
@@ -23,6 +41,7 @@ $(document).ready( function() {
 			CICLO
 		</td>
 		<td width="150px">
+			<s:form action="listarCursos">
 			<s:select 
 				name="curso.codciclo"
 				id="idciclo"
@@ -30,15 +49,34 @@ $(document).ready( function() {
 				listKey="codigo"
 				listValue="datos"
 				headerKey="-1"
-				headerValue="[Seleccione]" cssClass="form-control"/>
+				headerValue="[ Seleccionar ]"
+				onchange="listarCursos(this.value)" cssClass="form-control"/>
+			</s:form>
 		</td>
 	</tr>
 	<tr>
-		<td>
+		<td width="100px">
 			CURSO
+		</td>					
+		<td>
+			<!--s:select 
+				name="curso.codigo"
+				id="idcurso"
+				list="lstCurso"
+				listKey="codigo"
+				listValue="datos"
+				cssClass="form-control"/-->
+			<select class="form-control">
+				<option value="-1">[ Seleccionar ]</option>
+				<s:iterator value="lstCurso">
+					<option value='<s:property value="codigo" />'><s:property value="nombre"/></option>
+				</s:iterator>
+			</select>
 		</td>
-		<td colspan="3">
-		</td>		
+		<td>
+		</td>
+		<td>
+		</td>	
 	</tr>
 	<tr>
 		<td colspan="2">

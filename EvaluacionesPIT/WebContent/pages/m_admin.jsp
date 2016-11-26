@@ -78,7 +78,7 @@ $(document).ready( function() {
                         message: 'Este campo es OBLIGATORIO'
                     },
                     regexp: {
-                        regexp: /^[^0-9]+$/,
+                        regexp: /^[a-zA-Z]+$/,
                         message: 'Este campo solo puede contener letras'
                     }
                 }
@@ -127,7 +127,7 @@ $(document).ready( function() {
                         message: 'Este campo es OBLIGATORIO'
                     },
                     regexp: {
-                        regexp: /^[^0-9]+$/,
+                        regexp: /^[a-zA-Z]+$/,
                         message: 'Este campo solo puede contener letras'
                     }
                 }

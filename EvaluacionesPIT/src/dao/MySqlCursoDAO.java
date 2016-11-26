@@ -76,4 +76,16 @@ public class MySqlCursoDAO implements CursoDAO {
 		return data;
 	}
 
+	@Override
+	public List<CursoDTO> listarCurso() {
+		List<CursoDTO> data=null;
+		SqlSession sesion=sqlMapper.openSession();
+		try {
+			data=sesion.selectList("SQL_Cursos");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return data;
+	}
+
 }

@@ -19,12 +19,12 @@ public class ExamenAction extends ActionSupport{
 	
 	private List<CarreraDTO> lstCarrera;
 	private List<CicloDTO> lstCiclo;
-	private List<CursoDTO> lstCurso;
+	private List<CursoDTO> lstCurso=null;
 	
 	private CursoDTO curso;
 	private CarreraDTO carrera;
 	private CicloDTO ciclo;
-	private int codcarrera,codciclo;
+	private int codigo,codcarrera,codciclo;
 	
 	@Action(value="/t_examen",results={
 			@Result(name="ok",type="tiles",location="t_examen")
@@ -32,6 +32,7 @@ public class ExamenAction extends ActionSupport{
 	public String cargarRegistro(){
 		lstCarrera = new CursoService().listarCarrera();
 		lstCiclo = new CursoService().listarCiclo();
+		lstCurso = new CursoService().listarCurso();
 		return "ok";
 	}
 	
@@ -39,7 +40,7 @@ public class ExamenAction extends ActionSupport{
 			@Result(name="listar",type="json")
 	})
 	public String listarCursos(){
-		lstCurso = new CursoService().listarCursoxCiclo(curso.getCodciclo());
+		lstCurso = new CursoService().listarCursoxCiclo(codciclo);
 		return "listar";
 	}
 	
@@ -97,6 +98,22 @@ public class ExamenAction extends ActionSupport{
 
 	public void setCiclo(CicloDTO ciclo) {
 		this.ciclo = ciclo;
+	}
+
+	public List<CursoDTO> getLstCurso() {
+		return lstCurso;
+	}
+
+	public void setLstCurso(List<CursoDTO> lstCurso) {
+		this.lstCurso = lstCurso;
+	}
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}	
 	
 }

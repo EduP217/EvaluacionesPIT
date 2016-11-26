@@ -51,12 +51,28 @@ public class MySqlPersonaDAO implements PersonaDAO {
 	}
 
 	@Override
-	public int registrarPersona(PersonaDTO obj) {
+	public int registrarPersona(PersonaDTO obj,int perfil) {
 		int result = -1;
 		SqlSession session =  sqlMapper.openSession();
 		try {
-			result = session.insert("SQL_REG_Prof", obj);
-			session.commit();
+			switch (perfil) {
+			case 1:
+				result = session.insert("SQL_REG_Admin", obj);
+				session.commit();				
+				break;
+			case 2:
+				result = session.insert("SQL_REG_Alumn", obj);
+				session.commit();
+				break;
+			case 3:		
+				result = session.insert("SQL_REG_Prof", obj);
+				session.commit();				
+				break;
+			case 4:
+				result = session.insert("SQL_REG_Prof", obj);
+				session.commit();
+				break;	
+			}
 		} catch (Exception e) {
 			session.rollback();
 			e.printStackTrace();
@@ -67,12 +83,28 @@ public class MySqlPersonaDAO implements PersonaDAO {
 	}
 
 	@Override
-	public int modificarPersona(PersonaDTO obj) {
+	public int modificarPersona(PersonaDTO obj,int perfil) {
 		int result = -1;
 		SqlSession session =  sqlMapper.openSession();
 		try {
-			result = session.insert("SQL_UPD_Prof", obj);
-			session.commit();
+			switch (perfil) {
+			case 1:
+				result = session.insert("SQL_UPD_Admin", obj);
+				session.commit();				
+				break;
+			case 2:
+				result = session.insert("SQL_UPD_Alumn", obj);
+				session.commit();
+				break;
+			case 3:		
+				result = session.insert("SQL_UPD_Prof", obj);
+				session.commit();				
+				break;
+			case 4:
+				result = session.insert("SQL_UPD_Prof", obj);
+				session.commit();
+				break;	
+			}
 		} catch (Exception e) {
 			session.rollback();
 			e.printStackTrace();
