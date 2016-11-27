@@ -224,6 +224,12 @@ $(document).ready( function() {
 									)">
 					<span><img alt="" src="${pageContext.request.contextPath}/img/iconos/modificar4.png" width="35px" /></span>				
 				</a>
+				<a 	data-toggle="modal" href="#modal_matricula" 
+					onclick="llenarMatricula(
+									'<s:property value="codigo"/>',
+									)">
+					<span><img alt="" src="${pageContext.request.contextPath}/img/iconos/detalles2.png" width="35px" /></span>				
+				</a>
 				<a 	data-toggle="modal" href="#modal_eliminar"
 					onclick="llenarEliminar(
 									'<s:property value="codigo"/>',
@@ -401,5 +407,38 @@ $(document).ready( function() {
 	</div>
 </div>
 
-
+<div id="modal_modificar" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">¿SELECCIONE LOS CURSOS DE MATRICULA?</h4>
+			</div>
+			<div class="modal-body">
+				<s:form action="">
+					<input name="codigo" id="codUsuario" hidden="true" />
+					<table class="table nonborder mod-tableta">
+						<tr>
+							<td>Ciclo:</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Curso:</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Seccion:</td>
+							<td></td>
+						</tr>						
+					</table>
+					<button type="submit" class="btn btn-primary btn-block">Registrar</button>
+				</s:form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
 
