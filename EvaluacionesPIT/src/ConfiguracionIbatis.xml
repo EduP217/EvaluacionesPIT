@@ -11,6 +11,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="CarreraDTOIbatis" type="beans.CarreraDTO"/>
 		<typeAlias alias="CicloDTOIbatis" type="beans.CicloDTO"/>
 		<typeAlias alias="SeccionDTOIbatis" type="beans.SeccionDTO"/>
+		<typeAlias alias="DetalleCurSecDTOIbatis" type="beans.DetalleCurSeccionDTO"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">

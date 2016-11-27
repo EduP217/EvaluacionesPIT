@@ -23,8 +23,11 @@ h2{
 }
 </style>
 <script type="text/javascript">
+function modalCrear(){
+	$('#modal_crear_II').modal();
+}
 $(document).ready( function() {	
-	$('#idRegistrarCurso').bootstrapValidator({
+	$('#idRegistrarSeccion').bootstrapValidator({
         message: 'This value is not valid',
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -82,8 +85,8 @@ $(document).ready( function() {
 </a>
 
 <table class="table nonborder mod-tableta">
-	<td>
-		<div class="panel-group" id="accordion" style="width: 250px;height: 500px;">
+	<td style="width: 250px;height: 500px;">
+		<div class="panel-group" id="accordion" >
 			<s:iterator value="lstSeccion">
 				<s:url id="idListar" action="listarCursoSec">
 					<s:param name="codigo" value="codigo"/>
@@ -98,9 +101,13 @@ $(document).ready( function() {
 			</s:iterator>
 		</div>
 	</td>
-	<td>
-		<div class="panel-group" id="accordion" style="width: 500px;height: 500px;">
+	<td style="width: 500px;height: 500px;">
+		<div class="panel-group" id="accordion">
 		<s:iterator value="lstCursoSec">
+			<s:url id="idEliminar" action="dropCursoSecc">
+				<s:param name="codcurso" value="codigo" />
+				<s:param name="codigo" value="#session.keySeccion.codigo" />
+			</s:url>
 			<div class="panel panel-success">
 				<div class="panel-heading">
 		        	<h4 class="panel-title">
@@ -124,13 +131,95 @@ $(document).ready( function() {
 		        				<td>NOMBRE</td>
 		        				<td><s:property value="nombre"/></td>
 		        			</tr>
+		        			<tr>
+		        				<td></td>
+		        				<td><s:a href="%{idEliminar}">
+										<img src="${pageContext.request.contextPath}/img/iconos/eliminar.png" width="30px" title="Eliminar" />
+									</s:a>
+								</td>
+		        			</tr>
 		        		</table>
 		        	</div>
 		      	</div>
 		    </div>   
 		</s:iterator>
+		<button class="btn btn-warning" style="float:right;" onclick="modalCrear()"><span class="glyphicon glyphicon-plus"></span></button>
 		</div>
 	</td>
 </table>
 
+<div id="modal_crear" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">REGISTRO DE SECCION</h4>
+			</div>
+			<div class="modal-body">
+				<s:form id="idRegistrarSeccion" method="post" action="regSecc">
+					<table class="table nonborder mod-tableta">						
+						<tr>
+							<td>Ciclo</td>
+							<td><div class="form-group">							
+								<s:select 
+									name="codciclo"
+									list="lstCiclos"
+									listKey="codigo"
+									listValue="datos" cssClass="form-control"/>						
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>Seccion</td>
+							<td><div class="form-group"><s:textfield name="nombre" cssClass="form-control datos" id="c"/></div></td>
+						</tr>
+					</table>
+					<button type="submit" class="btn btn-primary btn-block">Registrar</button>
+				</s:form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modal_crear_II" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">ASIGNAR CURSO A SECCION</h4>
+			</div>
+			<div class="modal-body">
+				<s:form id="idRegistrarCursoSeccion" method="post" action="regDetalle">
+					<input name="codigo" id="codsecc" value="<s:property value="#session.keySeccion.codigo"/>" hidden="true"/>
+					<table class="table nonborder mod-tableta">						
+						<tr>
+							<td>Seccion</td>
+							<td><s:label id="nomsecc"><s:property value="#session.keySeccion.descripcion"/></s:label></td>
+						</tr>						
+						<tr>
+							<td>Curso</td>
+							<td><div class="form-group">	
+								<s:select 
+									name="codcurso"
+									list="lstCursos"
+									listKey="codigo"
+									listValue="datos" cssClass="form-control"/>				
+								</div>
+							</td>
+						</tr>
+					</table>
+					<button type="submit" class="btn btn-primary btn-block">Registrar</button>
+				</s:form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
 

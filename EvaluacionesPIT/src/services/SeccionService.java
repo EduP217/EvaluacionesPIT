@@ -3,6 +3,7 @@ package services;
 import java.util.List;
 
 import beans.CursoDTO;
+import beans.DetalleCurSeccionDTO;
 import beans.SeccionDTO;
 import dao.DAOFactory;
 import interfaces.SeccionDAO;
@@ -29,11 +30,20 @@ public class SeccionService {
 		return dao.modificarSeccion(obj);
 	}
 
-	public int eliminarSeccion(int codigo) {
-		return dao.eliminarSeccion(codigo);
+	public int eliminarCursoSeccion(DetalleCurSeccionDTO obj) {
+		return dao.eliminarCursoSeccion(obj);
 	}
 
 	public List<SeccionDTO> listarSecciones() {
 		return dao.listarSecciones();
+	}
+	public SeccionDTO buscarSeccion2(SeccionDTO obj) {
+		return dao.buscarSeccion2(obj);
+	}
+	public DetalleCurSeccionDTO buscarSeccion3(DetalleCurSeccionDTO obj) {
+		return dao.buscarSeccion3(obj);
+	}
+	public int registrarDetalle(DetalleCurSeccionDTO obj) {
+		return dao.registrarDetalle(obj);
 	}
 }

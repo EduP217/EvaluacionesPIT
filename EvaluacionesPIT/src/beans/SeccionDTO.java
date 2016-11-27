@@ -2,6 +2,7 @@ package beans;
 
 public class SeccionDTO {
 	private int codigo;
+	private int codciclo;
 	private String descripcion;
 	public int getCodigo() {
 		return codigo;
@@ -14,6 +15,12 @@ public class SeccionDTO {
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	public int getCodciclo() {
+		return codciclo;
+	}
+	public void setCodciclo(int codciclo) {
+		this.codciclo = codciclo;
 	}
 	
 }

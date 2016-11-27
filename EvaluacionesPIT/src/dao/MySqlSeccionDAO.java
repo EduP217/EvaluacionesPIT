@@ -10,7 +10,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import beans.CursoDTO;
+import beans.DetalleCurSeccionDTO;
 import beans.SeccionDTO;
+import beans.UsuarioDTO;
 import interfaces.SeccionDAO;
 
 public class MySqlSeccionDAO implements SeccionDAO {
@@ -40,12 +42,30 @@ public class MySqlSeccionDAO implements SeccionDAO {
 
 	@Override
 	public SeccionDTO buscarSeccion(int seccion) {
-		return null;
+		SeccionDTO data=null;
+		SqlSession sesion=sqlMapper.openSession();
+		try {
+			data=(SeccionDTO) sesion.selectOne("SQL_Found_Seccion",seccion);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return data;
 	}
 
 	@Override
 	public int registrarSeccion(SeccionDTO obj) {
-		return 0;
+		int result = -1;
+		SqlSession session =  sqlMapper.openSession();
+		try {
+			result = session.insert("SQL_REG_Seccion", obj);
+			session.commit();			
+		} catch (Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		} finally{
+			session.close();
+		}
+		return result;
 	}
 
 	@Override
@@ -54,8 +74,19 @@ public class MySqlSeccionDAO implements SeccionDAO {
 	}
 
 	@Override
-	public int eliminarSeccion(int codigo) {
-		return 0;
+	public int eliminarCursoSeccion(DetalleCurSeccionDTO obj) {
+		int result = -1;
+		SqlSession session =  sqlMapper.openSession();
+		try {
+			result = session.insert("SQL_DROP_CurSeccion",obj);
+			session.commit();			
+		} catch (Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		} finally{
+			session.close();
+		}
+		return result;
 	}
 
 	@Override
@@ -68,6 +99,46 @@ public class MySqlSeccionDAO implements SeccionDAO {
 			e.printStackTrace();
 		}
 		return data;
+	}
+
+	@Override
+	public SeccionDTO buscarSeccion2(SeccionDTO obj) {
+		SeccionDTO data=null;
+		SqlSession sesion=sqlMapper.openSession();
+		try {
+			data=(SeccionDTO) sesion.selectOne("SQL_Found_Seccion_II",obj);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return data;
+	}
+
+	@Override
+	public DetalleCurSeccionDTO buscarSeccion3(DetalleCurSeccionDTO obj) {
+		DetalleCurSeccionDTO data=null;
+		SqlSession sesion=sqlMapper.openSession();
+		try {
+			data=(DetalleCurSeccionDTO) sesion.selectOne("SQL_Found_Seccion_III",obj);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return data;
+	}
+
+	@Override
+	public int registrarDetalle(DetalleCurSeccionDTO obj) {
+		int result = -1;
+		SqlSession session =  sqlMapper.openSession();
+		try {
+			result = session.insert("SQL_REG_Deta_Seccion",obj);
+			session.commit();			
+		} catch (Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		} finally{
+			session.close();
+		}
+		return result;
 	}
 
 }
