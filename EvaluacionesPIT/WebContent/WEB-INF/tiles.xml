@@ -44,6 +44,9 @@
 	<definition name="m_curso" extends="t_plantillaBaseConMenu">
 		<put-attribute name="central" value="/pages/m_cursos.jsp" />
 	</definition>
+	<definition name="m_seccion" extends="t_plantillaBaseConMenu">
+		<put-attribute name="central" value="/pages/m_seccion.jsp" />
+	</definition>
 	<definition name="t_examen" extends="t_plantillaBaseConMenu">
 		<put-attribute name="central" value="/pages/t_examen.jsp" />
 	</definition>

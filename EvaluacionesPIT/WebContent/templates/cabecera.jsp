@@ -74,7 +74,7 @@
 	<table id="tableAvatar">
 		<tr>
 			<td>
-				<div class="userAvatar" style="background-image: url('${pageContext.request.contextPath}/images/${sessionScope.keyUsuario.urlFoto}');"></div>
+				<div class="userAvatar" style="background-image: url('${pageContext.request.contextPath}/${sessionScope.keyUsuario.urlFoto}');"></div>
 			</td>
 			<td>
 				<div class="dropdown">					
@@ -83,9 +83,10 @@
 				    	<span class="caret"></span>
 				    </button>
 				    <div class="dropdown-content">				    	
-				    	<a href=""><img src="${pageContext.request.contextPath}/images/cibertec/tuerca-icon.png" width="20" height="20" />Configuración</a>
-				    	<a href="${pageContext.request.contextPath}/CerrarSesion">
-							<img src="${pageContext.request.contextPath}/images/cibertec/exit.png" width="20" height="20" />Salir</a>
+				    	<a href="" style="color:black;">
+				    		<img src="${pageContext.request.contextPath}/images/cibertec/tuerca-icon.png" width="30" height="20" style="padding-right: 10px;" />Configuración</a>
+				    	<a href="${pageContext.request.contextPath}/CerrarSesion" style="color:black;">
+							<img src="${pageContext.request.contextPath}/images/cibertec/exit.png" width="30" height="20" style="padding-right: 10px;"/>Salir</a>
 					</div>
 				</div>				
 			</td>

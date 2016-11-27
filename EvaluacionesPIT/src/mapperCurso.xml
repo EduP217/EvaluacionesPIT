@@ -18,9 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    inner join ciclo ci on c.idciclo = ci.idciclo
         inner join detallecursoseccion ds on c.idcurso = ds.idcurso
 		inner join seccion s on ds.idseccion = s.idseccion
-        inner join detalleseccionalumno dsa on ds.idseccion = dsa.idseccion
-        inner join usuario u on dsa.idusuario = u.idusuario        
-        where u.idusuario = #{idusuario}
+        where ds.idusuario = #{codigo} and ds.idestado = 1
         order by c.idciclo ASC;
 	</select>
 	<select id="SQL_Carrera" resultType="CarreraDTOIbatis">
@@ -73,6 +71,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    inner join ciclo ci on c.idciclo = ci.idciclo
 	    where c.idcarrera = #{codcarrera} and c.idciclo = #{codciclo} and c.nombre = #{nombre};
 	</select>
+	<select id="SQL_FOUND_Cursos_II" parameterType="int" resultType="CursoDTOIbatis">
+		select 	
+			c.idcurso as codigo,
+	        c.idcarrera as codcarrera,
+	        ca.nombre as carrera,
+	        c.idciclo as codciclo,
+	        ci.nomciclo as ciclo,
+			c.nombre as nombre      
+		from curso c
+	    inner join carrera ca on c.idcarrera = ca.idcarrera
+	    inner join ciclo ci on c.idciclo = ci.idciclo
+	    where c.idcurso = #{codigo};
+	</select>
 	<insert id="SQL_REG_Curso" parameterType="CursoDTOIbatis">
 		insert into curso values(0,#{codcarrera},#{codciclo},#{nombre})
 	</insert>  
@@ -80,7 +91,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update curso set idcarrera = #{codcarrera}, idciclo = #{codciclo}, nombre = #{nombre}
 		where idcurso = #{codigo}
 	</insert>
-	<insert id="SQL_DROP_Curso" parameterType="CursoDTOIbatis">
+	<insert id="SQL_DROP_Curso" parameterType="int">
 		delete from curso where idcurso = #{codigo}
 	</insert>
 </mapper>

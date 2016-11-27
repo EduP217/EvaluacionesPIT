@@ -2,6 +2,7 @@ package dao;
 
 import interfaces.CursoDAO;
 import interfaces.PersonaDAO;
+import interfaces.SeccionDAO;
 import interfaces.UsuarioDAO;
 
 public class MySqlDAOFactory extends DAOFactory {
@@ -19,6 +20,11 @@ public class MySqlDAOFactory extends DAOFactory {
 	@Override
 	public PersonaDAO getPersonaDAO() {
 		return new MySqlPersonaDAO();
+	}
+
+	@Override
+	public SeccionDAO getSeccionDAO() {
+		return new MySqlSeccionDAO();
 	}	
 
 }

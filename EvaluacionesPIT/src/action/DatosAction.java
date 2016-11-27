@@ -35,7 +35,7 @@ public class DatosAction extends ActionSupport implements ServletRequestAware{
 		UsuarioDTO usu = new LoginService().buscarUsuario(objUsuario.getUsuario());
 		usu.setUrlFoto(url);
 		new LoginService().modificarUsuario(usu);
-		String destPath = servletRequest.getSession().getServletContext().getRealPath("/")+"images/";
+		String destPath = servletRequest.getSession().getServletContext().getRealPath("/");
 		File destFile = new File(destPath,url);
 		FileUtils.copyFile(f, destFile);
 		System.out.println(destPath+url);

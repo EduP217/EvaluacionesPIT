@@ -29,8 +29,8 @@ public class CursoService {
 	public List<CursoDTO> listarCurso() {
 		return dao.listarCurso();
 	}
-	public CursoDTO buscarCurso(CursoDTO beanCurso) {
-		return dao.buscarCurso(beanCurso);
+	public CursoDTO buscarCurso(CursoDTO beanCurso, int condicion) {
+		return dao.buscarCurso(beanCurso,condicion);
 	}
 	public int registrarCurso(CursoDTO obj) {
 		return dao.registrarCurso(obj);
@@ -38,7 +38,7 @@ public class CursoService {
 	public int modificarCurso(CursoDTO obj) {
 		return dao.modificarCurso(obj);
 	}
-	public int eliminarCurso(CursoDTO obj) {
-		return dao.eliminarCurso(obj);
+	public int eliminarCurso(int codigo) {
+		return dao.eliminarCurso(codigo);
 	}
 }

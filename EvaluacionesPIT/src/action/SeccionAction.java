@@ -11,29 +11,37 @@ import com.opensymphony.xwork2.ActionSupport;
 import beans.CarreraDTO;
 import beans.CicloDTO;
 import beans.CursoDTO;
+import beans.SeccionDTO;
 import beans.UsuarioDTO;
 import services.CursoService;
 import services.LoginService;
 import services.PersonaService;
+import services.SeccionService;
 
 @ParentPackage("pit")
-public class CursosAction extends ActionSupport{
-	private List<CursoDTO> lstMantCurso;
-	private List<CarreraDTO> lstMantCarrera;
-	private List<CicloDTO> lstMantCiclo;
+public class SeccionAction extends ActionSupport{
+	private List<SeccionDTO> lstSeccion;
+	private List<CursoDTO> lstCursoSec;
 	
 	private String mensaje;
 	private String mensajeError;
-	private int codigo,codcarrera,codciclo;
+	private int codigo,codcurso;
 	private String nombre;
 	
-	@Action(value="/m_curso",results={
-			@Result(name="ok",type="tiles",location="m_curso")
+	@Action(value="/m_seccion",results={
+			@Result(name="ok",type="tiles",location="m_seccion")
 	})
-	public String listarCursos(){
-		lstMantCurso = new CursoService().listarCurso();
-		lstMantCiclo = new CursoService().listarCiclo();
-		lstMantCarrera = new CursoService().listarCarrera();
+	public String listarSecciones(){
+		lstSeccion = new SeccionService().listarSecciones();
+		return "ok";
+	}
+	
+	@Action(value="/listarCursoSec",results={
+			@Result(name="ok",type="tiles",location="m_seccion")
+	})
+	public String listarCursoSec(){
+		lstSeccion = new SeccionService().listarSecciones();
+		lstCursoSec = new SeccionService().listarCursoxSeccion(codigo);
 		return "ok";
 	}
 	
@@ -42,7 +50,7 @@ public class CursosAction extends ActionSupport{
 			@Result(name="error",type="tiles",location="m_curso")
 	})
 	public String registrarCurso(){
-		CursoDTO bean = new CursoDTO();
+		/*CursoDTO bean = new CursoDTO();
 		bean.setCodcarrera(codcarrera);
 		bean.setCodciclo(codciclo);
 		bean.setNombre(nombre);
@@ -54,7 +62,7 @@ public class CursosAction extends ActionSupport{
 		}
 		new CursoService().registrarCurso(bean);
 		mensaje = "El curso "+ bean.getNombre() +" se registró correctamente";
-		listarCursos();
+		listarCursos();*/
 		return "grabo";
 	}
 	
@@ -63,7 +71,7 @@ public class CursosAction extends ActionSupport{
 			@Result(name="error",type="tiles",location="m_curso")
 	})
 	public String updateCurso(){
-		CursoDTO objCur = new CursoService().buscarCurso(new CursoDTO(),codigo);
+		/*CursoDTO objCur = new CursoService().buscarCurso(new CursoDTO(),codigo);
 		if(objCur==null){
 			mensajeError = "Error al encontrar el curso "+ codigo;
 			listarCursos();
@@ -80,7 +88,7 @@ public class CursosAction extends ActionSupport{
 		}
 		new CursoService().modificarCurso(objCur);
 		mensaje = "Se actualizaron los datos del curso correctamente. ";
-		listarCursos();
+		listarCursos();*/
 		return "grabo";
 	}
 	
@@ -89,57 +97,23 @@ public class CursosAction extends ActionSupport{
 			@Result(name="error",type="tiles",location="m_curso")
 	})
 	public String deleteCurso(){
-		int result = new CursoService().eliminarCurso(codigo);
+		/*int result = new CursoService().eliminarCurso(codigo);
 		if(result!=1){
 			mensajeError = "Error al encontrar el curso";
 			listarCursos();
 			return "error";
 		}
 		mensaje = "El curso se eliminó correctamente";	
-		listarCursos();
+		listarCursos();*/
 		return "grabo";
 	}
 	
 	
-	public List<CursoDTO> getLstMantCurso() {
-		return lstMantCurso;
-	}
-	public void setLstMantCurso(List<CursoDTO> lstMantCurso) {
-		this.lstMantCurso = lstMantCurso;
-	}
 	public int getCodigo() {
 		return codigo;
 	}
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
-	}
-	public int getCodcarrera() {
-		return codcarrera;
-	}
-	public void setCodcarrera(int codcarrera) {
-		this.codcarrera = codcarrera;
-	}
-	public int getCodciclo() {
-		return codciclo;
-	}
-	public void setCodciclo(int codciclo) {
-		this.codciclo = codciclo;
-	}
-
-	public List<CarreraDTO> getLstMantCarrera() {
-		return lstMantCarrera;
-	}
-
-	public void setLstMantCarrera(List<CarreraDTO> lstMantCarrera) {
-		this.lstMantCarrera = lstMantCarrera;
-	}
-
-	public List<CicloDTO> getLstMantCiclo() {
-		return lstMantCiclo;
-	}
-
-	public void setLstMantCiclo(List<CicloDTO> lstMantCiclo) {
-		this.lstMantCiclo = lstMantCiclo;
 	}
 
 	public String getMensaje() {
@@ -164,6 +138,30 @@ public class CursosAction extends ActionSupport{
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public List<SeccionDTO> getLstSeccion() {
+		return lstSeccion;
+	}
+
+	public void setLstSeccion(List<SeccionDTO> lstSeccion) {
+		this.lstSeccion = lstSeccion;
+	}
+
+	public List<CursoDTO> getLstCursoSec() {
+		return lstCursoSec;
+	}
+
+	public void setLstCursoSec(List<CursoDTO> lstCursoSec) {
+		this.lstCursoSec = lstCursoSec;
+	}
+
+	public int getCodcurso() {
+		return codcurso;
+	}
+
+	public void setCodcurso(int codcurso) {
+		this.codcurso = codcurso;
 	}
 	
 }

@@ -20,6 +20,7 @@
 <link href="${pageContext.request.contextPath}/css/bootstrap-datepicker.min.css" rel="stylesheet" />
 <!-- Font Icons -->
 <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah"	rel="stylesheet">
+<!--link href="https://fonts.googleapis.com/css?family=Delius+Unicase" rel="stylesheet"-->
 <!-- animate css -->
 <link href="${pageContext.request.contextPath}/css/animate.css"	rel="stylesheet" />
 <!-- Waves-effect -->
@@ -33,7 +34,7 @@
 	height:auto;
 	margin:0 auto;
 	margin-top:10px;
-	background-color:hsla(360, 100%, 100%, 0.31);
+	background-color:hsla(360, 100%, 100%, 0.41);
 }
 header{
 	background:white;

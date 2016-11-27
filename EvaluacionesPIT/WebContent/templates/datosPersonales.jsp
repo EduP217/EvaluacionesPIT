@@ -29,6 +29,9 @@
 $(document).ready( function() {
 	$("#avatar").fileinput({
 	    browseClass: "btn btn-primary",
+	    allowedFileExtensions: ["jpg", "png"],
+	    maxImageWidth: 1000,
+	    maxImageHeight: 1000,
 	    showCaption: false,
 	    showClose: false,
 	    showDelete: false,
@@ -39,8 +42,7 @@ $(document).ready( function() {
 	    browseIcon: '<i><img src="${pageContext.request.contextPath}/img/folder-open-solid.png" width="18px"/></i>',
 	    removeIcon: '<i><img src="${pageContext.request.contextPath}/img/trash_icon.png" width="20px"/></i>',
 	    uploadIcon: '<i><img src="${pageContext.request.contextPath}/img/cloud_upload.png" width="20px"/></i>',
-	    defaultPreviewContent: '<img src="${pageContext.request.contextPath}/images/<s:property value="#session.keyUsuario.urlFoto"/>" style="width:100%"/>',
-	    allowedFileExtensions: ["jpg", "png", "gif"]
+	    defaultPreviewContent: '<img src="${pageContext.request.contextPath}/<s:property value="#session.keyUsuario.urlFoto" />" style="width:100%" />'
 	});
 });
 </script>
@@ -52,10 +54,10 @@ $(document).ready( function() {
 				<input name="objUsuario.codigo" value="<s:property value="#session.keyUsuario.codigo" />" hidden="true" />
 				<input name="objUsuario.usuario" value="<s:property value="#session.keyUsuario.usuario" />" hidden="true" />
 				<div>
-					<input type="file" name="objUsuario.Foto" id="avatar">
+					<input type="file" name="objUsuario.Foto" id="avatar" accept="image/*"/>
 				</div>
 				<!--div class="userAvatarMain" 
-					 style="background-image: url('${pageContext.request.contextPath}/images/<s:property value="#session.keyUsuario.urlFoto"/>');"></div-->		
+					 style="background-image: url('${pageContext.request.contextPath}/<s:property value="#session.keyUsuario.urlFoto"/>');"></div-->		
 			</s:form>
 			</td>
 		</tr>

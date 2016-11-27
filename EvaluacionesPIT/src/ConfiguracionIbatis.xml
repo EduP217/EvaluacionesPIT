@@ -10,6 +10,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="CursoDTOIbatis" type="beans.CursoDTO"/>
 		<typeAlias alias="CarreraDTOIbatis" type="beans.CarreraDTO"/>
 		<typeAlias alias="CicloDTOIbatis" type="beans.CicloDTO"/>
+		<typeAlias alias="SeccionDTOIbatis" type="beans.SeccionDTO"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -26,6 +27,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mapperLogin.xml"/>
 		<mapper resource="mapperCurso.xml"/>
 		<mapper resource="mapperPersona.xml"/>
+		<mapper resource="mapperSeccion.xml"/>
 	</mappers>
 </configuration>
 

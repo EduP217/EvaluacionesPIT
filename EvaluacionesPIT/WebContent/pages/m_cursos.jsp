@@ -5,15 +5,18 @@
 <style>
 .tableta{	
 	font-family: 'Gloria Hallelujah', cursive;	
+	/*font-family: 'Delius Unicase', cursive;*/
 	font-size:18px;
 	text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;
 }
 .mod-tableta{
-	font-family: 'Gloria Hallelujah', cursive;	
+	font-family: 'Gloria Hallelujah', cursive;
+	/*font-family: 'Delius Unicase', cursive;*/
 	font-size:18px;
 }
 h2{
 	font-family: 'Gloria Hallelujah', cursive;
+	/*font-family: 'Delius Unicase', cursive;*/
 	text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;
 }
 .table.nonborder th,.table.nonborder td{
@@ -49,7 +52,7 @@ $(document).ready( function() {
                         message: 'Este campo es OBLIGATORIO'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z]+$/,
+                        regexp: /^[^0-9]+$/,
                         message: 'Este campo solo puede contener letras'
                     }
                 }
@@ -71,7 +74,7 @@ $(document).ready( function() {
                         message: 'Este campo es OBLIGATORIO'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z]+$/,
+                        regexp: /^[^0-9]+$/,
                         message: 'Este campo solo puede contener letras'
                     }
                 }
@@ -199,13 +202,13 @@ $(document).ready( function() {
 			</div>
 			<div class="modal-body">
 				<s:form id="idModificarCurso" method="post" action="updCurso">
-					<input name="Mancurso.codigo" id="codCurso" hidden="true" />
+					<input name="codigo" id="codCurso" hidden="true" />
 					<table class="table nonborder mod-tableta">
 						<tr>
 							<td>Carrera</td>
 							<td><div class="form-group">
 									<s:select 
-									name="Mancurso.codcarrera"
+									name="codcarrera"
 									id="idcarrera"
 									list="lstMantCarrera"
 									listKey="codigo"
@@ -217,20 +220,19 @@ $(document).ready( function() {
 							<td>Ciclo</td>
 							<td><div class="form-group">
 									<s:select 
-									name="Mancurso.codciclo"
+									name="codciclo"
 									id="idciclo"
 									list="lstMantCiclo"
 									listKey="codigo"
 									listValue="datos"
-									headerKey="-1"
-									headerValue="[ Seleccionar ]" cssClass="form-control"/>
+									headerKey="-1" cssClass="form-control"/>
 								</div>
 							</td>
 						</tr>
 						<tr>
 							<td>Curso</td>
 							<td><div class="form-group">
-									<s:textfield name="Mancurso.nombre" cssClass="form-control datos" id="idnombre" />
+									<s:textfield name="nombre" cssClass="form-control datos" id="idnombre" />
 								</div>
 							</td>
 						</tr>						

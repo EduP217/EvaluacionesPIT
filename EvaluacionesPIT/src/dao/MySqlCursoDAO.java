@@ -89,11 +89,15 @@ public class MySqlCursoDAO implements CursoDAO {
 	}
 
 	@Override
-	public CursoDTO buscarCurso(CursoDTO beanCurso) {
+	public CursoDTO buscarCurso(CursoDTO beanCurso, int condicion) {
 		CursoDTO bean=null;
 		SqlSession sesion=sqlMapper.openSession();
 		try {
-			bean=(CursoDTO) sesion.selectOne("SQL_FOUND_Cursos",beanCurso);
+			if(condicion<1){
+				bean=(CursoDTO) sesion.selectOne("SQL_FOUND_Cursos",beanCurso);
+			} else {
+				bean=(CursoDTO) sesion.selectOne("SQL_FOUND_Cursos_II",condicion);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -133,11 +137,11 @@ public class MySqlCursoDAO implements CursoDAO {
 	}
 
 	@Override
-	public int eliminarCurso(CursoDTO obj) {
+	public int eliminarCurso(int codigo) {
 		int result = -1;
 		SqlSession session =  sqlMapper.openSession();
 		try {
-			result = session.insert("SQL_DROP_Curso", obj);
+			result = session.insert("SQL_DROP_Curso", codigo);
 			session.commit();
 		} catch (Exception e) {
 			session.rollback();
