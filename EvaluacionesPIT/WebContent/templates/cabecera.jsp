@@ -34,14 +34,29 @@
 		border-color: white;
 		background-size: 100% auto;
 	}
+	.chip {
+	    display: inline-block;
+	    padding: 0 25px;
+	    height: 50px;
+	    line-height: 50px;
+	    border-radius: 25px;
+	    background-color: #f1f1f1;
+	}
+	#foto {
+	    float: left;
+	    margin: -11px 10px 0 -30px;
+	    height: 63px;
+	    width: 63px;
+	    border-radius: 50%;
+	}
 	
 	.dropbtn {
 	    text-align: center;
 	    text-decoration: none;
 	    height: 50px;	    
 		text-transform: capitalize;
+		background-color: transparent !important;
 	}
-	
 	.dropdown-content {
 	    display: none;
 	    position: absolute;
@@ -74,21 +89,19 @@
 	<table id="tableAvatar">
 		<tr>
 			<td>
-				<div class="userAvatar" style="background-image: url('${sessionScope.keyUsuario.urlFoto}');"></div>
-			</td>
-			<td>
-				<div class="dropdown">					
+				<div class="dropdown chip">
+					<img src="${sessionScope.keyUsuario.urlFoto}" id="foto">
 					<button class="btn dropbtn" type="button" id="menu1" data-toggle="dropdown">					    
 						<s:property value="#session.keyDatosUsuario.apellido+' '+#session.keyDatosUsuario.nombre" />
-				    	<span class="caret"></span>
-				    </button>
+			    		<span class="caret"></span>
+			    	</button>
 				    <div class="dropdown-content">				    	
 				    	<a href="" style="color:black;">
 				    		<img src="${pageContext.request.contextPath}/images/cibertec/tuerca-icon.png" width="30" height="20" style="padding-right: 10px;" />Configuración</a>
 				    	<a href="${pageContext.request.contextPath}/CerrarSesion" style="color:black;">
 							<img src="${pageContext.request.contextPath}/images/cibertec/exit.png" width="30" height="20" style="padding-right: 10px;"/>Salir</a>
 					</div>
-				</div>				
+				</div>								
 			</td>
 		</tr>
 	</table>

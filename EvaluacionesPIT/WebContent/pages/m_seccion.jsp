@@ -6,7 +6,7 @@
 	font-family: 'Gloria Hallelujah', cursive;	
 	/*font-family: 'Delius Unicase', cursive;*/
 	font-size:18px;
-	text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;
+	/*text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;*/
 }
 .mod-tableta{
 	font-family: 'Gloria Hallelujah', cursive;
@@ -16,7 +16,7 @@
 h2{
 	font-family: 'Gloria Hallelujah', cursive;
 	/*font-family: 'Delius Unicase', cursive;*/	
-	text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;
+	/*text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;*/
 }
 .table.nonborder th,.table.nonborder td{
 	border: 0px !important;

@@ -6,7 +6,7 @@
 .tableta{	
 	font-family: 'Gloria Hallelujah', cursive;	
 	font-size:18px;
-	text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;
+	/*text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;*/
 }
 .mod-tableta{
 	font-family: 'Gloria Hallelujah', cursive;	
@@ -14,7 +14,7 @@
 }
 h2{
 	font-family: 'Gloria Hallelujah', cursive;
-	text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;
+	/*text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;*/
 }
 .table.nonborder th,.table.nonborder td{
 	border: 0px !important;
@@ -282,18 +282,18 @@ $(document).ready( function() {
 			<s:set var="pag_run">${i}</s:set>
 			<s:if test="#pag_run==1">
 				<s:if test="#pag_sel > 1">
-					<li><a href="Pag?numpagina=${i}">«</a></li>
+					<li><a href="PagAlm?numpagina=${i}">«</a></li>
 				</s:if>
 			</s:if>
 			<s:if test="#pag_run==#pag_sel">
-  				<li><a class="active" href="Pag?numpagina=${i}">${i}</a></li>				
+  				<li><a class="active" href="PagAlm?numpagina=${i}">${i}</a></li>				
 			</s:if>
 			<s:else>
-  				<li><a href="Pag?numpagina=${i}">${i}</a></li>		
+  				<li><a href="PagAlm?numpagina=${i}">${i}</a></li>		
 			</s:else>
 			<s:if test="#pag_run==#pag_val">
 				<s:if test="#pag_sel < #pag_val">
-  					<li><a href="Pag?numpagina=${i}">»</a></li>
+  					<li><a href="PagAlm?numpagina=${i}">»</a></li>
   				</s:if>
 			</s:if>
 		</s:iterator>

@@ -10,7 +10,7 @@
 	text-transform: capitalize;
 }
 .texto{	
-	text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;
+	/*text-shadow: -2px -2px 1px #fff, 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff;*/
 }
 /*.userAvatarMain {
 	/* cambia estos dos valores para definir el tamaño de tu círculo 

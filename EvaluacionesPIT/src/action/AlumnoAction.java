@@ -27,7 +27,7 @@ public class AlumnoAction extends ActionSupport{
 	private String mensaje;
 	private String mensajeError;
 	private String apellido,nombre,dni,fechanac,telefono,celular,estado;
-	private int totalpag,cantpaginas,numpagina,pagselect;
+	private int cantpaginas,numpagina,pagselect;
 	
 	@Action(value="/m_alumno",results={
 			@Result(name="ok",type="tiles",location="m_alumno")
@@ -41,7 +41,7 @@ public class AlumnoAction extends ActionSupport{
 		cantpaginas = (int) Math.ceil(lista.size()/5)+1;
 		return "ok";
 	}
-	@Action(value="/Pag",results={
+	@Action(value="/PagAlm",results={
 			@Result(name="ok",type="tiles",location="m_alumno")
 	})
 	public String Pag(){

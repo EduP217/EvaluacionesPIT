@@ -34,7 +34,7 @@
 	height:auto;
 	margin:0 auto;
 	margin-top:10px;
-	background-color:hsla(360, 100%, 100%, 0.41);
+	background-color:hsla(360, 100%, 100%, 0.8);
 }
 header{
 	background:white;
