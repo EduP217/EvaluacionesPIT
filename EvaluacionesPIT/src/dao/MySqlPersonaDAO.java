@@ -3,6 +3,7 @@ package dao;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -24,24 +25,50 @@ public class MySqlPersonaDAO implements PersonaDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
-	public List<PersonaDTO> listarPersonas(int perfil) {
+	public List<PersonaDTO> listarP(int perfil) {
 		List<PersonaDTO> data=null;
 		SqlSession sesion=sqlMapper.openSession();
 		try {
 			switch (perfil) {
 			case 1:
-				data=sesion.selectList("SQL_Admin",perfil);
+				data=sesion.selectList("SQL_AdminI",perfil);
 				break;
 			case 2:
-				data=sesion.selectList("SQL_Alumnos",perfil);
+				data=sesion.selectList("SQL_AlumnosI",perfil);
 				break;
 			case 3:
-				data=sesion.selectList("SQL_Docente",perfil);
+				data=sesion.selectList("SQL_DocenteI",perfil);
 				break;
 			case 4:
-				data=sesion.selectList("SQL_Docente",perfil);
+				data=sesion.selectList("SQL_DocenteI",perfil);
+				break;				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return data;
+	}
+	
+	@Override
+	public List<PersonaDTO> listarPersonas(Map<String,Object> numListar) {
+		List<PersonaDTO> data=null;
+		SqlSession sesion=sqlMapper.openSession();
+		int perfil = (int) numListar.get("perfil");
+		try {
+			switch (perfil) {
+			case 1:
+				data=sesion.selectList("SQL_Admin",numListar);
+				break;
+			case 2:
+				data=sesion.selectList("SQL_Alumnos",numListar);
+				break;
+			case 3:
+				data=sesion.selectList("SQL_Docente",numListar);
+				break;
+			case 4:
+				data=sesion.selectList("SQL_Docente",numListar);
 				break;				
 			}
 		} catch (Exception e) {

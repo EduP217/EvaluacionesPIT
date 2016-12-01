@@ -31,7 +31,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INNER JOIN usuario us on d.idusuario = us.idusuario
 		WHERE us.idperfil = #{perfil};
 	</select>
-	<select id="SQL_Alumnos" parameterType="int" resultType="PersonaDTOIbatis">
+	<select id="SQL_Alumnos" parameterType="map" resultType="PersonaDTOIbatis">
+		SELECT 	es.idestudiante as codigo,
+				es.dni as dni,
+				es.nombre as nombre,
+				es.apellido as apellido,
+				es.fechanac as fechanac,
+				es.telefono as telefono,
+				es.celular as celular,
+				es.idusuario as idusuario,
+        		us.estado as estado
+		FROM 	estudiante es
+		INNER JOIN usuario us on es.idusuario = us.idusuario
+		WHERE us.idperfil = #{perfil}		
+		ORDER BY es.apellido
+		ASC LIMIT #{numpag},5;
+	</select>
+	<select id="SQL_AlumnosI" parameterType="int" resultType="PersonaDTOIbatis">
 		SELECT 	es.idestudiante as codigo,
 				es.dni as dni,
 				es.nombre as nombre,

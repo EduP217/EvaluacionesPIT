@@ -1,6 +1,7 @@
 package services;
 
 import java.util.List;
+import java.util.Map;
 
 import beans.PersonaDTO;
 import dao.DAOFactory;
@@ -12,8 +13,11 @@ public class PersonaService {
 	DAOFactory fabrica = DAOFactory.getDAOFactory(Constantes.ORIGEN_DATOS);
 	PersonaDAO dao = fabrica.getPersonaDAO();
 	
-	public List<PersonaDTO> listarPersonas(int perfil) {
-		return dao.listarPersonas(perfil);
+	public List<PersonaDTO> listarP(int perfil) {
+		return dao.listarP(perfil);
+	}	
+	public List<PersonaDTO> listarPersonas(Map<String, Object> numListar) {
+		return dao.listarPersonas(numListar);
 	}
 	public int registrarPersona(PersonaDTO obj,int perfil) {
 		return dao.registrarPersona(obj,perfil);

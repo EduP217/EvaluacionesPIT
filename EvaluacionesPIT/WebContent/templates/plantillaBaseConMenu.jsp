@@ -63,9 +63,9 @@ footer{
 	margin-top:-25px;
 }
 #idCentralConMenu{
-	width: 110%;
+	width: 850px;
 	height: 700px;
-	margin-left: -50px;
+	margin-left: -40px;
 }
 
 </STYLE>

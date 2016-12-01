@@ -19,6 +19,30 @@ h2{
 .table.nonborder th,.table.nonborder td{
 	border: 0px !important;
 }
+
+ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+ul.pagination li {display: inline;}
+
+ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+ul.pagination li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+
 </style>
 <script type="text/javascript">
 function llenarUpdate(cod,ape,nom,dni,fec,tlf,cel,est){
@@ -222,13 +246,11 @@ $(document).ready( function() {
 									'<s:property value="celular" />',
 									'<s:property value="estado" />'
 									)">
-					<span><img alt="" src="${pageContext.request.contextPath}/img/iconos/modificar4.png" width="35px" /></span>				
+					<span><img src="${pageContext.request.contextPath}/img/iconos/modificar4.png" width="35px" /></span>				
 				</a>
 				<a 	data-toggle="modal" href="#modal_matricula" 
-					onclick="llenarMatricula(
-									'<s:property value="codigo"/>',
-									)">
-					<span><img alt="" src="${pageContext.request.contextPath}/img/iconos/detalles2.png" width="35px" /></span>				
+					onclick="llenarMatricula('<s:property value="codigo"/>')">
+					<span><img src="${pageContext.request.contextPath}/img/iconos/detalles2.png" width="35px" /></span>				
 				</a>
 				<a 	data-toggle="modal" href="#modal_eliminar"
 					onclick="llenarEliminar(
@@ -241,16 +263,42 @@ $(document).ready( function() {
 									'<s:property value="celular" />',
 									'<s:property value="estado" />'
 									)">
-					<span><img alt="" src="${pageContext.request.contextPath}/img/iconos/eliminar.png" width="30px" /></span>
+					<span><img src="${pageContext.request.contextPath}/img/iconos/eliminar.png" width="30px" /></span>
 				</a>
 			</td>			
 		</tr>
 	</s:iterator>
-		<tr>
-			<td colspan="8"></td>
-		</tr>
 	</tbody>
 </table>
+
+<ul class="pagination">
+	<s:set var="pag_val"><s:property value="cantpaginas" /></s:set>
+	<s:set var="pag_sel"><s:property value="pagselect" /></s:set>
+	<s:if test="#pag_val == 1">
+		<li><a class="active" href="#"><s:property value="cantpaginas"/></a></li>
+	</s:if>
+	<s:else>
+		<s:iterator var="i" begin="1" end="#pag_val">
+			<s:set var="pag_run">${i}</s:set>
+			<s:if test="#pag_run==1">
+				<s:if test="#pag_sel > 1">
+					<li><a href="Pag?numpagina=${i}">«</a></li>
+				</s:if>
+			</s:if>
+			<s:if test="#pag_run==#pag_sel">
+  				<li><a class="active" href="Pag?numpagina=${i}">${i}</a></li>				
+			</s:if>
+			<s:else>
+  				<li><a href="Pag?numpagina=${i}">${i}</a></li>		
+			</s:else>
+			<s:if test="#pag_run==#pag_val">
+				<s:if test="#pag_sel < #pag_val">
+  					<li><a href="Pag?numpagina=${i}">»</a></li>
+  				</s:if>
+			</s:if>
+		</s:iterator>
+	</s:else>
+</ul>		
 
 <div id="modal_crear" class="modal fade" role="dialog">
 	<div class="modal-dialog">
@@ -407,7 +455,7 @@ $(document).ready( function() {
 	</div>
 </div>
 
-<div id="modal_modificar" class="modal fade" role="dialog">
+<div id="modal_matricula" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 		<!-- Modal content-->
 		<div class="modal-content">
@@ -417,7 +465,7 @@ $(document).ready( function() {
 			</div>
 			<div class="modal-body">
 				<s:form action="">
-					<input name="codigo" id="codUsuario" hidden="true" />
+					<input name="codigo" id="codAlumno" hidden="true" />
 					<table class="table nonborder mod-tableta">
 						<tr>
 							<td>Ciclo:</td>

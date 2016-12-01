@@ -74,7 +74,7 @@
 	<table id="tableAvatar">
 		<tr>
 			<td>
-				<div class="userAvatar" style="background-image: url('${pageContext.request.contextPath}/${sessionScope.keyUsuario.urlFoto}');"></div>
+				<div class="userAvatar" style="background-image: url('${sessionScope.keyUsuario.urlFoto}');"></div>
 			</td>
 			<td>
 				<div class="dropdown">					

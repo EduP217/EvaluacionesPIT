@@ -1,5 +1,6 @@
 package action;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,18 +19,37 @@ import services.PersonaService;
 @ParentPackage("pit")
 public class AlumnoAction extends ActionSupport{
 
+	Map<String,Object> numListar = new HashMap<String,Object>();
+	private List<PersonaDTO> lista = new PersonaService().listarP(2);
 	private List<PersonaDTO> lstPersona = null;
 	private PersonaDTO persona;
 	private int codigo;
 	private String mensaje;
 	private String mensajeError;
 	private String apellido,nombre,dni,fechanac,telefono,celular,estado;
+	private int totalpag,cantpaginas,numpagina,pagselect;
 	
 	@Action(value="/m_alumno",results={
 			@Result(name="ok",type="tiles",location="m_alumno")
 	})
 	public String listarAlumnos(){
-		lstPersona = new PersonaService().listarPersonas(2);
+		numpagina = 0;
+		pagselect = 1;
+		numListar.put("perfil", 2);
+		numListar.put("numpag", numpagina);
+		lstPersona = new PersonaService().listarPersonas(numListar);
+		cantpaginas = (int) Math.ceil(lista.size()/5)+1;
+		return "ok";
+	}
+	@Action(value="/Pag",results={
+			@Result(name="ok",type="tiles",location="m_alumno")
+	})
+	public String Pag(){
+		pagselect = numpagina;
+		numListar.put("perfil", 2);
+		numListar.put("numpag", (numpagina-1)*5);
+		lstPersona = new PersonaService().listarPersonas(numListar);
+		cantpaginas = (int) Math.ceil(lista.size()/5)+1;
 		return "ok";
 	}
 	
@@ -201,5 +221,26 @@ public class AlumnoAction extends ActionSupport{
 		this.mensajeError = mensajeError;
 	}
 
+	public int getCantpaginas() {
+		return cantpaginas;
+	}
+
+	public void setCantpaginas(int cantpaginas) {
+		this.cantpaginas = cantpaginas;
+	}
+
+	public int getNumpagina() {
+		return numpagina;
+	}
+
+	public void setNumpagina(int numpagina) {
+		this.numpagina = numpagina;
+	}
+	public int getPagselect() {
+		return pagselect;
+	}
+	public void setPagselect(int pagselect) {
+		this.pagselect = pagselect;
+	}
 	
 }
