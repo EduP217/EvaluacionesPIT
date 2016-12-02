@@ -89,6 +89,18 @@ public class MySqlCursoDAO implements CursoDAO {
 	}
 
 	@Override
+	public List<CursoDTO> listarCursoPaginacion(int numpag) {
+		List<CursoDTO> data=null;
+		SqlSession sesion=sqlMapper.openSession();
+		try {
+			data=sesion.selectList("SQL_Cursos_Pag",numpag);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return data;
+	}
+	
+	@Override
 	public CursoDTO buscarCurso(CursoDTO beanCurso, int condicion) {
 		CursoDTO bean=null;
 		SqlSession sesion=sqlMapper.openSession();
@@ -151,5 +163,6 @@ public class MySqlCursoDAO implements CursoDAO {
 		}
 		return result;
 	}
+
 
 }

@@ -29,6 +29,9 @@ public class CursoService {
 	public List<CursoDTO> listarCurso() {
 		return dao.listarCurso();
 	}
+	public List<CursoDTO> listarCursoPaginacion(int numpag) {
+		return dao.listarCursoPaginacion(numpag);
+	}
 	public CursoDTO buscarCurso(CursoDTO beanCurso, int condicion) {
 		return dao.buscarCurso(beanCurso,condicion);
 	}

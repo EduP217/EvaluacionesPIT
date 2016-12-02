@@ -12,6 +12,7 @@ public interface CursoDAO {
 	public List<CarreraDTO> listarCarrera();
 	public List<CicloDTO> listarCiclo();
 	public List<CursoDTO> listarCurso();
+	public List<CursoDTO> listarCursoPaginacion(int numpag);
 	public List<CursoDTO> listarCursos(int idusuario);	
 	public List<CursoDTO> listarCursoxCiclo(int ciclo);
 	public CursoDTO buscarCurso(CursoDTO beanCurso, int condicion);

@@ -18,6 +18,8 @@ import services.PersonaService;
 
 @ParentPackage("pit")
 public class CursosAction extends ActionSupport{
+	
+	private List<CursoDTO> listaCursos=new CursoService().listarCurso();
 	private List<CursoDTO> lstMantCurso;
 	private List<CarreraDTO> lstMantCarrera;
 	private List<CicloDTO> lstMantCiclo;
@@ -26,14 +28,29 @@ public class CursosAction extends ActionSupport{
 	private String mensajeError;
 	private int codigo,codcarrera,codciclo;
 	private String nombre;
+	private int cantpaginas,numpagina,pagselect;
 	
 	@Action(value="/m_curso",results={
 			@Result(name="ok",type="tiles",location="m_curso")
 	})
 	public String listarCursos(){
-		lstMantCurso = new CursoService().listarCurso();
+		numpagina = 0;
+		pagselect = 1;
+		lstMantCurso = new CursoService().listarCursoPaginacion(numpagina);
 		lstMantCiclo = new CursoService().listarCiclo();
 		lstMantCarrera = new CursoService().listarCarrera();
+		cantpaginas = (int) Math.ceil(listaCursos.size()/5)+1;
+		return "ok";
+	}
+	@Action(value="/pagcurso",results={
+			@Result(name="ok",type="tiles",location="m_curso")
+	})
+	public String pagCursos(){
+		pagselect = numpagina;
+		lstMantCurso = new CursoService().listarCursoPaginacion((numpagina-1)*5);
+		lstMantCiclo = new CursoService().listarCiclo();
+		lstMantCarrera = new CursoService().listarCarrera();
+		cantpaginas = (int) Math.ceil(listaCursos.size()/5)+1;
 		return "ok";
 	}
 	
@@ -164,6 +181,28 @@ public class CursosAction extends ActionSupport{
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public int getCantpaginas() {
+		return cantpaginas;
+	}
+
+	public void setCantpaginas(int cantpaginas) {
+		this.cantpaginas = cantpaginas;
+	}
+
+	public int getNumpagina() {
+		return numpagina;
+	}
+
+	public void setNumpagina(int numpagina) {
+		this.numpagina = numpagina;
+	}
+	public int getPagselect() {
+		return pagselect;
+	}
+	public void setPagselect(int pagselect) {
+		this.pagselect = pagselect;
 	}
 	
 }
