@@ -90,7 +90,7 @@
 		<tr>
 			<td>
 				<div class="dropdown chip">
-					<img src="${sessionScope.keyUsuario.urlFoto}" id="foto">
+					<img src="${pageContext.request.contextPath}/images/${sessionScope.keyUsuario.urlFoto}" id="foto">
 					<button class="btn dropbtn" type="button" id="menu1" data-toggle="dropdown">					    
 						<s:property value="#session.keyDatosUsuario.apellido+' '+#session.keyDatosUsuario.nombre" />
 			    		<span class="caret"></span>

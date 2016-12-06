@@ -42,7 +42,7 @@ $(document).ready( function() {
 	    browseIcon: '<i><img src="${pageContext.request.contextPath}/img/folder-open-solid.png" width="18px"/></i>',
 	    removeIcon: '<i><img src="${pageContext.request.contextPath}/img/trash_icon.png" width="20px"/></i>',
 	    uploadIcon: '<i><img src="${pageContext.request.contextPath}/img/cloud_upload.png" width="20px"/></i>',
-	    defaultPreviewContent: '<img src="<s:property value="#session.keyUsuario.urlFoto" />" style="width:100%" />'
+	    defaultPreviewContent: '<img src="${pageContext.request.contextPath}/images/<s:property value="#session.keyUsuario.urlFoto" />" style="width:100%" />'
 	});
 });
 </script>
