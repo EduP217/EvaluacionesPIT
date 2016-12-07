@@ -141,4 +141,16 @@ public class MySqlSeccionDAO implements SeccionDAO {
 		return result;
 	}
 
+	@Override
+	public List<SeccionDTO> listarSeccion2(int codCiclo) {
+		List<SeccionDTO> data=null;
+		SqlSession sesion=sqlMapper.openSession();
+		try {
+			data=sesion.selectList("SQL_Found_Seccion_IV", codCiclo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return data;
+	}
+
 }

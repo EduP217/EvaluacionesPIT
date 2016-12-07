@@ -1,57 +1,62 @@
 package action;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import beans.CarreraDTO;
 import beans.CicloDTO;
 import beans.CursoDTO;
+import beans.SeccionDTO;
 import services.CursoService;
 import services.PersonaService;
+import services.SeccionService;
 
 @ParentPackage("pit")
 public class ExamenAction extends ActionSupport{
 	
-	private List<CarreraDTO> lstCarrera;
-	private List<CicloDTO> lstCiclo;
-	private List<CursoDTO> lstCurso=null;
+	private List<CarreraDTO> lstCarreraExa;
+	private List<CicloDTO> lstCicloExa;
 	
 	private CursoDTO curso;
 	private CarreraDTO carrera;
 	private CicloDTO ciclo;
-	private int codigo,codcarrera,codciclo;
+	private String[] secciones;
+	private String codigo,codcarrera,codciclo;
+	
+	private Map<String, Object> userdata = new HashMap<String, Object>();
+	private Map<String, Object> sesion = ActionContext.getContext().getSession();
 	
 	@Action(value="/t_examen",results={
 			@Result(name="ok",type="tiles",location="t_examen")
 	})
 	public String cargarRegistro(){
-		lstCarrera = new CursoService().listarCarrera();
-		lstCiclo = new CursoService().listarCiclo();
-		lstCurso = new CursoService().listarCurso();
+		lstCarreraExa = new CursoService().listarCarrera();
+		lstCicloExa = new CursoService().listarCiclo();
+		sesion.put("keylstCurso", new CursoService().listarCurso());
+		sesion.put("selCiclo",-1);
 		return "ok";
 	}
+		
+	@Action(value="/buscCursos",results={
+			@Result(name="ok",type="tiles",location="t_examen")
+	})	
+	public String buscarCursos(){
+		lstCarreraExa = new CursoService().listarCarrera();
+		lstCicloExa = new CursoService().listarCiclo();
+		sesion.put("keylstCurso", new CursoService().listarCursoxCiclo(Integer.parseInt(codciclo)));
+		sesion.put("selCiclo",codciclo);
+		sesion.put("keylstSeccion", new SeccionService().listarSeccion2(Integer.parseInt(codciclo)));		
+		return "ok";
+	}	
 	
-	@Action(value="/listarCursos",results={
-			@Result(name="listar",type="json")
-	})
-	public String listarCursos(){
-		lstCurso = new CursoService().listarCursoxCiclo(codciclo);
-		return "listar";
-	}
-	
-	public List<CarreraDTO> getLstCarrera() {
-		return lstCarrera;
-	}
-
-	public void setLstCarrera(List<CarreraDTO> lstCarrera) {
-		this.lstCarrera = lstCarrera;
-	}
-
 	public CursoDTO getCurso() {
 		return curso;
 	}
@@ -60,27 +65,19 @@ public class ExamenAction extends ActionSupport{
 		this.curso = curso;
 	}
 
-	public int getCodcarrera() {
+	public String getCodcarrera() {
 		return codcarrera;
 	}
 
-	public void setCodcarrera(int codcarrera) {
+	public void setCodcarrera(String codcarrera) {
 		this.codcarrera = codcarrera;
 	}
-
-	public List<CicloDTO> getLstCiclo() {
-		return lstCiclo;
-	}
-
-	public void setLstCiclo(List<CicloDTO> lstCiclo) {
-		this.lstCiclo = lstCiclo;
-	}
-
-	public int getCodciclo() {
+	
+	public String getCodciclo() {
 		return codciclo;
 	}
 
-	public void setCodciclo(int codciclo) {
+	public void setCodciclo(String codciclo) {
 		this.codciclo = codciclo;
 	}
 
@@ -99,21 +96,37 @@ public class ExamenAction extends ActionSupport{
 	public void setCiclo(CicloDTO ciclo) {
 		this.ciclo = ciclo;
 	}
-
-	public List<CursoDTO> getLstCurso() {
-		return lstCurso;
-	}
-
-	public void setLstCurso(List<CursoDTO> lstCurso) {
-		this.lstCurso = lstCurso;
-	}
-
-	public int getCodigo() {
+	
+	public String getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}	
+
+	public String[] getSecciones() {
+		return secciones;
+	}
+
+	public void setSecciones(String[] secciones) {
+		this.secciones = secciones;
+	}
+
+	public List<CarreraDTO> getLstCarreraExa() {
+		return lstCarreraExa;
+	}
+
+	public void setLstCarreraExa(List<CarreraDTO> lstCarreraExa) {
+		this.lstCarreraExa = lstCarreraExa;
+	}
+
+	public List<CicloDTO> getLstCicloExa() {
+		return lstCicloExa;
+	}
+
+	public void setLstCicloExa(List<CicloDTO> lstCicloExa) {
+		this.lstCicloExa = lstCicloExa;
+	}
 	
 }

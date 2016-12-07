@@ -16,6 +16,7 @@ public interface SeccionDAO {
 	public SeccionDTO buscarSeccion(int seccion);
 	public SeccionDTO buscarSeccion2(SeccionDTO obj);
 	public DetalleCurSeccionDTO buscarSeccion3(DetalleCurSeccionDTO obj);
+	public List<SeccionDTO> listarSeccion2(int codCiclo);
 	public int registrarSeccion(SeccionDTO obj);
 	public int modificarSeccion(SeccionDTO obj);
 	public int eliminarCursoSeccion(DetalleCurSeccionDTO obj);

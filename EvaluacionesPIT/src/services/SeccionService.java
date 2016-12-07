@@ -46,4 +46,7 @@ public class SeccionService {
 	public int registrarDetalle(DetalleCurSeccionDTO obj) {
 		return dao.registrarDetalle(obj);
 	}
+	public List<SeccionDTO> listarSeccion2(int codCiclo) {
+		return dao.listarSeccion2(codCiclo);
+	}
 }
