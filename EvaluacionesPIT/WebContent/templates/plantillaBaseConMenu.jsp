@@ -63,6 +63,7 @@ footer{
 	margin-top:-25px;
 }
 #idCentralConMenu{
+	overflow: scroll;
 	width: 850px;
 	height: 700px;
 	margin-left: -40px;
