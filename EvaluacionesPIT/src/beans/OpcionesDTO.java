@@ -5,6 +5,7 @@ public class OpcionesDTO {
 	private String descripcion;
 	private int respuesta;
 	private int idpregunta;
+	
 	public int getIdopciones() {
 		return idopciones;
 	}

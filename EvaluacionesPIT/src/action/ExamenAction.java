@@ -74,8 +74,10 @@ public class ExamenAction extends ActionSupport{
 		examen.setFecreg(sdf.format(hoy));
 		examen.setDuracion(Integer.parseInt(duracion));
 		examen.setEstado("1");
+		new ExamenService().registrarExamen(examen);
 		int codigo = new ExamenService().buscarCodExamen();
 		sesion.put("codExamen",""+codigo);
+		buscarCursos();
 		return "ok";
 	}
 	/*--------------------------------------------------------------------------*/

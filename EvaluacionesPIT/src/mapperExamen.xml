@@ -2,111 +2,18 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="pit">
-	<select id="SQL_CursosxUsuario" parameterType="int" resultType="CursoDTOIbatis">
-		select 	
-			c.idcurso as codigo,
-	        c.idcarrera as codcarrera,
-	        ca.nombre as carrera,
-	        c.idciclo as codciclo,
-	        ci.nomciclo as ciclo,
-	        s.idseccion as codseccion,
-			s.nomseccion as nomseccion,
-			c.nombre as nombre      
-		from curso c
-	    inner join carrera ca on c.idcarrera = ca.idcarrera
-	    inner join ciclo ci on c.idciclo = ci.idciclo
-        inner join detallecursoseccion ds on c.idcurso = ds.idcurso
-		inner join seccion s on ds.idseccion = s.idseccion
-        where ds.idusuario = #{codigo} and ds.idestado = 1
-        order by c.idciclo ASC;
-	</select>
-	<select id="SQL_Carrera" resultType="CarreraDTOIbatis">
-		select
-			idcarrera as codigo,
-			nombre as nombre
-		from carrera;
+<mapper namespace="pit">	
+	<select id="SQL_LAST_EXA" resultType="int">
+		select max(idexamen) from examen
 	</select>	
-	<select id="SQL_Ciclo" resultType="CicloDTOIbatis">
-		select
-			idciclo as codigo,
-			nomciclo as nombre
-		from ciclo;
-	</select>	
-	<select id="SQL_CursosxCiclo" parameterType="int" resultType="CursoDTOIbatis">
-		select 	
-			c.idcurso as codigo,
-	        c.idcarrera as codcarrera,
-	        ca.nombre as carrera,
-	        c.idciclo as codciclo,
-	        ci.nomciclo as ciclo,
-			c.nombre as nombre      
-		from curso c
-	    inner join carrera ca on c.idcarrera = ca.idcarrera
-	    inner join ciclo ci on c.idciclo = ci.idciclo  
-        where c.idciclo = #{idciclo};
-	</select>
-	<select id="SQL_Cursos" resultType="CursoDTOIbatis">
-		select 	
-			c.idcurso as codigo,
-	        c.idcarrera as codcarrera,
-	        ca.nombre as carrera,
-	        c.idciclo as codciclo,
-	        ci.nomciclo as ciclo,
-			c.nombre as nombre      
-		from curso c
-	    inner join carrera ca on c.idcarrera = ca.idcarrera
-	    inner join ciclo ci on c.idciclo = ci.idciclo;
-	</select>
-	<select id="SQL_Cursos_Pag" parameterType="int" resultType="CursoDTOIbatis">
-		select 	
-			c.idcurso as codigo,
-	        c.idcarrera as codcarrera,
-	        ca.nombre as carrera,
-	        c.idciclo as codciclo,
-	        ci.nomciclo as ciclo,
-			c.nombre as nombre      
-		from curso c
-	    inner join carrera ca on c.idcarrera = ca.idcarrera
-	    inner join ciclo ci on c.idciclo = ci.idciclo
-	    ORDER BY c.idciclo
-		ASC LIMIT #{numpag},5;
-	</select>
-	<select id="SQL_FOUND_Cursos" parameterType="CursoDTOIbatis" resultType="CursoDTOIbatis">
-		select 	
-			c.idcurso as codigo,
-	        c.idcarrera as codcarrera,
-	        ca.nombre as carrera,
-	        c.idciclo as codciclo,
-	        ci.nomciclo as ciclo,
-			c.nombre as nombre      
-		from curso c
-	    inner join carrera ca on c.idcarrera = ca.idcarrera
-	    inner join ciclo ci on c.idciclo = ci.idciclo
-	    where c.idcarrera = #{codcarrera} and c.idciclo = #{codciclo} and c.nombre = #{nombre};
-	</select>
-	<select id="SQL_FOUND_Cursos_II" parameterType="int" resultType="CursoDTOIbatis">
-		select 	
-			c.idcurso as codigo,
-	        c.idcarrera as codcarrera,
-	        ca.nombre as carrera,
-	        c.idciclo as codciclo,
-	        ci.nomciclo as ciclo,
-			c.nombre as nombre      
-		from curso c
-	    inner join carrera ca on c.idcarrera = ca.idcarrera
-	    inner join ciclo ci on c.idciclo = ci.idciclo
-	    where c.idcurso = #{codigo};
-	</select>
-	<insert id="SQL_REG_Curso" parameterType="CursoDTOIbatis">
-		insert into curso values(0,#{codcarrera},#{codciclo},#{nombre})
-	</insert>  
-	<insert id="SQL_UPD_Curso" parameterType="CursoDTOIbatis">
-		update curso set idcarrera = #{codcarrera}, idciclo = #{codciclo}, nombre = #{nombre}
-		where idcurso = #{codigo}
+	<insert id="SQL_INS_EXA" parameterType="ExamenDTOIbatis">
+		insert into examen values(0,#{fecini},#{fecfin},#{fecreg},#{duracion},#{estado})
 	</insert>
-	<insert id="SQL_DROP_Curso" parameterType="int">
-		delete from curso where idcurso = #{codigo}
+	<insert id="SQL_INS_PREG" parameterType="PreguntaDTOIbatis">
+		insert into pregunta values(0,#{enunciado},#{idexamen})
+	</insert>
+	<insert id="SQL_INS_OPCI" parameterType="OpcionesDTOIbatis">
+		insert into opciones values(0,#{descripcion},#{respuesta},#{idpregunta})
 	</insert>
 </mapper>
 
