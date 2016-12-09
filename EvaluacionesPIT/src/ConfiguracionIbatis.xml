@@ -12,6 +12,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="CicloDTOIbatis" type="beans.CicloDTO"/>
 		<typeAlias alias="SeccionDTOIbatis" type="beans.SeccionDTO"/>
 		<typeAlias alias="DetalleCurSecDTOIbatis" type="beans.DetalleCurSeccionDTO"/>
+		<typeAlias alias="ExamenDTOIbatis" type="beans.ExamenDTO"/>
+		<typeAlias alias="PreguntaDTOIbatis" type="beans.PreguntaDTO"/>
+		<typeAlias alias="OpcionesDTOIbatis" type="beans.OpcionesDTO"/>
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -29,6 +32,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mapperCurso.xml"/>
 		<mapper resource="mapperPersona.xml"/>
 		<mapper resource="mapperSeccion.xml"/>
+		<mapper resource="mapperExamen.xml"/>
 	</mappers>
 </configuration>
 

@@ -1,6 +1,7 @@
 package dao;
 
 import interfaces.CursoDAO;
+import interfaces.ExamenDAO;
 import interfaces.PersonaDAO;
 import interfaces.SeccionDAO;
 import interfaces.UsuarioDAO;
@@ -25,6 +26,11 @@ public class MySqlDAOFactory extends DAOFactory {
 	@Override
 	public SeccionDAO getSeccionDAO() {
 		return new MySqlSeccionDAO();
+	}
+
+	@Override
+	public ExamenDAO getExamenDAO() {
+		return new MySqlExamenDAO();
 	}	
 
 }

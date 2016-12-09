@@ -1,6 +1,7 @@
 package dao;
 
 import interfaces.CursoDAO;
+import interfaces.ExamenDAO;
 import interfaces.PersonaDAO;
 import interfaces.SeccionDAO;
 import interfaces.UsuarioDAO;
@@ -17,6 +18,7 @@ public abstract class DAOFactory {
     public abstract CursoDAO getCursoDAO();
     public abstract PersonaDAO getPersonaDAO();
     public abstract SeccionDAO getSeccionDAO();
+    public abstract ExamenDAO getExamenDAO();
     
     public static DAOFactory getDAOFactory(int whichFactory){
         switch(whichFactory){

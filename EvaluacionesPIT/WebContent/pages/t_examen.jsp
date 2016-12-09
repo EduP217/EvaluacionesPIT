@@ -135,6 +135,7 @@ $(document).ready(function() {
 <hr/>
 <div class="form-group" hidden="hidden" id="regPreg">
 <s:form id="registroPreguntas" action="regPreguntas">
+	<input name="codexamen" hidden="hidden" value="<s:property value="#session.codExamen"/>" />
 	<ul class="nav nav-tabs">
 		<li class="active"><a data-toggle="tab" href="#p1">Nº 1</a></li>
 		<li><a data-toggle="tab" href="#p2">Nº 2</a></li>

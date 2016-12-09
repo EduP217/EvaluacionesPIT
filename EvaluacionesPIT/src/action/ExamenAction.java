@@ -19,6 +19,7 @@ import beans.CursoDTO;
 import beans.ExamenDTO;
 import beans.SeccionDTO;
 import services.CursoService;
+import services.ExamenService;
 import services.PersonaService;
 import services.SeccionService;
 
@@ -32,7 +33,7 @@ public class ExamenAction extends ActionSupport{
 	private CarreraDTO carrera;
 	private CicloDTO ciclo;
 	private String[] secciones;
-	private String codigo,codcarrera,codciclo,codcurso;
+	private String codigo,codcarrera,codciclo,codcurso,codexamen;
 	private String fecini,fecfin,duracion;
 	
 	private Map<String, Object> userdata = new HashMap<String, Object>();
@@ -73,6 +74,8 @@ public class ExamenAction extends ActionSupport{
 		examen.setFecreg(sdf.format(hoy));
 		examen.setDuracion(Integer.parseInt(duracion));
 		examen.setEstado("1");
+		int codigo = new ExamenService().buscarCodExamen();
+		sesion.put("codExamen",""+codigo);
 		return "ok";
 	}
 	/*--------------------------------------------------------------------------*/
@@ -693,6 +696,14 @@ public class ExamenAction extends ActionSupport{
 
 	public void setDuracion(String duracion) {
 		this.duracion = duracion;
+	}
+
+	public String getCodexamen() {
+		return codexamen;
+	}
+
+	public void setCodexamen(String codexamen) {
+		this.codexamen = codexamen;
 	}
 	
 }
