@@ -1,10 +1,12 @@
 package beans;
 
+import java.util.Date;
+
 public class ExamenDTO {
 	private int codigo;
-	private String fecini;
-	private String fecfin;
-	private String fecreg;
+	private Date fecini;
+	private Date fecfin;
+	private Date fecreg;
 	private int duracion;
 	private String estado;
 	
@@ -14,22 +16,23 @@ public class ExamenDTO {
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-	public String getFecini() {
+	
+	public Date getFecini() {
 		return fecini;
 	}
-	public void setFecini(String fecini) {
+	public void setFecini(Date fecini) {
 		this.fecini = fecini;
 	}
-	public String getFecfin() {
+	public Date getFecfin() {
 		return fecfin;
 	}
-	public void setFecfin(String fecfin) {
+	public void setFecfin(Date fecfin) {
 		this.fecfin = fecfin;
 	}
-	public String getFecreg() {
+	public Date getFecreg() {
 		return fecreg;
 	}
-	public void setFecreg(String fecreg) {
+	public void setFecreg(Date fecreg) {
 		this.fecreg = fecreg;
 	}
 	public int getDuracion() {

@@ -1,5 +1,6 @@
 package action;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -38,8 +39,7 @@ public class ExamenAction extends ActionSupport{
 	
 	private Map<String, Object> userdata = new HashMap<String, Object>();
 	private Map<String, Object> sesion = ActionContext.getContext().getSession();
-	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-	Date hoy = new Date();
+	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");	
 	
 	@Action(value="/t_examen",results={
 			@Result(name="ok",type="tiles",location="t_examen")
@@ -67,16 +67,18 @@ public class ExamenAction extends ActionSupport{
 	@Action(value="/regExamen",results={
 			@Result(name="ok",type="tiles",location="t_examen")
 	})	
-	public String regExamen(){
+	public String regExamen() throws ParseException{
 		ExamenDTO examen = new ExamenDTO();
-		examen.setFecini(fecini);
-		examen.setFecfin(fecfin);
-		examen.setFecreg(sdf.format(hoy));
+		examen.setFecini(sdf.parse(fecini));
+		examen.setFecfin(sdf.parse(fecfin));
 		examen.setDuracion(Integer.parseInt(duracion));
 		examen.setEstado("1");
 		new ExamenService().registrarExamen(examen);
 		int codigo = new ExamenService().buscarCodExamen();
 		sesion.put("codExamen",""+codigo);
+		sesion.put("fecInicio",""+fecini);
+		sesion.put("fecFinal",""+fecfin);
+		sesion.put("numDurac",""+duracion);
 		buscarCursos();
 		return "ok";
 	}

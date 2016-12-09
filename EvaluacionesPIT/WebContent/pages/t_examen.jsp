@@ -102,18 +102,19 @@ $(document).ready(function() {
 		</td>
 	</tr>
 	<s:form id="registroExamen" action="regExamen">
+	<input name="codciclo" hidden="hidden" value="<s:property value="#session.selCiclo"/>" />
 	<input id="idCurso" name="codcurso" hidden="hidden" />
 		<tr>
 			<td>FECHA DE INICIO</td>
 			<td>
 				<div class="form-group">
-					<input type="text" name="fecini" Class="form-control fecha" readonly="readonly"/>
+					<input type="text" name="fecini" Class="form-control fecha" readonly="readonly" value="<s:property value="#session.fecInicio"/>"/>
 				</div>
 			</td>
 			<td>FECHA DE CULMINO</td>
 			<td>
 				<div class="form-group">
-					<input type="text" name="fecfin" Class="form-control fecha" readonly="readonly"/>
+					<input type="text" name="fecfin" Class="form-control fecha" readonly="readonly" value="<s:property value="#session.fecFinal"/>"/>
 				</div>
 			</td>
 		</tr>
@@ -121,7 +122,7 @@ $(document).ready(function() {
 			<td>DURACION DE LA EVALUACION</td>
 			<td>
 				<div class="form-group">
-					<input type="number" name="duracion" Class="form-control" step="30"/>
+					<input type="number" name="duracion" Class="form-control" step="30" value="<s:property value="#session.numDurac"/>"/>
 				</div>
 			</td>
 			<td colspan="2">
@@ -133,9 +134,11 @@ $(document).ready(function() {
 	</s:form>	
 </table>
 <hr/>
-<div class="form-group" hidden="hidden" id="regPreg">
+<s:set var="codExa_val"><s:property value="#session.codExamen"/></s:set>
+<s:if test="#codExa_val != ''">
+<div class="form-group" id="regPreg">
 <s:form id="registroPreguntas" action="regPreguntas">
-	<input name="codexamen" value="<s:property value="#session.codExamen"/>" />
+	<input name="codexamen" hidden="hidden" value="<s:property value="#session.codExamen"/>" />
 	<ul class="nav nav-tabs">
 		<li class="active"><a data-toggle="tab" href="#p1">Nº 1</a></li>
 		<li><a data-toggle="tab" href="#p2">Nº 2</a></li>
@@ -398,4 +401,5 @@ $(document).ready(function() {
 	</div>	
 </s:form>
 </div>	
+</s:if>
 
