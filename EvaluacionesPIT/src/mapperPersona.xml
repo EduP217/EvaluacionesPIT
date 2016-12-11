@@ -77,6 +77,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INNER JOIN usuario us on es.idusuario = us.idusuario
 		WHERE us.idperfil = #{perfil};
 	</select>
+	<select id="SQL_AlumnosII" parameterType="int" resultType="PersonaDTOIbatis">
+		SELECT 	idestudiante as codigo,
+				dni as dni,
+				nombre as nombre,
+				apellido as apellido,
+				fechanac as fechanac,
+				telefono as telefono,
+				celular as celular,
+				idusuario as idusuario        		
+		FROM 	estudiante
+		WHERE  idestudiante= #{codEstud};
+	</select>
 	<insert id="SQL_REG_Admin" parameterType="PersonaDTOIbatis">
 		insert into administrador values(0,#{dni},#{nombre},#{apellido},#{fechanac},#{telefono},#{celular},#{idusuario})
 	</insert>	  

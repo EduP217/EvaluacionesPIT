@@ -51,7 +51,7 @@ public class SeccionAction extends ActionSupport{
 	public String listarCursoSec(){
 		lstSeccion = new SeccionService().listarSecciones();
 		lstCiclos = new CursoService().listarCiclo();
-		lstCursos = new CursoService().listarCurso();
+		lstCursos = new CursoService().listarCursoxSeccion(codigo);
 		sesion.put("keySeccion", new SeccionService().buscarSeccion(codigo));
 		lstCursoSec = new SeccionService().listarCursoxSeccion(codigo);
 		return "ok";

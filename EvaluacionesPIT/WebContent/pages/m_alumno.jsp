@@ -71,6 +71,9 @@ function llenarEliminar(cod,ape,nom,dni,fec,tlf,cel,est){
 	$('#estProf2').text(est);
 	$('#codDrop').val(cod);
 }
+function llenarMatricula(cod){
+	$('#codAlumno').val(cod);
+}
 $(document).ready( function() {	
 	$('#btnCrear').click(function(){
 		$('#a').val('');
@@ -461,27 +464,30 @@ $(document).ready( function() {
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">¿SELECCIONE LOS CURSOS DE MATRICULA?</h4>
+				<h4 class="modal-title">¿CUÁL ES EL CURSO A MATRICULAR?</h4>
 			</div>
-			<div class="modal-body">
-				<s:form action="">
-					<input name="codigo" id="codAlumno" hidden="true" />
-					<table class="table nonborder mod-tableta">
-						<tr>
-							<td>Ciclo:</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>Curso:</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>Seccion:</td>
-							<td></td>
-						</tr>						
-					</table>
-					<button type="submit" class="btn btn-primary btn-block">Registrar</button>
-				</s:form>
+			<div class="modal-body">			
+				<table class="table nonborder mod-tableta">
+					<s:form action="matriAlum">
+					<input name="codAlumno" id="codAlumno" hidden="true" />										
+					<tr>
+						<td>Curso:</td>
+						<td>
+							<select class="form-control" name="codSeccionAlum">
+								<option value="-1">[ Seleccionar ]</option>
+								<s:iterator value="lstSeccionAlum">
+									<option value='<s:property value="codigo" />'><s:property value="descripcion"/></option>
+								</s:iterator>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<button type="submit" class="btn btn-primary btn-block">Registrar</button>
+						</td>
+					</tr>					
+					</s:form>
+				</table>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

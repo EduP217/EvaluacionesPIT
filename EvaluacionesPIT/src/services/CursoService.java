@@ -44,4 +44,7 @@ public class CursoService {
 	public int eliminarCurso(int codigo) {
 		return dao.eliminarCurso(codigo);
 	}
+	public List<CursoDTO> listarCursoxSeccion(int codigo) {
+		return dao.listarCursoxSeccion(codigo);
+	}
 }

@@ -25,4 +25,7 @@ public class PersonaService {
 	public int modificarPersona(PersonaDTO obj,int perfil) {
 		return dao.modificarPersona(obj,perfil);
 	}
+	public PersonaDTO buscarEstudiante(int cod) {
+		return dao.buscarEstudiante(cod);
+	}
 }

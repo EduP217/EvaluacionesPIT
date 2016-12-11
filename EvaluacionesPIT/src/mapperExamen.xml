@@ -6,8 +6,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="SQL_LAST_EXA" resultType="int">
 		select max(idexamen) from examen
 	</select>	
+	<select id="SQL_LAST_PREG" resultType="int">
+		select max(idpregunta) from pregunta
+	</select>
 	<insert id="SQL_INS_EXA" parameterType="ExamenDTOIbatis">
 		insert into examen values(0,#{fecini},#{fecfin},#{fecreg},#{duracion},#{estado})
+	</insert>
+	<insert id="SQL_INS_DETA_EXA" parameterType="DetalleExaCurDTOIbatis">
+		insert into detalleexamencurso values(#{idexamen},#{idcurso})
 	</insert>
 	<insert id="SQL_INS_PREG" parameterType="PreguntaDTOIbatis">
 		insert into pregunta values(0,#{enunciado},#{idexamen})
@@ -15,6 +21,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="SQL_INS_OPCI" parameterType="OpcionesDTOIbatis">
 		insert into opciones values(0,#{descripcion},#{respuesta},#{idpregunta})
 	</insert>
+	<!-- OTRAS FUNCIONES DEL EXAMEN PARA EL ALUMNO -->
+	<select id="SQL_EXA_CUR" parameterType="int" resultType="ExamenDTOIbatis">
+		select	
+			ex.idexamen as codigo,
+			ex.fecini as fecini,
+			ex.fecfin as fecfin,
+			ex.fecreg as fecreg,
+			ex.duracion as duracion,
+			ex.estado as estado
+		from examen ex 
+		inner join detalleexamencurso dexc on ex.idexamen = dexc.idexamen
+		where dexc.idexamen = #{codigo} and ex.estado = 1
+	</select>	
 </mapper>
 
 

@@ -203,12 +203,14 @@ $(document).ready( function() {
 						</tr>						
 						<tr>
 							<td>Curso</td>
-							<td><div class="form-group">	
-								<s:select 
-									name="codcurso"
-									list="lstCursos"
-									listKey="codigo"
-									listValue="datos" cssClass="form-control"/>				
+							<td>
+								<div class="form-group">
+								<select class="form-control" name="codcurso">
+									<option value="-1">[ Seleccionar ]</option>
+									<s:iterator value="lstCursos">
+										<option value='<s:property value="codigo" />'><s:property value="nombre"/></option>
+									</s:iterator>
+								</select>										
 								</div>
 							</td>
 						</tr>

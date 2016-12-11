@@ -17,7 +17,10 @@ import com.opensymphony.xwork2.ActionSupport;
 import beans.CarreraDTO;
 import beans.CicloDTO;
 import beans.CursoDTO;
+import beans.DetalleExamenCursoDTO;
 import beans.ExamenDTO;
+import beans.OpcionesDTO;
+import beans.PreguntaDTO;
 import beans.SeccionDTO;
 import services.CursoService;
 import services.ExamenService;
@@ -75,6 +78,10 @@ public class ExamenAction extends ActionSupport{
 		examen.setEstado("1");
 		new ExamenService().registrarExamen(examen);
 		int codigo = new ExamenService().buscarCodExamen();
+		DetalleExamenCursoDTO dec = new DetalleExamenCursoDTO();
+		dec.setIdcurso(Integer.parseInt(codcurso));
+		dec.setIdexamen(codigo);
+		new ExamenService().registrarDetalleExamen(dec);
 		sesion.put("codExamen",""+codigo);
 		sesion.put("fecInicio",""+fecini);
 		sesion.put("fecFinal",""+fecfin);
@@ -94,11 +101,44 @@ public class ExamenAction extends ActionSupport{
 	private String mensajeError;
 	
 	@Action(value="/regPreguntas",results={
-			@Result(name="ok",type="tiles",location="t_examen")
+			@Result(name="ok",type="tiles",location="t_examen"),
+			@Result(name="eror",type="tiles",location="t_examen")
 	})	
 	public String regPreguntas(){
-		mensaje = "Cod:"+codcurso+"-"+Enunciado1+" "+cp1+"-"+op1+","+op2+","+op3+","+op4;
+		String[] cadEnunciado = {Enunciado1,Enunciado2,Enunciado3,Enunciado4,Enunciado5,Enunciado6,Enunciado7,Enunciado8,Enunciado9,Enunciado10};
+		String[] opcRspta = {op1,op2,op3,op4,op5,op6,op7,op8,op9,op10,op11,op12,op13,op14,op15,op16,op17,op18,op19,op20,
+								op21,op22,op23,op24,op25,op26,op27,op28,op29,op30,op31,op32,op33,op34,op35,op36,op37,op38,op39,op40};
+		String[] cadRadio = {cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8,cp9,cp10};
+		PreguntaDTO pregunta;
+		int pos = 0;
+		for(int i=0;i<cadEnunciado.length;i++){
+			pregunta = new PreguntaDTO();
+			pregunta.setEnunciado(cadEnunciado[i]);
+			pregunta.setIdexamen(Integer.parseInt(codexamen));
+			new ExamenService().registrarPreguntas(pregunta);
+			int codPregunta = new ExamenService().buscarCodPregunta();
+			OpcionesDTO opcion;
+			for(int a=0;a<4;a++){
+				opcion = new OpcionesDTO();
+				opcion.setDescripcion(opcRspta[pos]);
+				opcion.setIdpregunta(codPregunta);
+				if(Integer.parseInt(cadRadio[i])==pos){
+					opcion.setRespuesta(1);
+				} else {
+					opcion.setRespuesta(0);
+				}
+				new ExamenService().registrarOpciones(opcion);
+				pos++;
+			}
+		}	
+		
 		cargarRegistro();
+		sesion.put("keylstSeccion","");
+		sesion.put("codExamen","");
+		sesion.put("fecInicio","");
+		sesion.put("fecFinal","");
+		sesion.put("numDurac","");
+		mensaje="El examen se registró Correctamente.";
 		return "ok";
 	}
 	

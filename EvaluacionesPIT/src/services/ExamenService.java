@@ -1,5 +1,6 @@
 package services;
 
+import beans.DetalleExamenCursoDTO;
 import beans.ExamenDTO;
 import beans.OpcionesDTO;
 import beans.PreguntaDTO;
@@ -16,7 +17,9 @@ public class ExamenService {
 	public int registrarExamen(ExamenDTO beanExa) {		
 		return dao.registrarExamen(beanExa);
 	}
-
+	public int registrarDetalleExamen(DetalleExamenCursoDTO obj) {
+		return dao.registrarDetalleExamen(obj);
+	}
 	public int registrarPreguntas(PreguntaDTO beanPreg) {		
 		return dao.registrarPreguntas(beanPreg);
 	}
@@ -26,5 +29,11 @@ public class ExamenService {
 	}
 	public int buscarCodExamen() {
 		return dao.buscarCodExamen();
+	}
+	public int buscarCodPregunta() {
+		return dao.buscarCodPregunta();
+	}
+	public ExamenDTO buscarExamenxCurso(int codigoCurso) {
+		return dao.buscarExamenxCurso(codigoCurso);
 	}
 }

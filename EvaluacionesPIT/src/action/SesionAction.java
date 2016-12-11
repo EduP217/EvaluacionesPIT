@@ -69,7 +69,6 @@ public class SesionAction extends ActionSupport{
 			sesion.put("keyPermisosM", mantenimiento);
 			sesion.put("keyPermisosC", consultas);
 			sesion.put("keyPermisosT", registros);
-
 			
 			return "ok";
 		}

@@ -41,6 +41,14 @@ h2{
         				<td>SECCION</td>
         				<td><s:property value="nomseccion"/></td>
         			</tr>
+        			<tr>
+        				<td colspan="2">
+        					<s:form action="cargarEvalua">
+        						<input name="codCurso" value="<s:property value="codigo"/>" hidden="hidden" />
+        						<s:submit value="DESARROLLAR EVALUACIÓN"/>
+        					</s:form>        					
+        				</td>
+        			</tr>
         		</table>
         	</div>
       	</div>

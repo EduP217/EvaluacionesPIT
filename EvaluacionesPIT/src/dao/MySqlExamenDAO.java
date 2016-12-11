@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import beans.CursoDTO;
+import beans.DetalleExamenCursoDTO;
 import beans.ExamenDTO;
 import beans.OpcionesDTO;
 import beans.PreguntaDTO;
@@ -86,5 +87,47 @@ public class MySqlExamenDAO implements ExamenDAO {
 		}
 		return codigo;
 	}
+	@Override
+	public int buscarCodPregunta() {
+		int codigo=0;
+		SqlSession sesion=sqlMapper.openSession();
+		try {
+			codigo=(int) sesion.selectOne("SQL_LAST_PREG");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return codigo;
+	}
 
+	@Override
+	public int registrarDetalleExamen(DetalleExamenCursoDTO obj) {
+		int result = -1;
+		SqlSession session =  sqlMapper.openSession();
+		try {
+			result = session.insert("SQL_INS_DETA_EXA", obj);
+			session.commit();
+		} catch (Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		} finally{
+			session.close();
+		}
+		return result;
+	}
+
+	@Override
+	public ExamenDTO buscarExamenxCurso(int codigoCurso) {
+		ExamenDTO bean=null;
+		SqlSession session =  sqlMapper.openSession();
+		try {
+			bean = (ExamenDTO) session.selectOne("SQL_EXA_CUR", codigoCurso);
+			session.commit();
+		} catch (Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		} finally{
+			session.close();
+		}
+		return bean;
+	}
 }

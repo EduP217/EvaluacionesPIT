@@ -65,6 +65,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE
 				idciclo = #{codciclo}
 	</select>
+	<select id="SQL_LISTAR_Seccion_V" parameterType="int" resultType="DetalleCurSecDTOIbatis">
+		SELECT 
+				idseccion as codseccion,
+				idusuario as codusu
+		FROM
+				detallecursoseccion
+		WHERE
+				idcurso = #{codcur} and idestado = 1
+	</select>
+	<select id="SQL_Found_Detalle_I" parameterType="DetalleSecAlmDTOIbatis" resultType="DetalleSecAlmDTOIbatis">
+		SELECT 
+				idseccion as idseccion,
+				idusuario as idusuario	
+		FROM
+				detalleseccionalumno
+		WHERE
+				idusuario = #{idusuario}
+	</select>
 	<insert id="SQL_REG_Seccion" parameterType="SeccionDTOIbatis">
 		insert into seccion values(0,#{codciclo},#{descripcion})
 	</insert>
@@ -74,6 +92,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="SQL_REG_Deta_Seccion" parameterType="DetalleCurSecDTOIbatis">
 		insert into detallecursoseccion values(#{codcur},#{codseccion},0,1)
 	</insert>
+	<insert id="SQL_MAT_ALUM" parameterType="DetalleSecAlmDTOIbatis">
+		insert into detalleseccionalumno values(#{idseccion},#{idusuario})
+	</insert>
+	<insert id="SQL_MAT_ALUM_UPD" parameterType="DetalleSecAlmDTOIbatis">
+		update detalleseccionalumno set idseccion=#{idseccion} where idusuario=#{idusuario}
+	</insert>  
 </mapper>
 
 

@@ -160,19 +160,19 @@ $(document).ready(function() {
 			<s:label><strong>Ingrese las Opciones</strong></s:label>
 			<table class="table">
 				<tr>
-					<td><input type="radio" value="op1" name="cp1"/></td>
+					<td><input type="radio" value="0" name="cp1"/></td>
 					<td><s:textfield id="op1" name="op1" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op2" name="cp1"/></td>
+					<td><input type="radio" value="1" name="cp1"/></td>
 					<td><s:textfield id="op2" name="op2" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op3" name="cp1"/></td>
+					<td><input type="radio" value="2" name="cp1"/></td>
 					<td><s:textfield id="op3" name="op3" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op4" name="cp1"/></td>
+					<td><input type="radio" value="3" name="cp1"/></td>
 					<td><s:textfield id="op4" name="op4" cssClass="form-control"/></td>
 				</tr>		
 			</table>
@@ -184,19 +184,19 @@ $(document).ready(function() {
 			<s:label><strong>Ingrese las Opciones</strong></s:label>
 			<table class="table">
 				<tr>
-					<td><input type="radio" value="op5" name="cp2"/></td>
+					<td><input type="radio" value="4" name="cp2"/></td>
 					<td><s:textfield id="op5" name="op5" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op6" name="cp2"/></td>
+					<td><input type="radio" value="5" name="cp2"/></td>
 					<td><s:textfield id="op6" name="op6" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op7" name="cp2"/></td>
+					<td><input type="radio" value="6" name="cp2"/></td>
 					<td><s:textfield id="op7" name="op7" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op8" name="cp2"/></td>
+					<td><input type="radio" value="7" name="cp2"/></td>
 					<td><s:textfield id="op8" name="op8" cssClass="form-control"/></td>
 				</tr>		
 			</table>
@@ -208,19 +208,19 @@ $(document).ready(function() {
 			<s:label><strong>Ingrese las Opciones</strong></s:label>
 			<table class="table">
 				<tr>
-					<td><input type="radio" value="op9" name="cp3"/></td>
+					<td><input type="radio" value="8" name="cp3"/></td>
 					<td><s:textfield id="op9" name="op9" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op10" name="cp3"/></td>
+					<td><input type="radio" value="9" name="cp3"/></td>
 					<td><s:textfield id="op10" name="op10" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op11" name="cp3"/></td>
+					<td><input type="radio" value="10" name="cp3"/></td>
 					<td><s:textfield id="op11" name="op11" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op12" name="cp3"/></td>
+					<td><input type="radio" value="11" name="cp3"/></td>
 					<td><s:textfield id="op12" name="op12" cssClass="form-control"/></td>
 				</tr>		
 			</table>
@@ -232,19 +232,19 @@ $(document).ready(function() {
 			<s:label><strong>Ingrese las Opciones</strong></s:label>
 			<table class="table">
 				<tr>
-					<td><input type="radio" value="op13" name="cp4"/></td>
+					<td><input type="radio" value="12" name="cp4"/></td>
 					<td><s:textfield id="op13" name="op13" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op14" name="cp4"/></td>
+					<td><input type="radio" value="13" name="cp4"/></td>
 					<td><s:textfield id="op14" name="op14" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op15" name="cp4"/></td>
+					<td><input type="radio" value="14" name="cp4"/></td>
 					<td><s:textfield id="op15" name="op15" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op16" name="cp4"/></td>
+					<td><input type="radio" value="15" name="cp4"/></td>
 					<td><s:textfield id="op16" name="op16" cssClass="form-control"/></td>
 				</tr>		
 			</table>
@@ -256,19 +256,19 @@ $(document).ready(function() {
 			<s:label><strong>Ingrese las Opciones</strong></s:label>
 			<table class="table">
 				<tr>
-					<td><input type="radio" value="op17" name="cp5"/></td>
+					<td><input type="radio" value="16" name="cp5"/></td>
 					<td><s:textfield id="op17" name="op17" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op18" name="cp5"/></td>
+					<td><input type="radio" value="17" name="cp5"/></td>
 					<td><s:textfield id="op18" name="op18" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op19" name="cp5"/></td>
+					<td><input type="radio" value="18" name="cp5"/></td>
 					<td><s:textfield id="op19" name="op19" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op20" name="cp5"/></td>
+					<td><input type="radio" value="19" name="cp5"/></td>
 					<td><s:textfield id="op20" name="op20" cssClass="form-control"/></td>
 				</tr>		
 			</table>
@@ -280,19 +280,19 @@ $(document).ready(function() {
 			<s:label><strong>Ingrese las Opciones</strong></s:label>
 			<table class="table">
 				<tr>
-					<td><input type="radio" value="op21" name="cp6"/></td>
+					<td><input type="radio" value="20" name="cp6"/></td>
 					<td><s:textfield id="op21" name="op21" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op22" name="cp6"/></td>
+					<td><input type="radio" value="21" name="cp6"/></td>
 					<td><s:textfield id="op22" name="op22" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op23" name="cp6"/></td>
+					<td><input type="radio" value="22" name="cp6"/></td>
 					<td><s:textfield id="op23" name="op23" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op24" name="cp6"/></td>
+					<td><input type="radio" value="23" name="cp6"/></td>
 					<td><s:textfield id="op24" name="op24" cssClass="form-control"/></td>
 				</tr>		
 			</table>
@@ -304,19 +304,19 @@ $(document).ready(function() {
 			<s:label><strong>Ingrese las Opciones</strong></s:label>
 			<table class="table">
 				<tr>
-					<td><input type="radio" value="op25" name="cp7"/></td>
+					<td><input type="radio" value="24" name="cp7"/></td>
 					<td><s:textfield id="op25" name="op25" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op26" name="cp7"/></td>
+					<td><input type="radio" value="25" name="cp7"/></td>
 					<td><s:textfield id="op26" name="op26" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op27" name="cp7"/></td>
+					<td><input type="radio" value="26" name="cp7"/></td>
 					<td><s:textfield id="op27" name="op27" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op28" name="cp7"/></td>
+					<td><input type="radio" value="27" name="cp7"/></td>
 					<td><s:textfield id="op28" name="op28" cssClass="form-control"/></td>
 				</tr>		
 			</table>
@@ -328,19 +328,19 @@ $(document).ready(function() {
 			<s:label><strong>Ingrese las Opciones</strong></s:label>
 			<table class="table">
 				<tr>
-					<td><input type="radio" value="op29" name="cp8"/></td>
+					<td><input type="radio" value="28" name="cp8"/></td>
 					<td><s:textfield id="op29" name="op29" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op30" name="cp8"/></td>
+					<td><input type="radio" value="29" name="cp8"/></td>
 					<td><s:textfield id="op30" name="op30" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op31" name="cp8"/></td>
+					<td><input type="radio" value="30" name="cp8"/></td>
 					<td><s:textfield id="op31" name="op31" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op32" name="cp8"/></td>
+					<td><input type="radio" value="31" name="cp8"/></td>
 					<td><s:textfield id="op32" name="op32" cssClass="form-control"/></td>
 				</tr>		
 			</table>
@@ -352,19 +352,19 @@ $(document).ready(function() {
 			<s:label><strong>Ingrese las Opciones</strong></s:label>
 			<table class="table">
 				<tr>
-					<td><input type="radio" value="op33" name="cp9"/></td>
+					<td><input type="radio" value="32" name="cp9"/></td>
 					<td><s:textfield id="op33" name="op33" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op34" name="cp9"/></td>
+					<td><input type="radio" value="33" name="cp9"/></td>
 					<td><s:textfield id="op34" name="op34" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op35" name="cp9"/></td>
+					<td><input type="radio" value="34" name="cp9"/></td>
 					<td><s:textfield id="op35" name="op35" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op36" name="cp9"/></td>
+					<td><input type="radio" value="35" name="cp9"/></td>
 					<td><s:textfield id="op36" name="op36" cssClass="form-control"/></td>
 				</tr>		
 			</table>
@@ -376,19 +376,19 @@ $(document).ready(function() {
 			<s:label><strong>Ingrese las Opciones</strong></s:label>
 			<table class="table">
 				<tr>
-					<td><input type="radio" value="op37" name="cp10"/></td>
+					<td><input type="radio" value="36" name="cp10"/></td>
 					<td><s:textfield id="op37" name="op37" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op38" name="cp10"/></td>
+					<td><input type="radio" value="37" name="cp10"/></td>
 					<td><s:textfield id="op38" name="op38" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op39" name="cp10"/></td>
+					<td><input type="radio" value="38" name="cp10"/></td>
 					<td><s:textfield id="op39" name="op39" cssClass="form-control"/></td>
 				</tr>
 				<tr>
-					<td><input type="radio" value="op40" name="cp10"/></td>
+					<td><input type="radio" value="39" name="cp10"/></td>
 					<td><s:textfield id="op40" name="op40" cssClass="form-control"/></td>
 				</tr>		
 			</table>

@@ -18,7 +18,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    inner join ciclo ci on c.idciclo = ci.idciclo
         inner join detallecursoseccion ds on c.idcurso = ds.idcurso
 		inner join seccion s on ds.idseccion = s.idseccion
-        where ds.idusuario = #{codigo} and ds.idestado = 1
+        inner join detalleseccionalumno dsa on dsa.idseccion = ds.idseccion
+        where dsa.idusuario = #{codigo} and ds.idestado = 1
         order by c.idciclo ASC;
 	</select>
 	<select id="SQL_Carrera" resultType="CarreraDTOIbatis">
@@ -57,6 +58,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from curso c
 	    inner join carrera ca on c.idcarrera = ca.idcarrera
 	    inner join ciclo ci on c.idciclo = ci.idciclo;
+	</select>
+	<select id="SQL_Cursos_x_Secc" resultType="CursoDTOIbatis">
+		select 	
+			c.idcurso as codigo,
+	        c.idcarrera as codcarrera,
+	        ca.nombre as carrera,
+	        c.idciclo as codciclo,
+	        ci.nomciclo as ciclo,
+			c.nombre as nombre      
+		from curso c 
+	    inner join carrera ca on c.idcarrera = ca.idcarrera
+	    inner join ciclo ci on c.idciclo = ci.idciclo
+		inner join seccion se on c.idciclo = se.idciclo 
+		where se.idseccion = #{codigo};
 	</select>
 	<select id="SQL_Cursos_Pag" parameterType="int" resultType="CursoDTOIbatis">
 		select 	

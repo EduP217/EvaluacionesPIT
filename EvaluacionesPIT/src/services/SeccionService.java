@@ -4,6 +4,7 @@ import java.util.List;
 
 import beans.CursoDTO;
 import beans.DetalleCurSeccionDTO;
+import beans.DetalleSeccionAlum;
 import beans.SeccionDTO;
 import dao.DAOFactory;
 import interfaces.SeccionDAO;
@@ -48,5 +49,17 @@ public class SeccionService {
 	}
 	public List<SeccionDTO> listarSeccion2(int codCiclo) {
 		return dao.listarSeccion2(codCiclo);
+	}
+	public List<DetalleCurSeccionDTO> listarSeccion4(int codCurso) {
+		return dao.listarSeccion4(codCurso);
+	}
+	public int registrarDetalleUsuario(DetalleSeccionAlum obj) {
+		return dao.registrarDetalleUsuario(obj);
+	}
+	public int updateDetalleUsuario(DetalleSeccionAlum obj) {
+		return dao.updateDetalleUsuario(obj);
+	}
+	public DetalleSeccionAlum buscarDetalle(DetalleSeccionAlum xobj) {
+		return dao.buscarDetalle(xobj);
 	}
 }

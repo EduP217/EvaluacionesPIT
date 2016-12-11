@@ -141,4 +141,17 @@ public class MySqlPersonaDAO implements PersonaDAO {
 		return result;
 	}
 
+	@Override
+	public PersonaDTO buscarEstudiante(int cod) {
+		PersonaDTO data=null;
+		SqlSession sesion=sqlMapper.openSession();
+		try{
+			data=(PersonaDTO)sesion.selectOne("SQL_AlumnosII",cod);			
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return data;
+	}
+
 }

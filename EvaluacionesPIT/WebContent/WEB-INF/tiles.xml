@@ -50,5 +50,8 @@
 	<definition name="t_examen" extends="t_plantillaBaseConMenu">
 		<put-attribute name="central" value="/pages/t_examen.jsp" />
 	</definition>
+	<definition name="t_desarrollo" extends="t_plantillaBaseConMenu">
+		<put-attribute name="central" value="/pages/t_desarrollo.jsp" />
+	</definition>
 </tiles-definitions>
 

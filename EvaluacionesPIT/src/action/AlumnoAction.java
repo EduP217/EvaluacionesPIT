@@ -11,10 +11,17 @@ import org.apache.struts2.convention.annotation.Result;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+import beans.CicloDTO;
+import beans.CursoDTO;
+import beans.DetalleCurSeccionDTO;
+import beans.DetalleSeccionAlum;
 import beans.PersonaDTO;
+import beans.SeccionDTO;
 import beans.UsuarioDTO;
+import services.CursoService;
 import services.LoginService;
 import services.PersonaService;
+import services.SeccionService;
 
 @ParentPackage("pit")
 public class AlumnoAction extends ActionSupport{
@@ -22,11 +29,12 @@ public class AlumnoAction extends ActionSupport{
 	Map<String,Object> numListar = new HashMap<String,Object>();
 	private List<PersonaDTO> lista = new PersonaService().listarP(2);
 	private List<PersonaDTO> lstPersona = null;
+	private List<SeccionDTO> lstSeccionAlum;
 	private PersonaDTO persona;
 	private int codigo;
 	private String mensaje;
 	private String mensajeError;
-	private String apellido,nombre,dni,fechanac,telefono,celular,estado;
+	private String apellido,nombre,dni,fechanac,telefono,celular,estado,codAlumno,codSeccionAlum;
 	private int cantpaginas,numpagina,pagselect;
 	
 	@Action(value="/m_alumno",results={
@@ -38,6 +46,7 @@ public class AlumnoAction extends ActionSupport{
 		numListar.put("perfil", 2);
 		numListar.put("numpag", numpagina);
 		lstPersona = new PersonaService().listarPersonas(numListar);
+		lstSeccionAlum = new SeccionService().listarSecciones();
 		cantpaginas = (int) Math.ceil(lista.size()/5)+1;
 		return "ok";
 	}
@@ -124,6 +133,76 @@ public class AlumnoAction extends ActionSupport{
 		mensaje = "Se dió de baja correctamente";	
 		listarAlumnos();
 		return "grabo";
+	}
+	
+	/*@Action(value="/buscCursosAlum",results={
+			@Result(name="ok",type="json",location="m_alumno")
+	})
+	public String buscCursosAlum(){	
+		listarAlumnos();
+		sesion.put("keylstCursoAlum", new CursoService().listarCursoxCiclo(Integer.parseInt(codCicloAlum)));
+		return "ok";
+	}*/
+	
+	@Action(value="/matriAlum",results={
+			@Result(name="ok",type="tiles",location="m_alumno"),
+			@Result(name="error",type="tiles",location="m_alumno")
+	})
+	public String matriAlum(){
+		PersonaDTO objEstudiante = new PersonaService().buscarEstudiante(Integer.parseInt(codAlumno));
+		//DetalleSeccionAlum beanData = new DetalleSeccionAlum();
+		DetalleSeccionAlum beanData = new DetalleSeccionAlum();
+		beanData.setIdseccion(Integer.parseInt(codSeccionAlum));
+		beanData.setIdusuario(objEstudiante.getIdusuario());
+		DetalleSeccionAlum objValid = new SeccionService().buscarDetalle(beanData);
+		if(objValid==null){
+			new SeccionService().registrarDetalleUsuario(beanData);
+		} else {
+			new SeccionService().updateDetalleUsuario(beanData);
+		}
+		/*List<DetalleCurSeccionDTO> data = new SeccionService().listarSeccion4(Integer.parseInt(codCursoAlum));
+		PersonaDTO objEstudiante = new PersonaService().buscarEstudiante(Integer.parseInt(codAlumno));
+		int codSeccion = 0;
+		if(data==null){
+			CursoDTO cur = new CursoService().buscarCurso(null,Integer.parseInt(codCursoAlum));
+			List<SeccionDTO> listaSec = new SeccionService().listarSeccion2(cur.getCodciclo());
+			//int numAleatorio=(int)Math.floor(Math.random()*(1-(listaSec.size()+1))+(listaSec.size()));
+			if(listaSec.size()>1){
+				codSeccion = listaSec.get(1).getCodigo();	
+			} else {
+				codSeccion = listaSec.get(0).getCodigo();
+			}
+		} else {
+			for(DetalleCurSeccionDTO d:data){
+				if(d.getCodusu()==0){
+					codSeccion=d.getCodseccion();
+				}
+			}			
+		}
+		if(codSeccion!=0){
+			DetalleCurSeccionDTO newDeta = new DetalleCurSeccionDTO();
+			newDeta.setCodcur(Integer.parseInt(codCursoAlum));
+			newDeta.setCodseccion(codSeccion);
+			newDeta.setCodusu(objEstudiante.getIdusuario());
+			newDeta.setEstado(1);
+			int result = -1;
+			if(data==null){
+				result = new SeccionService().registrarDetalleUsuario(newDeta);
+			} else {
+				result = new SeccionService().updateDetalleUsuario(newDeta);
+			}			
+			if(result!=1){
+				listarAlumnos();
+				mensajeError="Error al registrar el curso.";
+				return "error";
+			}
+		} else {
+			mensajeError="Error al encontrar Seccion.";
+			return "error";
+		}*/
+		listarAlumnos();
+		mensaje = "El alumno se matriculó correctamente al curso";
+		return "ok";
 	}
 	
 	public List<PersonaDTO> getLstPersona() {
@@ -241,6 +320,24 @@ public class AlumnoAction extends ActionSupport{
 	}
 	public void setPagselect(int pagselect) {
 		this.pagselect = pagselect;
+	}
+	public String getCodAlumno() {
+		return codAlumno;
+	}
+	public void setCodAlumno(String codAlumno) {
+		this.codAlumno = codAlumno;
+	}
+	public List<SeccionDTO> getLstSeccionAlum() {
+		return lstSeccionAlum;
+	}
+	public void setLstSeccionAlum(List<SeccionDTO> lstSeccionAlum) {
+		this.lstSeccionAlum = lstSeccionAlum;
+	}
+	public String getCodSeccionAlum() {
+		return codSeccionAlum;
+	}
+	public void setCodSeccionAlum(String codSeccionAlum) {
+		this.codSeccionAlum = codSeccionAlum;
 	}
 	
 }

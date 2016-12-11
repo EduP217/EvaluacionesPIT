@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import beans.CursoDTO;
 import beans.DetalleCurSeccionDTO;
+import beans.DetalleSeccionAlum;
 import beans.SeccionDTO;
 import beans.UsuarioDTO;
 import interfaces.SeccionDAO;
@@ -147,6 +148,62 @@ public class MySqlSeccionDAO implements SeccionDAO {
 		SqlSession sesion=sqlMapper.openSession();
 		try {
 			data=sesion.selectList("SQL_Found_Seccion_IV", codCiclo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return data;
+	}
+
+	@Override
+	public List<DetalleCurSeccionDTO> listarSeccion4(int codCurso) {
+		List<DetalleCurSeccionDTO> data=null;
+		SqlSession sesion=sqlMapper.openSession();
+		try {
+			data= sesion.selectList("SQL_LISTAR_Seccion_V",codCurso);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return data;
+	}
+
+	@Override
+	public int registrarDetalleUsuario(DetalleSeccionAlum obj) {
+		int result = -1;
+		SqlSession session =  sqlMapper.openSession();
+		try {
+			result = session.insert("SQL_MAT_ALUM",obj);
+			session.commit();			
+		} catch (Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		} finally{
+			session.close();
+		}
+		return result;
+	}
+
+	@Override
+	public int updateDetalleUsuario(DetalleSeccionAlum obj) {
+		int result = -1;
+		SqlSession session =  sqlMapper.openSession();
+		try {
+			result = session.insert("SQL_MAT_ALUM_UPD",obj);
+			session.commit();			
+		} catch (Exception e) {
+			session.rollback();
+			e.printStackTrace();
+		} finally{
+			session.close();
+		}
+		return result;
+	}
+
+	@Override
+	public DetalleSeccionAlum buscarDetalle(DetalleSeccionAlum xobj) {
+		DetalleSeccionAlum data=null;
+		SqlSession sesion=sqlMapper.openSession();
+		try {
+			data=(DetalleSeccionAlum) sesion.selectOne("SQL_Found_Detalle_I",xobj);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

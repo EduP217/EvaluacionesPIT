@@ -11,4 +11,5 @@ public interface PersonaDAO {
 	public List<PersonaDTO> listarPersonas(Map<String,Object> numListar);
 	public int registrarPersona(PersonaDTO obj,int perfil);
 	public int modificarPersona(PersonaDTO obj,int perfil);
+	public PersonaDTO buscarEstudiante(int cod);
 }
