@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="UsuarioDTOIbatis" type="com.cibertec.beans.UsuarioDTO"/>
+		<typeAlias alias="CarreraBeanIbatis" type="com.cibertec.beans.CarreraBean"/>
+		<typeAlias alias="PerfilBeanIbatis" type="com.cibertec.beans.PerfilBean"/>
+		<typeAlias alias="PersonaDTOIbatis" type="com.cibertec.beans.PersonaDTO"/>
+		<typeAlias alias="EnlaceDTOIbatis" type="com.cibertec.beans.EnlaceDTO"/>
+		<typeAlias alias="EstadoBeanIbatis" type="com.cibertec.beans.EstadoBean"/>
+		<typeAlias alias="CarreraBeanIbatis" type="com.cibertec.beans.CarreraBean"/>
+		<typeAlias alias="CursoDTOIbatis" type="com.cibertec.beans.CursoDTO"/>
+		<typeAlias alias="ProgramacionCursosDTOIbatis" type="com.cibertec.beans.ProgramacionCursosDTO"/>
+		<typeAlias alias="MatriculaDTOIbatis" type="com.cibertec.beans.MatriculaDTO"/>
+		<typeAlias alias="DetalleMatriculaDTOIbatis" type="com.cibertec.beans.DetalleMatriculaDTO"/>
+		<typeAlias alias="PreguntaDTOIbatis" type="com.cibertec.beans.PreguntaDTO"/>
+		<typeAlias alias="PreguntaOpcionDTOIbatis" type="com.cibertec.beans.PreguntaOpcionDTO"/>
+		<typeAlias alias="ExamenDTOIbatis" type="com.cibertec.beans.ExamenDTO"/>
+		<typeAlias alias="EvaluacionDTOIbatis" type="com.cibertec.beans.EvaluacionDTO"/>
+		<typeAlias alias="EvaluacionRespuestasDTOIbatis" type="com.cibertec.beans.EvaluacionRespuestasDTO"/>
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://localhost:3306/pit-evaluations"/>
+				<property name="username" value="pit-user"/>
+				<property name="password" value="pit-mysql"/>
+			</dataSource>		
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="resources/dao/mappers/mapperLogin.xml"/>
+<!-- 		<mapper resource="resources/dao/mappers/mapperCurso.xml"/> -->
+<!-- 		<mapper resource="resources/dao/mappers/mapperPersona.xml"/> -->
+<!-- 		<mapper resource="resources/dao/mappers/mapperSeccion.xml"/> -->
+<!-- 		<mapper resource="resources/dao/mappers/mapperExamen.xml"/> -->
+	</mappers>
+</configuration>
+
+

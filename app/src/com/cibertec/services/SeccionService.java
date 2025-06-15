@@ -1,0 +1,65 @@
+package com.cibertec.services;
+
+import java.util.List;
+
+import com.cibertec.beans.CursoDTO;
+//import com.cibertec.beans.DetalleCurSeccionDTO;
+//import com.cibertec.beans.DetalleSeccionAlum;
+//import com.cibertec.beans.SeccionDTO;
+import com.cibertec.dao.DAOFactory;
+import com.cibertec.dao.SeccionDAO;
+import com.cibertec.utils.Constantes;
+
+public class SeccionService {
+	
+	/*DAOFactory fabrica = DAOFactory.getDAOFactory(Constantes.ORIGEN_DATOS);
+	SeccionDAO dao = fabrica.getSeccionDAO();
+		
+	public List<CursoDTO> listarCursoxSeccion(int seccion) {
+		return dao.listarCursoxSeccion(seccion);
+	}
+
+	public SeccionDTO buscarSeccion(int seccion) {
+		return dao.buscarSeccion(seccion);
+	}
+
+	public int registrarSeccion(SeccionDTO obj) {
+		return dao.registrarSeccion(obj);
+	}
+
+	public int modificarSeccion(SeccionDTO obj) {
+		return dao.modificarSeccion(obj);
+	}
+
+	public int eliminarCursoSeccion(DetalleCurSeccionDTO obj) {
+		return dao.eliminarCursoSeccion(obj);
+	}
+
+	public List<SeccionDTO> listarSecciones() {
+		return dao.listarSecciones();
+	}
+	public SeccionDTO buscarSeccion2(SeccionDTO obj) {
+		return dao.buscarSeccion2(obj);
+	}
+	public DetalleCurSeccionDTO buscarSeccion3(DetalleCurSeccionDTO obj) {
+		return dao.buscarSeccion3(obj);
+	}
+	public int registrarDetalle(DetalleCurSeccionDTO obj) {
+		return dao.registrarDetalle(obj);
+	}
+	public List<SeccionDTO> listarSeccion2(int codCiclo) {
+		return dao.listarSeccion2(codCiclo);
+	}
+	public List<DetalleCurSeccionDTO> listarSeccion4(int codCurso) {
+		return dao.listarSeccion4(codCurso);
+	}
+	public int registrarDetalleUsuario(DetalleSeccionAlum obj) {
+		return dao.registrarDetalleUsuario(obj);
+	}
+	public int updateDetalleUsuario(DetalleSeccionAlum obj) {
+		return dao.updateDetalleUsuario(obj);
+	}
+	public DetalleSeccionAlum buscarDetalle(DetalleSeccionAlum xobj) {
+		return dao.buscarDetalle(xobj);
+	}*/
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<!-- SE DEFINE LAS PLANTILLAS -->
+	<definition name="t_plantillaBaseConMenu" template="/jsp/layout/plantillaBaseConMenu.jsp">
+		<put-attribute name="cabecera" value="/jsp/components/cabecera.jsp" />
+		<put-attribute name="menu" value="/jsp/components/menu.jsp" />
+		<put-attribute name="datospersonales" value="/jsp/pages/persona/datosPersonales.jsp" />
+	</definition>
+	<definition name="t_plantillaBaseSimple" template="/jsp/layout/plantillaBaseSimple.jsp">
+		<put-attribute name="cabecera" value="/jsp/components/cabecera.jsp" />
+	</definition>
+	<definition name="t_plantillaSimple" template="/jsp/layout/plantillaSimple.jsp"></definition>
+	<definition name="t_plantillaSimpleGRID" template="/jsp/layout/plantillaSimpleGRID.jsp"></definition>
+	<definition name="t_plantillaModal" template="/jsp/layout/plantillaModal.jsp"></definition>
+	
+	<!-- SE HACE USO DE LAS PLANTILLAS EN LAS PAGINAS DE NUESTRO PROYECTO -->
+	<definition name="t_login" extends="t_plantillaModal">
+		<put-attribute name="central" value="/jsp/pages/login/login.jsp" />
+		<put-attribute name="modal-header" value="/jsp/pages/login/login-header.jsp" />
+		<put-attribute name="modal-footer" value="/jsp/pages/login/login-footer.jsp" />
+	</definition>
+	<definition name="t_intranet" extends="t_plantillaBaseConMenu">
+		<put-attribute name="central" value="/jsp/pages/dashboard/intranet.jsp" />
+	</definition>
+	<definition name="m_profesor" extends="t_plantillaBaseConMenu">
+		<put-attribute name="central" value="/jsp/pages/mantenimiento/m_profesor.jsp" />
+	</definition>
+	<definition name="m_coordi" extends="t_plantillaBaseConMenu">
+		<put-attribute name="central" value="/jsp/pages/mantenimiento/m_coordi.jsp" />
+	</definition>
+	<definition name="m_alumno" extends="t_plantillaBaseConMenu">
+		<put-attribute name="central" value="/jsp/pages/mantenimiento/m_alumno.jsp" />
+	</definition>
+	<definition name="m_curso" extends="t_plantillaBaseConMenu">
+		<put-attribute name="central" value="/jsp/pages/mantenimiento/m_cursos.jsp" />
+	</definition>
+	<definition name="m_seccion" extends="t_plantillaBaseConMenu">
+		<put-attribute name="central" value="/jsp/pages/mantenimiento/m_seccion.jsp" />
+	</definition>
+	<definition name="t_examen" extends="t_plantillaBaseConMenu">
+		<put-attribute name="central" value="/jsp/pages/t_examen.jsp" />
+	</definition>
+	<definition name="t_desarrollo" extends="t_plantillaBaseConMenu">
+		<put-attribute name="central" value="/jsp/pages/t_desarrollo.jsp" />
+	</definition>
+</tiles-definitions>
+

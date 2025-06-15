@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pit">
+	
+	<resultMap id="usuarioPersonaMap" type="UsuarioDTOIbatis">
+    	<id property="usuarioId" column="usuario_id"/>
+    	<result property="personaId" column="persona_id"/>
+    	<result property="estadoId" column="estado_id"/>
+    	<result property="usuario" column="usuario"/>
+    	<result property="clave" column="clave"/>
+    	<result property="imagenURL" column="imagen_url"/>
+    	<association property="persona" javaType="PersonaDTOIbatis">
+      		<id property="personaId" column="persona_id"/>
+      		<result property="identificador" column="identificador"/>
+      		<result property="nombres" column="nombres"/>
+      		<result property="apellidos" column="apellidos"/>
+      		<result property="fechaNacimiento" column="fecha_nacimiento"/>
+      		<result property="telefono" column="telefono"/>
+    	</association>
+    	<association property="estado" javaType="EstadoBeanIbatis">
+      		<id property="estadoId" column="estado_id"/>
+      		<result property="estado" column="estado"/>
+    	</association>
+  	</resultMap>
+  	
+	<select id="SQL_Login" resultMap="usuarioPersonaMap" parameterType="map">
+		select 
+			u.usuario_id,
+			u.persona_id,
+			u.estado_id,
+			u.usuario,
+			u.clave,
+			u.imagen_url,
+			p.identificador,
+			p.nombres,
+			p.apellidos,
+			p.fecha_nacimiento,
+			p.telefono,
+			e.estado
+		from usuario u 
+		inner join persona p on u.persona_id = p.persona_id
+		inner join estado e on u.estado_id = e.estado_id
+		where u.usuario = #{usuario} AND u.clave = #{clave}
+	</select>
+	<select id="SQL_DatosDeUsuario" parameterType="int" resultType="PersonaDTOIbatis">
+		SELECT 	idadministrador as codigo,
+				dni as dni,
+				nombre as nombre,
+				apellido as apellido,
+				fechanac as fechanac,
+				telefono as telefono,
+				celular as celular,
+				idusuario as idusuario
+		FROM 	administrador
+		WHERE 	idusuario = #{codigo}
+	</select>
+	<select id="SQL_DatosDeUsuario2" parameterType="int" resultType="PersonaDTOIbatis">
+		SELECT 	idestudiante as codigo,
+				dni as dni,
+				nombre as nombre,
+				apellido as apellido,
+				fechanac as fechanac,
+				telefono as telefono,
+				celular as celular,
+				idusuario as idusuario
+		FROM 	estudiante
+		WHERE 	idusuario = #{codigo}
+	</select>
+	<select id="SQL_DatosDeUsuario3" parameterType="int" resultType="PersonaDTOIbatis">		
+		SELECT 	iddocente as codigo,
+				dni as dni,
+				nombre as nombre,
+				apellido as apellido,
+				fechanac as fechanac,
+				telefono as telefono,
+				celular as celular,
+				idusuario as idusuario
+		FROM 	docente
+		WHERE 	idusuario = #{codigo}
+	</select>
+	<select id="SQL_EnlacesDeUsuario" parameterType="int" resultType="EnlaceDTOIbatis">
+		SELECT 	idenlace,idperfil,enlace,descripcion
+		FROM 	enlaces 
+		WHERE 	idperfil = #{codigo}
+		ORDER BY enlace ASC	
+	</select>
+	<select id="SQL_Found_Usuario" parameterType="String" resultType="UsuarioDTOIbatis">
+		SELECT 
+				u.idusuario as codigo,
+				u.usuario as usuario,
+				u.clave as clave,
+				u.urlImagen as urlFoto,
+				u.estado as estado,
+				p.perfil as perfil,
+				u.idperfil as idperfil	
+		FROM
+				usuario u inner join perfil p on u.idperfil = p.idperfil
+		WHERE
+				u.usuario = #{usuario}
+	</select>
+	<insert id="SQL_REG_Usuario" parameterType="UsuarioDTOIbatis">
+		insert into usuario values(0,#{usuario},#{clave},#{urlFoto},1,#{idperfil})
+	</insert>
+	<insert id="SQL_UPD_Usuario" parameterType="UsuarioDTOIbatis">
+		update usuario set clave = #{clave}, urlImagen = #{urlFoto}, estado = #{estado}
+		where idusuario = #{codigo}
+	</insert>
+</mapper>
+
+
+
+
+
+
+
+
+
