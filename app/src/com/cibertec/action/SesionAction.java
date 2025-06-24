@@ -16,13 +16,17 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.cibertec.beans.PersonaDTO;
 import com.cibertec.beans.CursoDTO;
 import com.cibertec.beans.EnlaceDTO;
+import com.cibertec.beans.PerfilBean;
 import com.cibertec.beans.UsuarioDTO;
 import com.cibertec.services.CursoService;
+import com.cibertec.services.EnlaceService;
 import com.cibertec.services.LoginService;
+import com.cibertec.services.PersonaService;
+import com.cibertec.utils.SesionUtils;
 
 @ParentPackage("pit")
 @Namespace("/")
-public class SesionAction extends ActionSupport{
+public class SesionAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -46,8 +50,8 @@ public class SesionAction extends ActionSupport{
 	}
 
 	@Action(value = "iniciarSesion",results = {
-		@Result(name = SUCCESS, type = "tiles", location = "t_intranet"),
-		@Result(name = ERROR, type = "tiles", location = "t_login")
+			@Result(name = SUCCESS, type = "tiles", location = "t_intranet"),
+			@Result(name = ERROR, type = "tiles", location = "t_login")
 	})
 	public String IniciarSesion(){
 		UsuarioDTO user = new LoginService().IniciarSesion(usuario, clave);
@@ -55,9 +59,25 @@ public class SesionAction extends ActionSupport{
 		if(user == null){
 			return ERROR;
 		} else {
+			List<PerfilBean> perfiles = new PersonaService().listarPerfilesDePersona(user.getPersonaId());
+			user.getPersona().setPerfiles(perfiles);
+			System.out.println("session.usuario = " + user);
+			sesion.put("user", user);
+			
+			if(perfiles.size() > 0) {
+				PerfilBean perfilActive = perfiles.get(0);
+				List<EnlaceDTO> enlaces = new EnlaceService().listarEnlacesDePerfil(perfilActive.getPerfilId());
+				enlaces = SesionUtils.establecerJerarquiaDeEnlaces(enlaces);
+								
+				perfilActive.setActive(1);
+				perfilActive.setEnlaces(enlaces);
+				
+				sesion.put("perfil", perfilActive);
+			}
+			
+			
 			/*PersonaDTO persona = new LoginService().datosUsuario(usuario.getCodigo(),usuario.getIdperfil());
 			List<CursoDTO> cursos = new CursoService().listarCursos(usuario.getCodigo());
-			List<EnlaceDTO> enlaces = new LoginService().MostrarEnlacesUsuario(usuario.getCodigo());
 			List<EnlaceDTO> mantenimiento = new ArrayList<EnlaceDTO>();
 			List<EnlaceDTO> consultas = new ArrayList<EnlaceDTO>();
 			List<EnlaceDTO> registros = new ArrayList<EnlaceDTO>();
@@ -78,7 +98,6 @@ public class SesionAction extends ActionSupport{
 			} else {
 				usuario.setEstado("No est� matriculado");
 			}*/
-			sesion.put("user", user);
 			/*sesion.put("keyDatosUsuario", persona);
 			sesion.put("keyCursos", cursos);
 			sesion.put("keyPermisosM", mantenimiento);
@@ -90,7 +109,7 @@ public class SesionAction extends ActionSupport{
 	}
 	
 	@Action(value = "cerrarSesion", results={
-		@Result(name = SUCCESS, type = "tiles", location = "t_login")
+			@Result(name = SUCCESS, type = "tiles", location = "t_login")
 	})
 	public String CerrarSesion(){
 		SessionMap sesionActiva = (SessionMap) sesion;
@@ -99,8 +118,8 @@ public class SesionAction extends ActionSupport{
 	}
 	
 	@Action(value = "dashboard", results = {
-	    @Result(name = SUCCESS, type = "tiles", location = "t_intranet"),
-		@Result(name = ERROR, type = "tiles", location = "t_login")
+			@Result(name = SUCCESS, type = "tiles", location = "t_intranet"),
+			@Result(name = ERROR, type = "tiles", location = "t_login")
 	})
 	public String dashboard() {
 		UsuarioDTO user = (UsuarioDTO) sesion.get("user");

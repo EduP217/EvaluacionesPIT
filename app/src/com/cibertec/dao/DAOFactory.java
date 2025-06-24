@@ -12,8 +12,9 @@ public abstract class DAOFactory {
     
     public abstract UsuarioDAO usuarioDAO();
     public abstract CursoDAO cursoDAO();
-    /*public abstract PersonaDAO personaDAO();
-    public abstract SeccionDAO seccionDAO();
+    public abstract PersonaDAO personaDAO();
+    public abstract EnlaceDAO enlaceDAO();
+    /*public abstract SeccionDAO seccionDAO();
     public abstract ExamenDAO examenDAO();*/
     
     public static DAOFactory factory(){

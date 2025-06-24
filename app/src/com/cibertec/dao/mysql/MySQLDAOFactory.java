@@ -2,6 +2,8 @@ package com.cibertec.dao.mysql;
 
 import com.cibertec.dao.CursoDAO;
 import com.cibertec.dao.DAOFactory;
+import com.cibertec.dao.EnlaceDAO;
+import com.cibertec.dao.PersonaDAO;
 import com.cibertec.dao.UsuarioDAO;
 
 public class MySQLDAOFactory extends DAOFactory {
@@ -16,12 +18,17 @@ public class MySQLDAOFactory extends DAOFactory {
 		return new MySQLCursoDAO();
 	}
 
-	/*@Override
-	public PersonaDAO getPersonaDAO() {
-		return new PersonaDAOImpl();
+	@Override
+	public PersonaDAO personaDAO() {
+		return new MySQLPersonaDAO();
 	}
 
 	@Override
+	public EnlaceDAO enlaceDAO() {
+		return new MySQLEnlaceDAO();
+	}
+
+	/*@Override
 	public SeccionDAO getSeccionDAO() {
 		return new MySqlSeccionDAO();
 	}

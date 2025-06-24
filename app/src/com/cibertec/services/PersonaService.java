@@ -3,6 +3,7 @@ package com.cibertec.services;
 import java.util.List;
 import java.util.Map;
 
+import com.cibertec.beans.PerfilBean;
 import com.cibertec.beans.PersonaDTO;
 import com.cibertec.dao.CursoDAO;
 import com.cibertec.dao.DAOFactory;
@@ -10,10 +11,15 @@ import com.cibertec.dao.PersonaDAO;
 import com.cibertec.utils.Constantes;
 
 public class PersonaService {
-	/*DAOFactory fabrica = DAOFactory.getDAOFactory(Constantes.ORIGEN_DATOS);
-	PersonaDAO dao = fabrica.getPersonaDAO();
 	
-	public List<PersonaDTO> listarP(int perfil) {
+	DAOFactory fabrica = DAOFactory.factory();
+	PersonaDAO dao = fabrica.personaDAO();
+	
+	public List<PerfilBean> listarPerfilesDePersona(int personaId) {
+		return dao.listarPerfilesDePersona(personaId);
+	}
+	
+	/*public List<PersonaDTO> listarP(int perfil) {
 		return dao.listarP(perfil);
 	}	
 	public List<PersonaDTO> listarPersonas(Map<String, Object> numListar) {

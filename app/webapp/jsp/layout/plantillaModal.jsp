@@ -7,38 +7,20 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		
-		<link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet" />
-		<link href="${pageContext.request.contextPath}/assets/css/animate.css" rel="stylesheet" />
-		<link href="${pageContext.request.contextPath}/assets/css/waves-effect.css" rel="stylesheet"/>
-		<link href="${pageContext.request.contextPath}/assets/css/helper.css" rel="stylesheet" type="text/css" />
-		<link href="${pageContext.request.contextPath}/assets/css/style3.css" rel="stylesheet" type="text/css" />
-		
-		<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/ico-educacion.ico"/>
-		<title>Sistema de Control de Evaluaciones | CIBERTEC</title>
+		<jsp:include page="/jsp/layout/baseHeader.jsp" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/plantillaModal.css" type="text/css" />
 		    
 		<style type="text/css">
-			.modal-footer {
-				border-top: 0px;
+			div#templateModal div.modal-header {
+				background-image: url("${pageContext.request.contextPath}/images/small/student_banner.jpg");
 			}
-			.modal-header {
-				background-image: url("${pageContext.request.contextPath}/images/small/bg.jpg");
-				color: white;
-				height: 160px;
-				padding: 5%;
-			}
-			#idmodal{
-				width: 30% !important;
-			}
-			body{
+			div.backgroundImage {
 				background-image: url("${pageContext.request.contextPath}/images/big/Salon.png");
 			}
 		</style>
 	</head>
 	<body onload="loadModal()">
+		<div class="backgroundImage"></div>
 		<!--login modal-->
 		<div class="modal fade" id="templateModal" role="dialog"
 			data-backdrop="static" data-keyboard="false">
@@ -52,7 +34,7 @@
 	
 					<!-- Body Section -->
 					<div class="modal-body">
-						<tiles:insertAttribute name="central" />
+						<tiles:insertAttribute name="modal-body" />
 					</div>
 	
 					<!-- Footer Section -->
@@ -64,8 +46,7 @@
 			</div>
 		</div>
 		
-		<script src="${pageContext.request.contextPath}/assets/js/jquery-1.10.2.min.js"></script>
-		<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+		<jsp:include page="/jsp/layout/baseFooter.jsp" />
 		<script type="text/javascript">
 			function loadModal(){
 				$("#templateModal").modal("show");

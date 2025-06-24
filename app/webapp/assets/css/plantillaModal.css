@@ -1,0 +1,23 @@
+div#templateModal div#idmodal {
+	max-width: 540px;
+	width: 100%;
+}
+
+div#templateModal div.modal-header {
+	min-height: 200px;
+	padding: 15px 25px;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+div#templateModal div.modal-header div.containerLoginHeder {
+	width: 250px;
+}
+
+div#templateModal div.modal-body {
+	padding: 15px 25px;
+}
+
+div#templateModal div.modal-footer {
+	border-top: 0px;
+}

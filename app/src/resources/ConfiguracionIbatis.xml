@@ -32,8 +32,9 @@
 	</environments>
 	<mappers>
 		<mapper resource="resources/dao/mappers/mapperLogin.xml"/>
+		<mapper resource="resources/dao/mappers/mapperPersona.xml"/>
+		<mapper resource="resources/dao/mappers/mapperEnlace.xml"/>
 <!-- 		<mapper resource="resources/dao/mappers/mapperCurso.xml"/> -->
-<!-- 		<mapper resource="resources/dao/mappers/mapperPersona.xml"/> -->
 <!-- 		<mapper resource="resources/dao/mappers/mapperSeccion.xml"/> -->
 <!-- 		<mapper resource="resources/dao/mappers/mapperExamen.xml"/> -->
 	</mappers>

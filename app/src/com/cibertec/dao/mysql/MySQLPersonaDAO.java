@@ -1,32 +1,28 @@
 package com.cibertec.dao.mysql;
 
-import java.io.IOException;
-import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
-import com.cibertec.beans.PersonaDTO;
+import com.cibertec.beans.PerfilBean;
+import com.cibertec.dao.DAOExecutor;
 import com.cibertec.dao.PersonaDAO;
 
 public class MySQLPersonaDAO implements PersonaDAO {
 
-	SqlSessionFactory sqlMapper=null;
-	String archivo="ConfiguracionIbatis.xml";
-	{
-		try {
-			Reader r=Resources.getResourceAsReader(archivo);
-			sqlMapper=new SqlSessionFactoryBuilder().build(r);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	@Override
+	public List<PerfilBean> listarPerfilesDePersona(int personaId) {
+		Map<String, Object> params = new HashMap<>();
+		params.put("personaId", personaId);
+		
+		return DAOExecutor.retrieve(session -> 
+			session.selectList("SQL_ListarPerfilesDePersona", params)
+		);
 	}
 
-	@Override
+	
+
+	/*@Override
 	public List<PersonaDTO> listarP(int perfil) {
 		List<PersonaDTO> data=null;
 		SqlSession sesion=sqlMapper.openSession();
@@ -152,6 +148,6 @@ public class MySQLPersonaDAO implements PersonaDAO {
 			e.printStackTrace();
 		}
 		return data;
-	}
+	}*/
 
 }

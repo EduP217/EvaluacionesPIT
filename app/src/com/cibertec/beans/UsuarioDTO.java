@@ -61,4 +61,11 @@ public class UsuarioDTO {
 		this.estado = estado;
 	}
 	
+	@Override
+	public String toString() {
+		return "UsuarioDTO [usuarioId=" + usuarioId + ", personaId=" + personaId + ", estadoId=" + estadoId
+				+ ", usuario=" + usuario + ", clave=" + clave + ", imagenURL=" + imagenURL + ", persona=" + persona
+				+ ", estado=" + estado + "]";
+	}
+	
 }

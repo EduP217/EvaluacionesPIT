@@ -1,0 +1,30 @@
+section#contenedor {
+	position: relative;
+    width: 100%;
+    max-width: 1200px;
+	margin:0 auto;
+	background-color:hsla(360, 100%, 100%, 0.8);
+}
+
+section#contenedor main div.flex-container {
+	display: flex;
+    height: calc(100vh - (80px + 45px));
+}
+
+section#contenedor main div.flex-container div#idMenu {
+	flex: 1;
+    border-right: 1px dashed #b4b4b4;
+}
+
+section#contenedor main div.flex-container div#idCentralConMenu {
+	flex: 4;
+}
+
+section#contenedor footer {
+	clear:both;
+	background:#000;
+	text-align:center;
+	height:45px;
+	padding-top: 10px;
+	color: white;
+}

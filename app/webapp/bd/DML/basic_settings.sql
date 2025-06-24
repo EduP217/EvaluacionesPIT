@@ -106,16 +106,20 @@ INSERT INTO `pit-evaluations`.curso (codigo, nombre) VALUES ('PRO014', 'Proyecto
 INSERT INTO `pit-evaluations`.curso (codigo, nombre) VALUES ('BUS015', 'Bussiness Intelligence');
 
 -- Enlace
-INSERT INTO `pit-evaluations`.enlace (enlace, ruta_url) VALUES ('Configuracion', 'configuracion');
-INSERT INTO `pit-evaluations`.enlace (enlace, ruta_url) VALUES ('Mantenimiento de Coordinadores', 'mantenimiento/coordinadores');
-INSERT INTO `pit-evaluations`.enlace (enlace, ruta_url) VALUES ('Mantenimiento de Docentes', 'mantenimiento/docentes');
-INSERT INTO `pit-evaluations`.enlace (enlace, ruta_url) VALUES ('Mantenimiento de Alumnos', 'mantenimiento/alumnos');
-INSERT INTO `pit-evaluations`.enlace (enlace, ruta_url) VALUES ('Mantenimiento de Cursos', 'mantenimiento/cursos');
-INSERT INTO `pit-evaluations`.enlace (enlace, ruta_url) VALUES ('Programacion de Cursos', 'programacion/cursos');
-INSERT INTO `pit-evaluations`.enlace (enlace, ruta_url) VALUES ('Banco de Preguntas', 'preguntas');
-INSERT INTO `pit-evaluations`.enlace (enlace, ruta_url) VALUES ('Examenes', 'examen');
-INSERT INTO `pit-evaluations`.enlace (enlace, ruta_url) VALUES ('Matricula', 'matricula');
-INSERT INTO `pit-evaluations`.enlace (enlace, ruta_url) VALUES ('Evaluaciones', 'evaluacion');
+INSERT INTO `pit-evaluations`.enlace (enlace_id, enlace, ruta_url, icono, enlace_parent_id) VALUES (1, 'Mantenimiento', 'mantenimiento', 'fa fa-wrench', null);
+INSERT INTO `pit-evaluations`.enlace (enlace_id, enlace, ruta_url, icono, enlace_parent_id) VALUES (2, 'Mantenimiento de Coordinadores', 'mantenimiento/coordinadores', null, 1);
+INSERT INTO `pit-evaluations`.enlace (enlace_id, enlace, ruta_url, icono, enlace_parent_id) VALUES (3, 'Mantenimiento de Docentes', 'mantenimiento/docentes', null, 1);
+INSERT INTO `pit-evaluations`.enlace (enlace_id, enlace, ruta_url, icono, enlace_parent_id) VALUES (4, 'Mantenimiento de Alumnos', 'mantenimiento/alumnos', null, 1);
+INSERT INTO `pit-evaluations`.enlace (enlace_id, enlace, ruta_url, icono, enlace_parent_id) VALUES (5, 'Mantenimiento de Cursos', 'mantenimiento/cursos', null, 1);
+INSERT INTO `pit-evaluations`.enlace (enlace_id, enlace, ruta_url, icono, enlace_parent_id) VALUES (6, 'Cursos', 'cursos', 'fa fa-book', null);
+INSERT INTO `pit-evaluations`.enlace (enlace_id, enlace, ruta_url, icono, enlace_parent_id) VALUES (7, 'Programacion de Cursos', 'cursos/programar', null, 6);
+INSERT INTO `pit-evaluations`.enlace (enlace_id, enlace, ruta_url, icono, enlace_parent_id) VALUES (8, 'Evaluaciones', 'evaluaciones', 'fa fa-pencil', null);
+INSERT INTO `pit-evaluations`.enlace (enlace_id, enlace, ruta_url, icono, enlace_parent_id) VALUES (9, 'Banco de Preguntas', 'evaluaciones/preguntas', null, 8);
+INSERT INTO `pit-evaluations`.enlace (enlace_id, enlace, ruta_url, icono, enlace_parent_id) VALUES (10, 'Rendir Examen', 'examen', 'fa fa-file', null);
+INSERT INTO `pit-evaluations`.enlace (enlace_id, enlace, ruta_url, icono, enlace_parent_id) VALUES (11, 'Matricula', 'matricula', 'fa fa-calendar', null);
+INSERT INTO `pit-evaluations`.enlace (enlace_id, enlace, ruta_url, icono, enlace_parent_id) VALUES (12, 'Configuración', 'configuracion', 'fa fa-wrench', null);
+
+ALTER TABLE `pit-evaluations`.enlace AUTO_INCREMENT = 13;
 
 -- Perfil Enlaces
 INSERT INTO `pit-evaluations`.perfil_enlaces (perfil_id, enlace_id) VALUES (1, 1);
@@ -128,6 +132,8 @@ INSERT INTO `pit-evaluations`.perfil_enlaces (perfil_id, enlace_id) VALUES (1, 7
 INSERT INTO `pit-evaluations`.perfil_enlaces (perfil_id, enlace_id) VALUES (1, 8);
 INSERT INTO `pit-evaluations`.perfil_enlaces (perfil_id, enlace_id) VALUES (1, 9);
 INSERT INTO `pit-evaluations`.perfil_enlaces (perfil_id, enlace_id) VALUES (1, 10);
+INSERT INTO `pit-evaluations`.perfil_enlaces (perfil_id, enlace_id) VALUES (1, 11);
+INSERT INTO `pit-evaluations`.perfil_enlaces (perfil_id, enlace_id) VALUES (1, 12);
 
 -- Usuarios
 INSERT INTO `pit-evaluations`.usuario (persona_id, estado_id, usuario, clave, imagen_url) VALUES (1, 1003, 'admin@site.com', '123456789', 'avatar-default.png');

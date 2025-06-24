@@ -57,4 +57,11 @@ public class PersonaDTO {
 		this.perfiles = perfiles;
 	}
 	
+	@Override
+	public String toString() {
+		return "PersonaDTO [personaId=" + personaId + ", identificador=" + identificador + ", nombres=" + nombres
+				+ ", apellidos=" + apellidos + ", fechaNacimiento=" + fechaNacimiento + ", telefono=" + telefono
+				+ ", perfiles=" + perfiles + "]";
+	}
+	
 }

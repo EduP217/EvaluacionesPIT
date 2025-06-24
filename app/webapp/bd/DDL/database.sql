@@ -188,9 +188,11 @@ CREATE TABLE `pit-evaluations`.evaluacion_respuestas (
 );
 
 CREATE TABLE `pit-evaluations`.enlace (
-	enlace_id 	INTEGER NOT NULL AUTO_INCREMENT,
-	enlace 		VARCHAR(100) NOT NULL,
-	ruta_url	VARCHAR(300) NOT NULL,
+	enlace_id 			INTEGER NOT NULL AUTO_INCREMENT,
+	enlace 				VARCHAR(100) NOT NULL,
+	ruta_url			VARCHAR(300) NOT NULL,
+	icono				VARCHAR(100),
+	enlace_parent_id	INTEGER,
 	CONSTRAINT pk_enlace PRIMARY KEY (enlace_id)
 );
 

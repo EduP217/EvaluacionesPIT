@@ -6,6 +6,7 @@ public class PerfilBean {
 
 	private int perfilId;
 	private String perfil;
+	private int active;
 	
 	private List<EnlaceDTO> enlaces;
 	
@@ -26,6 +27,17 @@ public class PerfilBean {
 	}
 	public void setEnlaces(List<EnlaceDTO> enlaces) {
 		this.enlaces = enlaces;
+	}
+	public int getActive() {
+		return active;
+	}
+	public void setActive(int active) {
+		this.active = active;
+	}
+	
+	@Override
+	public String toString() {
+		return "PerfilBean [perfilId=" + perfilId + ", perfil=" + perfil + ", enlaces=" + enlaces + "]";
 	}
 		
 }
