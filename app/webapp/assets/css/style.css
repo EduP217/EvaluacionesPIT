@@ -208,3 +208,7 @@ div.backgroundImage {
 	background-size: cover;
 	z-index: 0;
 }
+
+.mouseOnHover:hover {
+	cursor: pointer;
+}

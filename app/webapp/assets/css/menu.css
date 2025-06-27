@@ -1,3 +1,14 @@
+div#idMenu {
+    background-color: #f5f5f5a8;
+}
+
+div.btn-menu {
+	display: none;
+    text-align: right;
+    padding: 0.5rem 1rem;
+    font-size: 2rem;
+}
+
 .contenedor-menu {
 	text-transform: capitalize;
 }
@@ -5,30 +16,25 @@
 .contenedor-menu ul {
 	width: 100%;
 	margin: 0;
-    padding: 0 1rem;
+    padding: 0;
 	list-style: none;
 }
 
+.contenedor-menu ul.menu {
+	padding: 0 1rem;
+}
+
+.contenedor-menu ul.subMenu {
+	padding-left: 2rem;
+	display: none;
+}
+
 .contenedor-menu ul li a {
-	text-decoration: none;
-    color: #fff;
-}
-
-.contenedor-menu ul li :hover {
-    background-color: #fff;
-}
-
-.contenedor-menu ul li :hover > a {
-    background-color: #fff;
-    color: #1a4a78;
+	color: #000;
 }
 
 .contenedor-menu ul li a:hover {
     color: #1a4a78;
-}
-
-.contenedor-menu ul.menu {
-    background-color: #1a4a78;
 }
 
 .contenedor-menu ul.menu li div.parentMenu {
@@ -46,48 +52,16 @@
     align-items: center;
 }
 
-/*.contenedor-menu ul.menu li a span {
-	flex: auto;
-}*/
-
-/*.contenedor-menu ul.menu li a:hover{
-	background: #1a95d5;
-	color: white;
-}
-
-.contenedor-menu .menu .activado > a{
-	background: #1a95d5;
-	color: white;
-}*/
-
-/*.btn-menu{
-	display: none;
-	padding: 20px;
-	background: #0d2c44;
-	color: white;
-}
-.btn-menu:hover{
-	background: #e9e9e9;
-}
-.btn-menu .icono{
-	float: right;
-}*/
-
-@media screen and (max-width: 450px) {
-	#idDatosUsuario{
-		width: 335px;
-		margin-left: 15px;
-	}
-	.contenedor-menu{
-		width: 95%;
-		position: fixed;
-		z-index: 1000;
-	}
-	.btn-menu{
-		display: block;
-	}
-	.contenedor-menu .menu{
-		width: 111.5%;
+@media screen and (max-width: 650px) {
+	.contenedor-menu ul.menu {
 		display: none;
+	    position: absolute;
+	    z-index: 2;
+	    background-color: rgb(243 243 240);
+        box-shadow: 0px 6px 6px -5px rgb(174 174 174);
+	}
+	
+	div.btn-menu{
+		display: block;
 	}
 }

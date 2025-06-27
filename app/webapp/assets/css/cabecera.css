@@ -9,6 +9,7 @@ div#cabeceraContainer {
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
+    gap: 1rem;
 }
 
 div#cabeceraContainer div.institutionalLogo {
@@ -97,13 +98,21 @@ div.dropdown div.dropdown-content a img {
 	padding-right: 10px;
 }
 
-/*.userAvatar{
-    height: 60px;
-    width: 60px;
-    background-repeat: no-repeat;
-	background-position: 50%;
-	border: 2px solid;
-	border-radius: 50%;
-	border-color: white;
-	background-size: 100% auto;
-}*/
+
+@media screen and (max-width: 400px) {
+	div#cabeceraContainer div.institutionalLogo {
+		width: 150px;
+	}
+	
+	div.dropdown.chip {
+    	padding: 0 1rem;
+	}
+	
+	div.dropdown div.btnContainer {
+		min-width: 0px;
+	}
+	
+	div.dropdown div.btnContainer button.dropbtn {
+		display: none;
+	}
+}

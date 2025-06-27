@@ -25,12 +25,12 @@ import com.cibertec.services.PersonaService;
 import com.cibertec.utils.SesionUtils;
 
 @ParentPackage("pit")
-@Namespace("/")
 public class SesionAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Map<String,Object> sesion = ActionContext.getContext().getSession();
+	private Map<String,Object> sesion;
+	
 	private String usuario, clave;
 	
 	public String getUsuario() {
@@ -49,6 +49,10 @@ public class SesionAction extends ActionSupport {
 		this.clave = clave;
 	}
 
+	public SesionAction() {
+		sesion = ActionContext.getContext().getSession();
+	}
+
 	@Action(value = "iniciarSesion",results = {
 			@Result(name = SUCCESS, type = "tiles", location = "t_intranet"),
 			@Result(name = ERROR, type = "tiles", location = "t_login")
@@ -58,54 +62,54 @@ public class SesionAction extends ActionSupport {
 		
 		if(user == null){
 			return ERROR;
-		} else {
-			List<PerfilBean> perfiles = new PersonaService().listarPerfilesDePersona(user.getPersonaId());
-			user.getPersona().setPerfiles(perfiles);
-			System.out.println("session.usuario = " + user);
-			sesion.put("user", user);
-			
-			if(perfiles.size() > 0) {
-				PerfilBean perfilActive = perfiles.get(0);
-				List<EnlaceDTO> enlaces = new EnlaceService().listarEnlacesDePerfil(perfilActive.getPerfilId());
-				enlaces = SesionUtils.establecerJerarquiaDeEnlaces(enlaces);
-								
-				perfilActive.setActive(1);
-				perfilActive.setEnlaces(enlaces);
-				
-				sesion.put("perfil", perfilActive);
-			}
-			
-			
-			/*PersonaDTO persona = new LoginService().datosUsuario(usuario.getCodigo(),usuario.getIdperfil());
-			List<CursoDTO> cursos = new CursoService().listarCursos(usuario.getCodigo());
-			List<EnlaceDTO> mantenimiento = new ArrayList<EnlaceDTO>();
-			List<EnlaceDTO> consultas = new ArrayList<EnlaceDTO>();
-			List<EnlaceDTO> registros = new ArrayList<EnlaceDTO>();
-			
-			for(EnlaceDTO bean:enlaces){
-				if(bean.getEnlace().startsWith("m")){
-					mantenimiento.add(bean);
-				} else if(bean.getEnlace().startsWith("c")){
-					consultas.add(bean);
-				} else if(bean.getEnlace().startsWith("t")){
-					registros.add(bean);
-				} else {
-					
-				}
-			}			
-			if(usuario.getEstado().equals("1")){
-				usuario.setEstado("Matriculado");
-			} else {
-				usuario.setEstado("No est� matriculado");
-			}*/
-			/*sesion.put("keyDatosUsuario", persona);
-			sesion.put("keyCursos", cursos);
-			sesion.put("keyPermisosM", mantenimiento);
-			sesion.put("keyPermisosC", consultas);
-			sesion.put("keyPermisosT", registros);*/
-			
-			return SUCCESS;
 		}
+		
+		List<PerfilBean> perfiles = new PersonaService().listarPerfilesDePersona(user.getPersonaId());
+		user.getPersona().setPerfiles(perfiles);
+		System.out.println("session.usuario = " + user);
+		sesion.put("user", user);
+		
+		if(perfiles.size() > 0) {
+			PerfilBean perfilActive = perfiles.get(0);
+			List<EnlaceDTO> enlaces = new EnlaceService().listarEnlacesDePerfil(perfilActive.getPerfilId());
+			enlaces = SesionUtils.establecerJerarquiaDeEnlaces(enlaces);
+							
+			perfilActive.setActive(1);
+			perfilActive.setEnlaces(enlaces);
+			
+			sesion.put("perfil", perfilActive);
+		}
+		
+		
+		/*PersonaDTO persona = new LoginService().datosUsuario(usuario.getCodigo(),usuario.getIdperfil());
+		List<CursoDTO> cursos = new CursoService().listarCursos(usuario.getCodigo());
+		List<EnlaceDTO> mantenimiento = new ArrayList<EnlaceDTO>();
+		List<EnlaceDTO> consultas = new ArrayList<EnlaceDTO>();
+		List<EnlaceDTO> registros = new ArrayList<EnlaceDTO>();
+		
+		for(EnlaceDTO bean:enlaces){
+			if(bean.getEnlace().startsWith("m")){
+				mantenimiento.add(bean);
+			} else if(bean.getEnlace().startsWith("c")){
+				consultas.add(bean);
+			} else if(bean.getEnlace().startsWith("t")){
+				registros.add(bean);
+			} else {
+				
+			}
+		}			
+		if(usuario.getEstado().equals("1")){
+			usuario.setEstado("Matriculado");
+		} else {
+			usuario.setEstado("No est� matriculado");
+		}*/
+		/*sesion.put("keyDatosUsuario", persona);
+		sesion.put("keyCursos", cursos);
+		sesion.put("keyPermisosM", mantenimiento);
+		sesion.put("keyPermisosC", consultas);
+		sesion.put("keyPermisosT", registros);*/
+		
+		return SUCCESS;
 	}
 	
 	@Action(value = "cerrarSesion", results={

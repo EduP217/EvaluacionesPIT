@@ -15,10 +15,10 @@ $(document).ready(function(){
 		$('.contenedor-menu .menu').slideToggle();
 	});
 	$(window).resize(function(){
-		if($(document).width()>450){
+		if($(document).width()>650){
 			$('.contenedor-menu .menu').css({'display':'block'});
 		}
-		if($(document).width()<450){
+		if($(document).width()<650){
 			$('.contenedor-menu .menu').css({'display':'none'});
 			$('.menu li ul').slideUp();
 			$('.menu li').removeClass('activado');

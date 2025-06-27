@@ -17,13 +17,15 @@
 			</div>
 		    <div class="dropdown-content">
 		    	<div class="p-1rem">
-		    		<select name="personaPerfil" id="personaPerfil" class="form-control">
-		    			<s:iterator value="#session.user.persona.perfiles">
-		    				<option value="<s:property value='perfilId' />"  <s:if test="perfilId == #session.perfil.perfilId">selected</s:if>>
-		    					<s:property value="perfil" />
-		    				</option>
-		    			</s:iterator>
-		    		</select>
+		    		<s:form id="changePerfil" action="cambiarPerfil" method="POST">
+			    		<select name="personaPerfil" id="personaPerfil" class="form-control">
+			    			<s:iterator value="#session.user.persona.perfiles">
+			    				<option value="<s:property value='perfilId' />"  <s:if test="perfilId == #session.perfil.perfilId">selected</s:if>>
+			    					<s:property value="perfil" />
+			    				</option>
+			    			</s:iterator>
+			    		</select>
+		    		</s:form>
 		    	</div>
 		    	<a href="${pageContext.request.contextPath}/configuracion">
 		    		<i class="fa fa-gear" aria-hidden="true"></i>

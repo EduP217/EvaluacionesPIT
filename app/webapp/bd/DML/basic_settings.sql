@@ -117,7 +117,7 @@ INSERT INTO `pit-evaluations`.enlace (enlace_id, enlace, ruta_url, icono, enlace
 INSERT INTO `pit-evaluations`.enlace (enlace_id, enlace, ruta_url, icono, enlace_parent_id) VALUES (9, 'Banco de Preguntas', 'evaluaciones/preguntas', null, 8);
 INSERT INTO `pit-evaluations`.enlace (enlace_id, enlace, ruta_url, icono, enlace_parent_id) VALUES (10, 'Rendir Examen', 'examen', 'fa fa-file', null);
 INSERT INTO `pit-evaluations`.enlace (enlace_id, enlace, ruta_url, icono, enlace_parent_id) VALUES (11, 'Matricula', 'matricula', 'fa fa-calendar', null);
-INSERT INTO `pit-evaluations`.enlace (enlace_id, enlace, ruta_url, icono, enlace_parent_id) VALUES (12, 'Configuración', 'configuracion', 'fa fa-wrench', null);
+INSERT INTO `pit-evaluations`.enlace (enlace_id, enlace, ruta_url, icono, enlace_parent_id) VALUES (12, 'Configuración', 'configuracion', 'fa fa-gear', null);
 
 ALTER TABLE `pit-evaluations`.enlace AUTO_INCREMENT = 13;
 
