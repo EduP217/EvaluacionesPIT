@@ -1,14 +1,12 @@
 package com.cibertec.services;
 
 import java.util.List;
-import java.util.Map;
 
 import com.cibertec.beans.PerfilBean;
 import com.cibertec.beans.PersonaDTO;
-import com.cibertec.dao.CursoDAO;
 import com.cibertec.dao.DAOFactory;
 import com.cibertec.dao.PersonaDAO;
-import com.cibertec.utils.Constantes;
+
 
 public class PersonaService {
 	
@@ -19,6 +17,10 @@ public class PersonaService {
 		return dao.listarPerfilesDePersona(personaId);
 	}
 	
+	public void modificarDatosDePersona(PersonaDTO persona) {
+		dao.modificarDatosDePersona(persona);
+	}
+	
 	/*public List<PersonaDTO> listarP(int perfil) {
 		return dao.listarP(perfil);
 	}	
@@ -27,9 +29,6 @@ public class PersonaService {
 	}
 	public int registrarPersona(PersonaDTO obj,int perfil) {
 		return dao.registrarPersona(obj,perfil);
-	}
-	public int modificarPersona(PersonaDTO obj,int perfil) {
-		return dao.modificarPersona(obj,perfil);
 	}
 	public PersonaDTO buscarEstudiante(int cod) {
 		return dao.buscarEstudiante(cod);

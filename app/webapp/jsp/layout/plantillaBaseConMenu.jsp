@@ -3,6 +3,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <%@ taglib prefix="sjg" uri="/struts-jquery-grid-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,6 +12,10 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/plantillaBaseConMenu.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/cabecera.css"/>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/menu.css"/>
+		
+		<style type="text/css">
+			<tiles:insertAttribute name="extraCSS" ignore="true" />
+		</style>
 		
 		<style type="text/css">
 			div.backgroundImage {
@@ -47,6 +52,9 @@
 		<script src="${pageContext.request.contextPath}/assets/js/bootstrap-datepicker.min.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/locales/bootstrap-datepicker.es.min.js"></script>
 		<script src="${pageContext.request.contextPath}/assets/js/menu.js"></script>
+		<script type="text/javascript">
+			<tiles:insertAttribute name="extraJS" ignore="true" />
+		</script>
 	</body>
 </html>
 

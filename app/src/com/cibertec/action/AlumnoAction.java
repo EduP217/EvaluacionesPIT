@@ -15,7 +15,7 @@ import com.cibertec.beans.CursoDTO;
 import com.cibertec.beans.PersonaDTO;
 import com.cibertec.beans.UsuarioDTO;
 import com.cibertec.services.CursoService;
-import com.cibertec.services.LoginService;
+import com.cibertec.services.UsuarioService;
 import com.cibertec.services.PersonaService;
 import com.cibertec.services.SeccionService;
 

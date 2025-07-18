@@ -13,7 +13,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import com.cibertec.beans.PersonaDTO;
 import com.cibertec.beans.UsuarioDTO;
-import com.cibertec.services.LoginService;
+import com.cibertec.services.UsuarioService;
 import com.cibertec.services.PersonaService;
 
 @ParentPackage("pit")

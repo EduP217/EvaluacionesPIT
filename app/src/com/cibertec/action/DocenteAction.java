@@ -13,11 +13,12 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import com.cibertec.beans.PersonaDTO;
 import com.cibertec.beans.UsuarioDTO;
-import com.cibertec.services.LoginService;
+import com.cibertec.services.UsuarioService;
 import com.cibertec.services.PersonaService;
 
+
 @ParentPackage("pit")
-public class DocenteAction extends ActionSupport{
+public class DocenteAction extends ActionSupport {
 
 	/*Map<String,Object> numListar = new HashMap<String,Object>();
 	private List<PersonaDTO> lista = new PersonaService().listarP(3);

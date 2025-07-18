@@ -12,6 +12,16 @@ html, body {
 h1, h2, h3, h4, h5, h6 {
   	font-family: "Russo One", sans-serif;
     line-height: 1.6;
+    margin: 2rem 0;
+}
+
+h1.border-bottom, 
+h2.border-bottom, 
+h3.border-bottom, 
+h4.border-bottom, 
+h5.border-bottom, 
+h6.border-bottom {
+    border-bottom: 1px solid #000;
 }
 
 a, label, input, textarea, select {
@@ -199,7 +209,7 @@ a, label, input, textarea, select {
 
 /* -- - - - - - - - - -  --  - - - - -- */
 div.backgroundImage {
-	position: absolute;
+	position: fixed;
 	left: 0;
 	right: 0;
 	bottom: 0;

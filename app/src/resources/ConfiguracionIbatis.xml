@@ -31,7 +31,7 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="resources/dao/mappers/mapperLogin.xml"/>
+		<mapper resource="resources/dao/mappers/mapperUsuario.xml"/>
 		<mapper resource="resources/dao/mappers/mapperPersona.xml"/>
 		<mapper resource="resources/dao/mappers/mapperEnlace.xml"/>
 <!-- 		<mapper resource="resources/dao/mappers/mapperCurso.xml"/> -->
@@ -41,3 +41,16 @@
 </configuration>
 
 
+<!-- <configuration> -->
+<!--     <properties /> -->
+<!--     <settings /> -->
+<!--     <typeAliases /> -->
+<!--     <typeHandlers /> -->
+<!--     <objectFactory /> -->
+<!--     <objectWrapperFactory /> -->
+<!--     <reflectorFactory /> -->
+<!--     <plugins /> -->
+<!--     <environments /> -->
+<!--     <databaseIdProvider /> -->
+<!--     <mappers /> -->
+<!-- </configuration> -->

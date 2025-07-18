@@ -18,6 +18,7 @@ section#contenedor main div.flex-container div#idMenu {
 
 section#contenedor main div.flex-container div#idCentralConMenu {
 	flex: 4;
+    padding: 1rem;
 }
 
 section#contenedor footer {
@@ -36,5 +37,12 @@ section#contenedor footer {
 	section#contenedor main div.flex-container div#idMenu {
 		border-right: none;
         box-shadow: 0px 0px 5px 0px #aeaeae;
+	}
+}
+
+
+@media screen and (max-width: 991px) {
+	section#contenedor main div.flex-container {
+		height: 100vh;
 	}
 }

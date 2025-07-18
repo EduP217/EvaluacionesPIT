@@ -14,7 +14,6 @@ h2{
 	color:black;
 }
 </style>
-<h2><center>LISTADO DE CURSOS</center></h2>
 
 <div class="panel-group" id="accordion">
 <s:iterator value="#session.keyCursos">

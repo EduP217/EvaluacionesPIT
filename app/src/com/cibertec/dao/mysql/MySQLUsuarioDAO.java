@@ -30,6 +30,13 @@ public class MySQLUsuarioDAO implements UsuarioDAO {
 		);
 	}
 
+	@Override
+	public void modificarDatosDeUsuario(UsuarioDTO usuario) {
+		DAOExecutor.execute(session -> 
+			session.update("SQL_ActualizarDatosDeUsuario", usuario)
+		);
+	}
+
 	/*@Override
 	public List<EnlaceDTO> MostrarEnlacesUsuario(int codigo) {
 		List<EnlaceDTO> data=null;
@@ -93,22 +100,6 @@ public class MySQLUsuarioDAO implements UsuarioDAO {
 			e.printStackTrace();
 		}
 		return data;
-	}
-
-	@Override
-	public int modificarUsuario(UsuarioDTO obj) {
-		int result = -1;
-		SqlSession session =  sqlMapper.openSession();
-		try {
-			result = session.insert("SQL_UPD_Usuario", obj);
-			session.commit();
-		} catch (Exception e) {
-			session.rollback();
-			e.printStackTrace();
-		} finally{
-			session.close();
-		}
-		return result;
 	}*/
 
 }

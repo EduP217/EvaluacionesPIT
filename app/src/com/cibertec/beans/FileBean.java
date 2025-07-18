@@ -1,13 +1,14 @@
 package com.cibertec.beans;
 
 import java.io.File;
+import java.util.Arrays;
 
 public class FileBean {
 
 	private File file;
 	private byte[] fileBytes;
 	private String fileContentType;
-	private String fileName;
+	private String fileFileName;
 	
 	public File getFile() {
 		return file;
@@ -27,11 +28,16 @@ public class FileBean {
 	public void setFileContentType(String fileContentType) {
 		this.fileContentType = fileContentType;
 	}
-	public String getFileName() {
-		return fileName;
+	public String getFileFileName() {
+		return fileFileName;
 	}
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setFileFileName(String fileFileName) {
+		this.fileFileName = fileFileName;
+	}
+	
+	@Override
+	public String toString() {
+		return "FileBean [file=" + file + ", fileContentType=" + fileContentType + ", fileFileName=" + fileFileName + "]";
 	}
 	
 }

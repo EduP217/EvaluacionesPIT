@@ -34,7 +34,7 @@ div.dropdown.chip {
 
 div.dropdown div.btnContainer {
     position: relative;
-    z-index: 2;
+    z-index: 5;
     min-width: 150px;
     align-items: center;
     display: inline-flex;
@@ -65,7 +65,7 @@ div.dropdown div.dropdown-content {
     position: absolute;
     background-color: #f1f1f1;
    	box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    z-index: 4;
    	width: 100%;
     border-radius: 0px 0px 9px 9px;
     left: 0;

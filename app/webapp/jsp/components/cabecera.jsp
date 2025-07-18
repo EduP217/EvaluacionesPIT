@@ -9,7 +9,7 @@
 	<div id="menuUsuario">
 		<div class="dropdown chip">
 			<div class="btnContainer">
-				<img src="${pageContext.request.contextPath}/images/users/${sessionScope.user.imagenURL}" id="foto"/>
+				<img src="${sessionScope.user.imagenURL}" id="foto"/>
 				<button class="btn dropbtn" type="button" id="menu1" data-toggle="dropdown">					    
 					<span><s:property value="#session.user.persona.nombres+' '+#session.user.persona.apellidos"/></span>
 		    		<span class="caret"></span>
@@ -17,8 +17,8 @@
 			</div>
 		    <div class="dropdown-content">
 		    	<div class="p-1rem">
-		    		<s:form id="changePerfil" action="cambiarPerfil" method="POST">
-			    		<select name="personaPerfil" id="personaPerfil" class="form-control">
+		    		<s:form id="changePerfil" action="cambiar-perfil" method="POST">
+			    		<select name="personaPerfil" id="personaPerfil" class="form-control" onchange="this.form.submit()">
 			    			<s:iterator value="#session.user.persona.perfiles">
 			    				<option value="<s:property value='perfilId' />"  <s:if test="perfilId == #session.perfil.perfilId">selected</s:if>>
 			    					<s:property value="perfil" />
@@ -27,11 +27,11 @@
 			    		</select>
 		    		</s:form>
 		    	</div>
-		    	<a href="${pageContext.request.contextPath}/configuracion">
+		    	<a href="${pageContext.request.contextPath}/configuracion-cuenta">
 		    		<i class="fa fa-gear" aria-hidden="true"></i>
 		    		<span>Configuración</span>
 		    	</a>
-		    	<a href="${pageContext.request.contextPath}/cerrarSesion">
+		    	<a href="${pageContext.request.contextPath}/cerrar-sesion">
 		    		<i class="fa fa-times" aria-hidden="true"></i>
 					<span>Salir</span>
 				</a>

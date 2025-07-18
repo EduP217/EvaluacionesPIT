@@ -12,7 +12,7 @@ import com.cibertec.beans.CarreraBean;
 import com.cibertec.beans.CursoDTO;
 import com.cibertec.beans.UsuarioDTO;
 import com.cibertec.services.CursoService;
-import com.cibertec.services.LoginService;
+import com.cibertec.services.UsuarioService;
 import com.cibertec.services.PersonaService;
 
 @ParentPackage("pit")

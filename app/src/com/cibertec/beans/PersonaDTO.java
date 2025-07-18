@@ -1,6 +1,6 @@
 package com.cibertec.beans;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.List;
 
 public class PersonaDTO {
@@ -9,7 +9,7 @@ public class PersonaDTO {
 	private String identificador;
 	private String nombres;
 	private String apellidos;
-	private LocalDate fechaNacimiento;
+	private String fechaNacimiento;
 	private String telefono;
 	
 	private List<PerfilBean> perfiles;
@@ -38,10 +38,10 @@ public class PersonaDTO {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	public LocalDate getFechaNacimiento() {
+	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-	public void setFechaNacimiento(LocalDate fechaNacimiento) {
+	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	public String getTelefono() {

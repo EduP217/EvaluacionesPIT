@@ -1,0 +1,52 @@
+div.datosPersonales {
+	width : 100%;
+    padding: 2rem;
+	text-transform: capitalize;
+}
+
+form#formConfiguracionCuenta {
+	
+}
+
+div#avatarDeUsuario-errors {
+    margin: 1rem 0;
+    font-size: 12px;
+}
+
+div.file-input {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+div.file-input div.file-preview {
+    width: 250px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+
+div.file-input div.file-preview div.file-preview-frame {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+div.file-input div.file-preview div.file-preview-frame img.kv-preview-data.file-preview-image {
+	height: 180px !important;
+}
+
+div.file-input div.file-preview div.file-default-preview {
+	padding: 1rem;
+}
+
+div.file-input div.file-preview div.file-default-preview img.defaultPreviewImage {
+	width: 100%;
+}
+
+form#formConfiguracionCuenta div.form-group {
+	display: flex;
+	align-items: center;
+}

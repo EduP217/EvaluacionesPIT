@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.cibertec.beans.EnlaceDTO;
+import com.cibertec.beans.PerfilBean;
 
 public class SesionUtils {
 	
@@ -17,7 +18,9 @@ public class SesionUtils {
                 continue;
         	}
         	
-            Optional<EnlaceDTO> parentFilter = jerarquia.stream().filter(e -> e.getEnlaceId() == enlace.getEnlaceParentId()).findFirst();
+            Optional<EnlaceDTO> parentFilter = jerarquia.stream()
+            		.filter(e -> e.getEnlaceId() == enlace.getEnlaceParentId())
+            		.findFirst();
             if (parentFilter.isPresent()) {
             	EnlaceDTO parent = parentFilter.get();
             	if(parent.getSubEnlaces() == null) {
@@ -28,6 +31,30 @@ public class SesionUtils {
         }
 
 		return jerarquia;
+	}
+	
+	public static PerfilBean encontrarPerfilActivo(List<PerfilBean> perfiles) {
+		Optional<PerfilBean> perfilActive = perfiles.stream()
+				.filter(pp -> pp.getActive() == 1)
+				.findFirst();
+		
+		if(perfilActive.isPresent()) {
+			return perfilActive.get();
+		}
+		
+		return null;
+	}
+	
+	public static PerfilBean encontrarPerfilPorId(List<PerfilBean> perfiles, int perfilId) {
+		Optional<PerfilBean> perfilActive = perfiles.stream()
+				.filter(pp -> pp.getPerfilId() == perfilId)
+				.findFirst();
+		
+		if(perfilActive.isPresent()) {
+			return perfilActive.get();
+		}
+		
+		return null;
 	}
 
 }

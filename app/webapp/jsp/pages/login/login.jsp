@@ -2,7 +2,7 @@
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <%@ taglib prefix="sjg" uri="/struts-jquery-grid-tags"%>
 
-<s:form id="idLogin" cssClass="form-horizontal m-t-20" action="iniciarSesion" method="POST">
+<s:form id="idLogin" cssClass="form-horizontal m-t-20" action="iniciar-sesion" method="POST">
 	<div class="form-group ">
 		<div class="col-xs-12">
 			<label for="inputUsuario" class="form-label">Usuario:</label>

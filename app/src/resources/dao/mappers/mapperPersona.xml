@@ -12,6 +12,15 @@
 		order by perfilId ASC;
 	</select>
 	
+	<update id="SQL_ActualizarDatosDePersona" parameterType="PersonaDTOIbatis">
+		update persona set 
+			nombres = #{nombres}, 
+			apellidos = #{apellidos}, 
+			fecha_nacimiento = #{fechaNacimiento}, 
+			telefono = #{telefono}
+		where persona_id = #{personaId}
+	</update>
+	
 	<select id="SQL_Admin" parameterType="int" resultType="PersonaDTOIbatis">
 		SELECT 	a.idadministrador as codigo,
 				a.dni as dni,
@@ -114,10 +123,6 @@
 	</insert>
 	<insert id="SQL_REG_Alumn" parameterType="PersonaDTOIbatis">
 		insert into estudiante values(0,#{dni},#{nombre},#{apellido},#{fechanac},#{telefono},#{celular},#{idusuario})
-	</insert>	  
-	<insert id="SQL_UPD_Alumn" parameterType="PersonaDTOIbatis">
-		update estudiante set nombre = #{nombre}, apellido = #{apellido}, fechanac = #{fechanac}, telefono = #{telefono}, celular = #{celular}
-		where idestudiante = #{codigo}
 	</insert>
 </mapper>
 

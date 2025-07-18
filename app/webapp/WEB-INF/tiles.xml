@@ -19,11 +19,12 @@
 		<put-attribute name="modal-header" value="/jsp/pages/login/loginHeader.jsp" />
 		<put-attribute name="modal-footer" value="/jsp/pages/login/loginFooter.jsp" />
 	</definition>
-	<definition name="t_configuracion_persona" extends="t_plantillaBaseConMenu">
-		<put-attribute name="central" value="/jsp/pages/persona/configuracion.jsp" />
-	</definition>
 	<definition name="t_intranet" extends="t_plantillaBaseConMenu">
 		<put-attribute name="central" value="/jsp/pages/dashboard/intranet.jsp" />
+	</definition>
+	<definition name="t_configuracion_cuenta" extends="t_plantillaBaseConMenu">
+		<put-attribute name="central" value="/jsp/pages/account/configuracion.jsp" />
+		<put-attribute name="extraJS" value="/assets/js/account.js" />
 	</definition>
 	<definition name="m_profesor" extends="t_plantillaBaseConMenu">
 		<put-attribute name="central" value="/jsp/pages/mantenimiento/m_profesor.jsp" />

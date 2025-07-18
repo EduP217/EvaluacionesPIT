@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.cibertec.beans.PerfilBean;
+import com.cibertec.beans.PersonaDTO;
 import com.cibertec.dao.DAOExecutor;
 import com.cibertec.dao.PersonaDAO;
 
@@ -17,6 +18,13 @@ public class MySQLPersonaDAO implements PersonaDAO {
 		
 		return DAOExecutor.retrieve(session -> 
 			session.selectList("SQL_ListarPerfilesDePersona", params)
+		);
+	}
+	
+	@Override
+	public void modificarDatosDePersona(PersonaDTO persona) {
+		DAOExecutor.execute(session -> 
+			session.update("SQL_ActualizarDatosDePersona", persona)
 		);
 	}
 
@@ -93,38 +101,6 @@ public class MySQLPersonaDAO implements PersonaDAO {
 				break;
 			case 4:
 				result = session.insert("SQL_REG_Prof", obj);
-				session.commit();
-				break;	
-			}
-		} catch (Exception e) {
-			session.rollback();
-			e.printStackTrace();
-		} finally{
-			session.close();
-		}
-		return result;
-	}
-
-	@Override
-	public int modificarPersona(PersonaDTO obj,int perfil) {
-		int result = -1;
-		SqlSession session =  sqlMapper.openSession();
-		try {
-			switch (perfil) {
-			case 1:
-				result = session.insert("SQL_UPD_Admin", obj);
-				session.commit();				
-				break;
-			case 2:
-				result = session.insert("SQL_UPD_Alumn", obj);
-				session.commit();
-				break;
-			case 3:		
-				result = session.insert("SQL_UPD_Prof", obj);
-				session.commit();				
-				break;
-			case 4:
-				result = session.insert("SQL_UPD_Prof", obj);
 				session.commit();
 				break;	
 			}

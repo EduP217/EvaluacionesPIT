@@ -9,10 +9,11 @@ import com.cibertec.beans.UsuarioDTO;
 public interface UsuarioDAO {
 
 	public UsuarioDTO IniciarSesion(String usuario, String clave);
+	public void modificarDatosDeUsuario(UsuarioDTO usuario);
+	
 	/*public List<EnlaceDTO> MostrarEnlacesUsuario(int codigo);
 	public PersonaDTO datosUsuario(int codigo, int perfil);
 	public UsuarioDTO buscarUsuario(String usuario);
-	public int registrarUsuario(UsuarioDTO obj);
-	public int modificarUsuario(UsuarioDTO obj);*/
+	public int registrarUsuario(UsuarioDTO obj);*/
 	
 }
